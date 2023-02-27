@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Varela Round", sans-serif !important;
+  background-color: #F9FAFB;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Varela Round", sans-serif !important;
+}
+/* 
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+} */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+}
+
+.MuiDataGrid-root,
+.MuiDataGrid-root .MuiDataGrid-columnHeader,
+.MuiDataGrid-root .MuiDataGrid-cell {
+  border: none !important;
+  outline: none !important;
+}
+
+.MuiDataGrid-columnSeparator {
+  display: none !important;
+}
+
+.MuiDataGrid-row:hover {
+  @apply rounded-lg !important;
+}
+
+.MuiDataGrid-columnHeaders {
+  @apply bg-slate-100 rounded-lg !important;
+}
+
+.input-rounded .MuiOutlinedInput-root {
+  @apply rounded-xl;
+}
+
+.MuiButton-root {
+  @apply rounded-xl;
+}
+
+.button-image.MuiButton-root {
+  @apply opacity-0 hover:opacity-80 hover:bg-black hover:rounded-full;
+}
+
+.appBar-button-animation {
+  @apply transition-all duration-200 cursor-pointer hover:scale-90;
+}
+
+.title {
+  @apply text-sm font-semibold 
+}

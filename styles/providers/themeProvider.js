@@ -1,0 +1,40 @@
+import {
+  ThemeProvider as MUIThemeProvider,
+  createTheme,
+  StyledEngineProvider,
+  ThemeOptions,
+} from "@mui/material/styles";
+import typography from "../theme/typography";
+import palette from "../theme/palette";
+import ComponentsOverrides from "../overrides";
+import customShadows from "../theme/customShadows";
+import shadows from "../theme/shadows";
+
+export default function ThemeProvider({ children }) {
+  const themeOptions = {
+    palette,
+    shape: { borderRadius: 6 },
+    typography: typography,
+    shadows: shadows(),
+  };
+  const theme = createTheme(themeOptions);
+  theme.components = ComponentsOverrides({
+    ...theme,
+    customShadows: customShadows(),
+  });
+
+  return (
+    <StyledEngineProvider>
+      <MUIThemeProvider theme={theme}>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+          rel="stylesheet"
+        />
+
+        {children}
+      </MUIThemeProvider>
+    </StyledEngineProvider>
+  );
+}
