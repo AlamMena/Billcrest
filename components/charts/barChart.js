@@ -1,40 +1,23 @@
 import React from "react";
-import { TrendingUpOutlined } from "@mui/icons-material";
+import { TrendingUpOutlined, TrendingDownOutlined } from "@mui/icons-material";
 import ApexCharts from "./apexCharts";
 import { useTheme } from "@emotion/react";
 import { Card, Typography } from "@mui/material";
+import { formatCurrency } from "../../utils/methods";
 
-export default function BarChart({ props }) {
-  const data = [
-    {
-      label: "ProductSold",
-      data: [
-        { date: "22 feb", value: 1200 },
-        { date: "23 feb", value: 10 },
-        { date: "24 feb", value: 140 },
-        { date: "25 feb", value: 4200 },
-      ],
-    },
-    {
-      label: "SalesPerYear",
-      data: [
-        { date: "22 feb", value: 1200 },
-        { date: "23 feb", value: 10 },
-        { date: "24 feb", value: 140 },
-        { date: "25 feb", value: 4200 },
-      ],
-    },
-  ];
-
+export default function BarChart({ data }) {
   const theme = useTheme();
+
+  const valueValidation = (value) => {};
+
   const series = [
     {
       name: "LineChart",
-      data: data[0].data.map((item) => item.value),
+      data: data.data.map((item) => item.value),
     },
   ];
   const options = {
-    labels: data[0].data.map((item) => item.date),
+    labels: data.data.map((item) => item.date),
     colors: [theme.palette.primary.main],
     chart: {
       toolbar: {
@@ -72,12 +55,27 @@ export default function BarChart({ props }) {
   return (
     <Card className=" w-full my-4  h-48 shadow-lg flex items-center justify-between rounded-xl">
       <div className="flex flex-col p-3 mx-2 w-32 space-y-4">
-        <Typography variant="h6">Producto vendido</Typography>
-        <span className=" text-2xl font-bold">765</span>
-        <div className="text-xs text-neutral-500">
-          <TrendingUpOutlined className=" bg-green-100 rounded-full p-1 text-green-600 mr-2 wide" />
-          <span className=" font-bold text-black">1</span>
-          last week
+        <Typography variant="h6">{data.label}</Typography>
+        <span className=" text-2xl font-bold">
+          {(data.total <= 0 && <span>-</span>) ||
+            (data.label !== "Products Sold" ? (
+              <span>{formatCurrency(data.total)}</span>
+            ) : (
+              data.total
+            ))}
+        </span>
+        <div className="text-xs text-neutral-500 w-72">
+          {data.increasePercentage > 0 ? (
+            <TrendingUpOutlined className=" bg-green-100 rounded-full p-1 text-green-600 mr-2 wide" />
+          ) : (
+            <TrendingDownOutlined className=" bg-red-100 rounded-full p-1 text-red-600 mr-2 wide" />
+          )}
+          <span className=" font-bold text-black">
+            {(data.increasePercentage <= 0 && <span>-</span>) || (
+              <span>{formatCurrency(data.increasePercentage)}</span>
+            )}
+          </span>
+          <span> la semana pasada</span>
         </div>
       </div>
       <div className=" max-w-xs flex-auto p-3">

@@ -10,24 +10,24 @@ import ProgressBar from "../components/charts/progressBar";
 import CurrentBalance from "../components/charts/currentBalance";
 import { useState, useEffect } from "react";
 import useAxios from "../axios/index";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export default function Home() {
-  const [data, setData] = useState({});
   const { axiosInstance } = useAxios();
+  const queryClient = useQueryClient();
 
-  const DataAsync = async () => {
-    try {
-      const { dataCharts } = await axiosInstance.get("reports/index/status");
-      setData(dataCharts);
-      alert(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const {
+    isLoading,
+    success,
+    error,
+    data: dataCharts,
+  } = useQuery({
+    queryKey: ["getStatus"],
+    queryFn: () =>
+      axiosInstance.get("reports/index/status").then((res) => res.data),
+  });
 
-  useEffect(() => {
-    DataAsync();
-  }, []);
+  // console.log(JSON.stringify(data));
 
   return (
     <>
@@ -59,9 +59,10 @@ export default function Home() {
       </div>
 
       <div className=" lg:flex gap-4 justify-around items-center mx-8 my-2 md:mx-0">
-        <BarChart />
-        <BarChart />
-        <BarChart />
+        {!isLoading &&
+          dataCharts?.map((item, index) => (
+            <BarChart data={item} key={index} />
+          ))}
       </div>
       <div className="lg:flex mx-8 my-3 gap-4 md:mx-0">
         <SeriesChart />
