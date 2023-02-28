@@ -3,7 +3,7 @@ import useAxios from "../../axios/index";
 import { Button } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import ContactForm from "../../components/contacts/contactForm";
-import ContactList from "../../components/Contacts/ContactList";
+import ContactList from "../../components/contacts/contactList";
 import PageHeader from "../../components/globals/pageHeader";
 import { toast } from "react-toastify";
 import ConfirmationForm from "../../components/globals/confirmationForm";
