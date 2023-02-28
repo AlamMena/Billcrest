@@ -53,7 +53,7 @@ export default function BarChart({ data }) {
   };
 
   return (
-    <Card className=" w-full my-4  h-48 shadow-lg flex items-center justify-between rounded-xl">
+    <Card className=" w-full my-4  h-48  flex items-center justify-between ">
       <div className="flex flex-col p-3 mx-2 w-32 space-y-4">
         <Typography variant="h6">{data.label}</Typography>
         <span className=" text-2xl font-bold">

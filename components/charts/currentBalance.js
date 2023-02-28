@@ -4,7 +4,7 @@ import { Card, Typography } from "@mui/material";
 
 export default function CurrentBalance() {
   return (
-    <Card className=" p-5 space-y-3 my-2 lg:w-96   shadow-xl rounded-xl ">
+    <Card className=" p-5 space-y-3 my-2 lg:w-96 ">
       <div className="flex flex-col space-y-1">
         <Typography variant="h6">Current Balance</Typography>
         <span className=" text-2xl font-bold">$216,500</span>

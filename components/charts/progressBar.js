@@ -5,7 +5,7 @@ import { Card } from "@mui/material";
 
 export default function ProgressBar() {
   return (
-    <Card className=" flex flex-col p-5 my-2 flex-auto space-y-3   shadow-xl rounded-xl ">
+    <Card className=" flex flex-col p-5 my-2 flex-auto space-y-3 ">
       <div className=" text-left px-3 ">
         <Typography variant={"h6"}>Resumen de ventas</Typography>
       </div>
