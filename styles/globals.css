@@ -1,4 +1,4 @@
-@tailwind base;
+/* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
 html,
@@ -30,6 +30,7 @@ a {
   }
 } */
 
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -37,7 +38,7 @@ input::-webkit-inner-spin-button {
 }
 
 ::-webkit-scrollbar {
-  width: 0;
+  width: 2;
   /* Remove scrollbar space */
   background: transparent;
   /* Optional: just make scrollbar invisible */
@@ -66,9 +67,9 @@ input::-webkit-inner-spin-button {
   @apply rounded-xl;
 }
 
-.MuiButton-root {
+/* .MuiButton-root {
   @apply rounded-xl;
-}
+} */
 
 .button-image.MuiButton-root {
   @apply opacity-0 hover:opacity-80 hover:bg-black hover:rounded-full;

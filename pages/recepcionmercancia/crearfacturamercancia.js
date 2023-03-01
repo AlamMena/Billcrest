@@ -759,7 +759,6 @@ export default function CreateInvoiceProduct() {
           sx={{ textTransform: "none" }}
           color="grey"
           onClick={() => dispatch(resetState())}
-          className=" w-44 bg-neutral-200 hover:bg-neutral-300 font-extrabold h-12 text-xs rounded-2xl"
         >
           Salvar como Draft
         </Button>
@@ -769,7 +768,6 @@ export default function CreateInvoiceProduct() {
           sx={{ textTransform: "none" }}
           type="submit"
           color="primary"
-          className=" w-44 bg-green-600 text-white font-extrabold h-12 rounded-2xl"
           onClick={() => setConfirmOpen(true)}
         >
           Crear y enviar

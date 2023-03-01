@@ -175,7 +175,7 @@ export default function ProfileSettings() {
               type="submit"
               color="primary"
               size="medium"
-              className=" w-28 shadow-xl bg-green-600 text-white rounded-2xl"
+              className=" w-28 "
             >
               Guardar
             </Button>

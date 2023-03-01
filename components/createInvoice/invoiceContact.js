@@ -7,7 +7,7 @@ export function InvoiceBeneficiary() {
   return (
     <div className="p-3 flex space-x-3 items-center space-y-1">
       <div className="h-14 w-14">
-        <img src={beneficiary.imageUrl} className="rounded-full" />
+        <img src={beneficiary.imageUrl} className="rounded-full w-full" />
       </div>
       <div className="flex flex-col">
         {/* Name */}
@@ -32,7 +32,7 @@ export function InvoiceRecipient() {
           onClick={() => alert(JSON.stringify(recipient))}
         >
           <div className="h-14 w-14">
-            <img src={recipient.imageUrl} className="rounded-full" />
+            <img src={recipient.imageUrl} className="rounded-full w-full" />
           </div>
           <div className="flex flex-col">
             {/* Name */}

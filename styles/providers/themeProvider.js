@@ -2,7 +2,6 @@ import {
   ThemeProvider as MUIThemeProvider,
   createTheme,
   StyledEngineProvider,
-  ThemeOptions,
 } from "@mui/material/styles";
 import typography from "../theme/typography";
 import palette from "../theme/palette";
@@ -24,7 +23,7 @@ export default function ThemeProvider({ children }) {
   });
 
   return (
-    <StyledEngineProvider>
+    <StyledEngineProvider injectFirst>
       <MUIThemeProvider theme={theme}>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />

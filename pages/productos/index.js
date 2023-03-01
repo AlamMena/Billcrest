@@ -61,21 +61,19 @@ export default function Products() {
           <PageHeader
             header="Productos"
             locationRoutes={locationRoutes}
-            Icon={<Inventory2Rounded className="text-green-400" />}
+            Icon={<Inventory2Rounded />}
           />
         </div>
         <div className="flex">
           <Button
-            className=" z-auto rounded-xl py-2 bg-green-600 hover:bg-green-800"
             variant="contained"
+            color="primary"
             onClick={() => {
               router.push("/productos/crear");
             }}
-            startIcon={<Add className="text-white" />}
+            startIcon={<Add />}
           >
-            <span className="text-sm whitespace-nowrap text-neutral-50 capitalize font-bold">
-              Nuevo producto
-            </span>
+            Nuevo producto
           </Button>
         </div>
       </div>

@@ -13,6 +13,7 @@ import { FiFacebook, FiGithub } from "react-icons/fi";
 import { useForm } from "react-hook-form";
 import useAuth from "../auth/useAuth";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const { register, handleSubmit } = useForm();

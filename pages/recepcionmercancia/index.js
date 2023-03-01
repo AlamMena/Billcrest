@@ -56,12 +56,12 @@ export default function Invoices() {
           </div>
           <div className="flex">
             <Button
-              className=" z-auto rounded-xl py-2 bg-green-600 hover:bg-green-800"
               variant="contained"
               onClick={() =>
                 Router.push("./recepcionmercancia/crearfacturamercancia")
               }
               startIcon={<Add className="text-white" />}
+              color="primary"
             >
               <span className="text-sm whitespace-nowrap text-neutral-50 capitalize font-bold">
                 Nueva Factura

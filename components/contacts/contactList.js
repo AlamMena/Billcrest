@@ -3,7 +3,12 @@ import {
   EditOutlined,
   SearchRounded,
 } from "@mui/icons-material";
-import { FormControl, InputAdornment, OutlinedInput } from "@mui/material";
+import {
+  Card,
+  FormControl,
+  InputAdornment,
+  OutlinedInput,
+} from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useRouter } from "next/router.js";
 import { debounce } from "../../utils/methods.js";
@@ -120,7 +125,7 @@ export default function ContactList({
   };
 
   return (
-    <div className="flex flex-col h-full w-full shadow-lg rounded-xl">
+    <Card className="flex flex-col h-full w-full ">
       {/* ------------------   Tab Status -------------------- */}
       {/* <div className=" bg-slate-200 rounded-t-lg">
         <Tabs className="text-neutral-500">
@@ -175,6 +180,6 @@ export default function ContactList({
           disableColumnSelector
         />
       </div>
-    </div>
+    </Card>
   );
 }

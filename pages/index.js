@@ -1,22 +1,15 @@
-import Head from "next/head";
-import Image from "next/image";
-import jsPDF from "jspdf";
-import { renderToString } from "react-dom/server";
 import * as React from "react";
 import BarChart from "../components/charts/barChart";
 import SeriesChart from "../components/charts/seriesChart";
 import LineChart from "../components/charts/lineChart";
 import ProgressBar from "../components/charts/progressBar";
 import CurrentBalance from "../components/charts/currentBalance";
-import { useState, useEffect } from "react";
 import useAxios from "../axios/index";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Skeleton } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
 import Loading from "../components/loading";
 
 export default function Home() {
   const { axiosInstance } = useAxios();
-  const queryClient = useQueryClient();
 
   const {
     isLoading,

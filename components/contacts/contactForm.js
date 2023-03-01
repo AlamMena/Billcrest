@@ -15,6 +15,7 @@ import {
   FormControlLabel,
   Switch,
   Box,
+  Card,
 } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
@@ -173,268 +174,267 @@ export default function ContactForm({ contact, invoices }) {
   };
 
   return (
-    <div>
-      <div className=" md:mx-6">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col  space-y-4 rounded-2xl"
-        >
-          <TabPanel value={content} index={0}>
-            {/* Image handeler */}
-            <div className="flex w-full justify-center col-span-12 lg:col-span-4">
-              <div className="rounded-2xl shadow-md  px-8 py-12 flex flex-col  border mb-10">
-                <figure className="relative m-auto w-40 h-40 outline-dashed outline-2 outline-neutral-200  p-2 rounded-full">
-                  <Button
-                    component="label"
-                    className=" button-image absolute inset-0 m-2"
-                  >
-                    <div className="w-full flex flex-col justify-center space-y-2 items-center">
-                      <CameraAltRounded />
-                      <span className="text-xs capitalize">
-                        Actualizar imagen
-                      </span>
-                    </div>
-
-                    <input
-                      onChange={handleImageInput}
-                      hidden
-                      accept="image/*"
-                      multiple
-                      type="file"
-                    />
-                  </Button>
-                  <img
-                    src={
-                      currentImage
-                        ? currentImage
-                        : contact?.imageUrl
-                        ? contact.imageUrl
-                        : "/dashboard_welcome.png"
-                    }
-                    alt=""
-                    className=" w-36 h-36 rounded-full transition-all  "
-                  />
-                </figure>
-                <span className="text-xs px-8 m-5 text-center max-w-sm  text-neutral-500">
-                  Allowed *.jpeg, *.jpg, *.png, *.gif max size of 3.1 MB
-                </span>
-                <FormGroup>
-                  <div className="flex items-center justify-between w-full">
-                    <div className="text-xs flex flex-col">
-                      <span className="font-bold">Descuento</span>
-                      <span className="text-neutral-500">
-                        Aplica descuentos a este contacto
-                      </span>
-                    </div>
-                    <FormControlLabel
-                      control={
-                        <Switch
-                          checked={allowDiscount}
-                          onClick={() => {
-                            setAllowDiscount(!allowDiscount);
-                          }}
-                        />
-                      }
-                      size="small"
-                    />
-                  </div>
-                  <div className="flex items-center justify-between w-full">
-                    <div className="text-xs flex flex-col">
-                      <span className="font-bold">Credito</span>
-                      <span className="text-neutral-500">
-                        Permitir credito a este contacto
-                      </span>
-                    </div>
-                    <FormControlLabel
-                      control={
-                        <Switch
-                          checked={allowCredit}
-                          onClick={() => {
-                            setAllowCredit(!allowCredit);
-                          }}
-                        />
-                      }
-                      size="small"
-                    />
-                  </div>
-                </FormGroup>
-              </div>
-            </div>
-
-            {/* Personal info client */}
-            <div className="flex flex-col justify-around lg:mx-5 space-y-3 col-span-12 lg:col-span-8 shadow-md border p-6 rounded-xl">
-              <div className="flex flex-col mx-2 py-2">
-                <span className="font-bold tracking-wider">
-                  Informacion de contacto
-                </span>
-                <span className="text-sm text-neutral-500">
-                  Ingresa datos especificos del contacto.
-                </span>
-              </div>
-              <div className="lg:flex w-full space-y-3 lg:space-y-0 lg:space-x-4">
-                <FormControl className="w-full">
-                  <TextField
-                    {...register("name", {
-                      required: true,
-                    })}
-                    InputLabelProps={{ shrink: true }}
-                    id="outlined-adornment-name"
-                    label="Nombre"
-                    size="medium"
-                    error={errors.name && "value"}
-                    className="input-rounded"
-                    helperText={errors.name && `El campo no es valido`}
-                    variant="outlined"
-                    // InputProps={{
-                    //   startAdornment: (
-                    //     <InputAdornment position="start">
-                    //       <BadgeOutlined
-                    //         className={`${errors.name && "text-red-500"} `}
-                    //       />
-                    //     </InputAdornment>
-                    //   ),
-                    // }}
-                    fullWidth
-                  />
-                </FormControl>
-                <FormControl className="w-full">
-                  <TextField
-                    {...register("noIdentification", {
-                      required: true,
-                    })}
-                    id="outlined-adornment-name"
-                    label="Numero de Identificacion"
-                    size="large"
-                    error={errors.noIdentification && "value"}
-                    className="input-rounded"
-                    helperText={
-                      errors.noIdentification && `El campo no es valido`
-                    }
-                    variant="outlined"
-                    InputLabelProps={{ shrink: true }}
-                    // InputProps={{
-                    //   startAdornment: (
-                    //     <InputAdornment position="start">
-                    //       <EmailOutlined
-                    //         className={`${errors.website && "text-red-500"} `}
-                    //       />
-                    //     </InputAdornment>
-                    //   ),
-                    // }}
-                    fullWidth
-                  />
-                </FormControl>
-              </div>
-              <FormControl className="w-full">
-                <InputLabel id="select-type-identification">
-                  Tipo de Cliente
-                </InputLabel>
-                <Select
-                  {...register("typeId")}
-                  labelId="select-type-identification"
-                  id="select-type-identificationr"
-                  value={clientType}
-                  onChange={(params) => setClientType(params.target.value)}
-                  size="large"
-                  className="rounded-xl text-md"
-                  label="Tipo de cliente"
+    <div className=" md:mx-6">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col  space-y-4 rounded-2xl"
+      >
+        <TabPanel value={content} index={0}>
+          {/* Image handeler */}
+          <Card className="flex w-full justify-center col-span-12 lg:col-span-4">
+            <div className=" px-8 py-12 flex flex-col   mb-10">
+              <figure className="relative m-auto w-40 h-40 outline-dashed outline-2 outline-neutral-200  p-2 rounded-full">
+                <Button
+                  component="label"
+                  className=" button-image absolute inset-0 m-2"
                 >
-                  {clientTypes &&
-                    clientTypes.map((type, index) => {
-                      return (
-                        <MenuItem value={type.id} key={index}>
-                          <div className="flex items-center">
-                            <span className="mx-2">{type.name}</span>
-                          </div>
-                        </MenuItem>
-                      );
-                    })}
-                </Select>
-              </FormControl>
+                  <div className="w-full flex flex-col justify-center space-y-2 items-center">
+                    <CameraAltRounded />
+                    <span className="text-xs capitalize">
+                      Actualizar imagen
+                    </span>
+                  </div>
 
+                  <input
+                    onChange={handleImageInput}
+                    hidden
+                    accept="image/*"
+                    multiple
+                    type="file"
+                  />
+                </Button>
+                <img
+                  src={
+                    currentImage
+                      ? currentImage
+                      : contact?.imageUrl
+                      ? contact.imageUrl
+                      : "/dashboard_welcome.png"
+                  }
+                  alt=""
+                  className=" w-36 h-36 rounded-full transition-all  "
+                />
+              </figure>
+              <span className="text-xs px-8 m-5 text-center max-w-sm  text-neutral-500">
+                Allowed *.jpeg, *.jpg, *.png, *.gif max size of 3.1 MB
+              </span>
+              <FormGroup>
+                <div className="flex items-center justify-between w-full">
+                  <div className="text-xs flex flex-col">
+                    <span className="font-bold">Descuento</span>
+                    <span className="text-neutral-500">
+                      Aplica descuentos a este contacto
+                    </span>
+                  </div>
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={allowDiscount}
+                        onClick={() => {
+                          setAllowDiscount(!allowDiscount);
+                        }}
+                      />
+                    }
+                    size="small"
+                  />
+                </div>
+                <div className="flex items-center justify-between w-full">
+                  <div className="text-xs flex flex-col">
+                    <span className="font-bold">Credito</span>
+                    <span className="text-neutral-500">
+                      Permitir credito a este contacto
+                    </span>
+                  </div>
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={allowCredit}
+                        onClick={() => {
+                          setAllowCredit(!allowCredit);
+                        }}
+                      />
+                    }
+                    size="small"
+                  />
+                </div>
+              </FormGroup>
+            </div>
+          </Card>
+
+          {/* Personal info client */}
+          <Card className="flex flex-col justify-around lg:mx-5 space-y-3 col-span-12 lg:col-span-8  p-6 ">
+            <div className="flex flex-col mx-2 py-2">
+              <span className="font-bold tracking-wider">
+                Informacion de contacto
+              </span>
+              <span className="text-sm text-neutral-500">
+                Ingresa datos especificos del contacto.
+              </span>
+            </div>
+            <div className="lg:flex w-full space-y-3 lg:space-y-0 lg:space-x-4">
               <FormControl className="w-full">
                 <TextField
-                  {...register("email")}
-                  id="outlined-adornment-email"
-                  label="E-mail"
+                  {...register("name", {
+                    required: true,
+                  })}
+                  InputLabelProps={{ shrink: true }}
+                  id="outlined-adornment-name"
+                  label="Nombre"
+                  size="medium"
+                  error={errors.name && "value"}
+                  className="input-rounded"
+                  helperText={errors.name && `El campo no es valido`}
+                  variant="outlined"
+                  // InputProps={{
+                  //   startAdornment: (
+                  //     <InputAdornment position="start">
+                  //       <BadgeOutlined
+                  //         className={`${errors.name && "text-red-500"} `}
+                  //       />
+                  //     </InputAdornment>
+                  //   ),
+                  // }}
+                  fullWidth
+                />
+              </FormControl>
+              <FormControl className="w-full">
+                <TextField
+                  {...register("noIdentification", {
+                    required: true,
+                  })}
+                  id="outlined-adornment-name"
+                  label="Numero de Identificacion"
+                  size="large"
+                  error={errors.noIdentification && "value"}
+                  className="input-rounded"
+                  helperText={
+                    errors.noIdentification && `El campo no es valido`
+                  }
+                  variant="outlined"
+                  InputLabelProps={{ shrink: true }}
+                  // InputProps={{
+                  //   startAdornment: (
+                  //     <InputAdornment position="start">
+                  //       <EmailOutlined
+                  //         className={`${errors.website && "text-red-500"} `}
+                  //       />
+                  //     </InputAdornment>
+                  //   ),
+                  // }}
+                  fullWidth
+                />
+              </FormControl>
+            </div>
+            <FormControl className="w-full">
+              <InputLabel id="select-type-identification">
+                Tipo de Cliente
+              </InputLabel>
+              <Select
+                {...register("typeId")}
+                labelId="select-type-identification"
+                id="select-type-identificationr"
+                value={clientType}
+                onChange={(params) => setClientType(params.target.value)}
+                size="large"
+                className="rounded-xl text-md"
+                label="Tipo de cliente"
+              >
+                {clientTypes &&
+                  clientTypes.map((type, index) => {
+                    return (
+                      <MenuItem value={type.id} key={index}>
+                        <div className="flex items-center">
+                          <span className="mx-2">{type.name}</span>
+                        </div>
+                      </MenuItem>
+                    );
+                  })}
+              </Select>
+            </FormControl>
+
+            <FormControl className="w-full">
+              <TextField
+                {...register("email")}
+                id="outlined-adornment-email"
+                label="E-mail"
+                size="medium"
+                className="input-rounded text-md"
+                variant="outlined"
+                InputLabelProps={{ shrink: true }}
+              />
+            </FormControl>
+            <div className="lg:flex space-y-3 lg:space-y-0 lg:space-x-4">
+              <FormControl className="w-full">
+                <TextField
+                  {...register("addresses.0.address1")}
+                  id="outlined-adornment-address"
+                  label="Direccion"
                   size="medium"
                   className="input-rounded text-md"
                   variant="outlined"
                   InputLabelProps={{ shrink: true }}
                 />
               </FormControl>
-              <div className="lg:flex space-y-3 lg:space-y-0 lg:space-x-4">
-                <FormControl className="w-full">
-                  <TextField
-                    {...register("addresses.0.address1")}
-                    id="outlined-adornment-address"
-                    label="Direccion"
-                    size="medium"
-                    className="input-rounded text-md"
-                    variant="outlined"
-                    InputLabelProps={{ shrink: true }}
-                  />
-                </FormControl>
-                <FormControl className="w-full">
-                  <TextField
-                    {...register("contacts.0.number")}
-                    id="outlined-adornment-phone"
-                    label="Numero de Telefono"
-                    size="medium"
-                    className="input-rounded text-md"
-                    variant="outlined"
-                    InputLabelProps={{ shrink: true }}
-                  />
-                </FormControl>
-              </div>
+              <FormControl className="w-full">
+                <TextField
+                  {...register("contacts.0.number")}
+                  id="outlined-adornment-phone"
+                  label="Numero de Telefono"
+                  size="medium"
+                  className="input-rounded text-md"
+                  variant="outlined"
+                  InputLabelProps={{ shrink: true }}
+                />
+              </FormControl>
+            </div>
 
-              {/* Credit field */}
-              <div className="flex space-x-4">
-                <FormControl className="w-full">
-                  <TextField
-                    {...register("creditDays")}
-                    id="outlined-adornment-phone"
-                    label="Dias de credito"
-                    size="medium"
-                    type="number"
-                    className="input-rounded text-md"
-                    variant="outlined"
-                    value={credit}
-                    disabled={!allowCredit}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <CalendarMonth />
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                </FormControl>
-                <FormControl className="w-full">
-                  <TextField
-                    {...register("discount")}
-                    id="outlined-adornment-phone"
-                    label="Descuento"
-                    size="medium"
-                    type="number"
-                    className="input-rounded text-md"
-                    variant="outlined"
-                    value={discount}
-                    disabled={!allowDiscount}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <AttachMoney />
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                </FormControl>
-              </div>
+            {/* Credit field */}
+            <div className="flex space-x-4">
+              <FormControl className="w-full">
+                <TextField
+                  {...register("creditDays")}
+                  id="outlined-adornment-phone"
+                  label="Dias de credito"
+                  size="medium"
+                  type="number"
+                  className="input-rounded text-md"
+                  variant="outlined"
+                  value={credit}
+                  disabled={!allowCredit}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <CalendarMonth />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </FormControl>
+              <FormControl className="w-full">
+                <TextField
+                  {...register("discount")}
+                  id="outlined-adornment-phone"
+                  label="Descuento"
+                  size="medium"
+                  type="number"
+                  className="input-rounded text-md"
+                  variant="outlined"
+                  value={discount}
+                  disabled={!allowDiscount}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <AttachMoney />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </FormControl>
+            </div>
 
-              {/* Save Button */}
-              <div className="flex w-full justify-end space-x-4  ">
-                {/* <Button
+            {/* Save Button */}
+            <div className="flex w-full justify-end space-x-4  ">
+              {/* <Button
                   variant="contained"
                   size="medium"
                   className="  w-28 shadow-xl bg-neutral-200 rounded-2xl hover:bg-neutral-400 hover:text-white"
@@ -442,19 +442,18 @@ export default function ContactForm({ contact, invoices }) {
                 >
                   Cancelar
                 </Button> */}
-                <Button
-                  variant="contained"
-                  type="submit"
-                  color="primary"
-                  // className="font-semibold w-28 shadow-xl bg-green-600 text-white rounded-2xl"
-                >
-                  Guardar
-                </Button>
-              </div>
+              <Button
+                variant="contained"
+                type="submit"
+                color="primary"
+                // className="font-semibold w-28 shadow-xl bg-green-600 text-white rounded-2xl"
+              >
+                Guardar
+              </Button>
             </div>
-          </TabPanel>
-        </form>
-      </div>
+          </Card>
+        </TabPanel>
+      </form>
     </div>
   );
 }

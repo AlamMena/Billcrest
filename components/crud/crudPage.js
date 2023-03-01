@@ -145,7 +145,7 @@ export default function CPage({
           </div>
           <div className="flex">
             <Button
-              className=" z-auto rounded-xl py-2 bg-green-600 "
+              // className=" z-auto rounded-xl py-2 bg-green-600 "
               color="primary"
               variant="contained"
               onClick={() => {

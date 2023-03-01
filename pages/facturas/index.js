@@ -55,7 +55,8 @@ export default function Invoices() {
           </div>
           <div className="flex">
             <Button
-              className=" z-auto rounded-xl py-2 bg-green-600 hover:bg-green-800"
+              // className=" z-auto rounded-xl py-2 bg-green-600 hover:bg-green-800"
+              color="primary"
               variant="contained"
               onClick={() => Router.push("./facturas/crearfactura")}
               startIcon={<Add className="text-white" />}
