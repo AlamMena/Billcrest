@@ -1,5 +1,11 @@
 import React from "react";
-import { Button, FormControl, TextField, InputAdornment } from "@mui/material";
+import {
+  Button,
+  FormControl,
+  TextField,
+  InputAdornment,
+  Card,
+} from "@mui/material";
 import {
   CameraAltRounded,
   PhoneOutlined,
@@ -32,7 +38,7 @@ export default function ProfileSettings() {
     <div className="w-full h-full grid grid-cols-12 gap-x-2">
       {/* Image Setting Container */}
       <div className="flex w-full justify-center col-span-12 lg:col-span-4">
-        <div className="rounded-2xl lg:shadow-md  px-8 py-12 flex flex-col items-center">
+        <Card className="  px-8 py-12 flex flex-col items-center">
           <figure className=" relative w-40 h-40 outline-dashed outline-2 outline-neutral-200  p-2 rounded-full">
             <Button
               component="label"
@@ -66,10 +72,10 @@ export default function ProfileSettings() {
           <span className="text-xs px-8 m-4 text-center max-w-sm  text-neutral-500">
             Permitidos *.jpeg, *.jpg, *.png, *.gif max size of 3.1 MB
           </span>
-        </div>
+        </Card>
       </div>
       {/* Form */}
-      <div className=" rounded-2xl shadow-md col-span-12 lg:col-span-8 md:mx-6">
+      <Card className=" col-span-12 lg:col-span-8 md:mx-6">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col p-8 space-y-6 px-6"
@@ -181,7 +187,7 @@ export default function ProfileSettings() {
             </Button>
           </div>
         </form>
-      </div>
+      </Card>
     </div>
   );
 }

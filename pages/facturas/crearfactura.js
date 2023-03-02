@@ -146,7 +146,7 @@ export default function CreateInvoice() {
   };
 
   return (
-    <div className="w-full md:px-0 px-4 md:pr-8 flex flex-col pb-5">
+    <Card className="w-full md:px-0 px-4 md:pr-8 flex flex-col pb-5">
       <div className="flex w-full justify-between items-center pr-8 ">
         <div>
           <PageHeader
@@ -265,6 +265,6 @@ export default function CreateInvoice() {
           Crear y enviar
         </Button>
       </div>
-    </div>
+    </Card>
   );
 }

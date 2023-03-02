@@ -6,6 +6,7 @@ import {
   FormControl,
   FormControlLabel,
   Switch,
+  Card,
 } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -201,7 +202,7 @@ export default function ProductsForm({ product }) {
           />
         </div>
         <div className="grid grid-cols-12 gap-x-8 mx-4 mb-16">
-          <div className="shadow-md col-span-12 lg:col-span-8 p-8 space-y-6 rounded-xl h-min">
+          <Card className="col-span-12 lg:col-span-8 p-8 space-y-6  h-min">
             <div className="flex flex-col mx-2 space-y-1">
               <span className="font-bold tracking-wider">
                 Informacion general
@@ -314,10 +315,10 @@ export default function ProductsForm({ product }) {
                 fullWidth
               />
             </div>
-          </div>
+          </Card>
 
           <div className="col-span-12 lg:col-span-4 space-y-4">
-            <div className=" p-8 space-y-6 shadow-md rounded-xl h-min">
+            <Card className=" p-8 space-y-6  h-min">
               <div className="flex flex-col mx-2 space-y-1">
                 <span className="font-bold tracking-wider">
                   Informacion detallada
@@ -438,8 +439,8 @@ export default function ProductsForm({ product }) {
                   control={control}
                 />
               </FormControl>
-            </div>
-            <div className=" p-8 space-y-6 shadow-md rounded-xl h-min">
+            </Card>
+            <Card className=" p-8 space-y-6  h-min">
               <div className="flex flex-col mx-2 space-y-1">
                 <span className="font-bold tracking-wider">
                   Informacion detallada
@@ -495,7 +496,7 @@ export default function ProductsForm({ product }) {
                 }}
                 fullWidth
               />
-            </div>
+            </Card>
 
             <div className="flex justify-center">
               <Button

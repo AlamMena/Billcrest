@@ -6,6 +6,7 @@ import {
 import {
   Avatar,
   AvatarGroup,
+  Card,
   FormControl,
   InputAdornment,
   OutlinedInput,
@@ -232,7 +233,7 @@ export default function ProductList({
     setProductsAsync();
   }, [pageState.page, pageState.pageSize, pageState.filter, statusFilter]);
   return (
-    <div className="flex flex-col h-full w-full shadow-lg rounded-xl ">
+    <Card className="flex flex-col h-full w-full ">
       <div className="flex items-center space-x-4 px-4 mt-4">
         {/* search input */}
         <FormControl className="w-full">
@@ -278,6 +279,6 @@ export default function ProductList({
           }}
         />
       </div>
-    </div>
+    </Card>
   );
 }
