@@ -146,7 +146,7 @@ export default function CreateInvoice() {
   };
 
   return (
-    <Card className="w-full md:px-0 px-4 md:pr-8 flex flex-col pb-5">
+    <div className="w-full  flex flex-col pb-5">
       <div className="flex w-full justify-between items-center pr-8 ">
         <div>
           <PageHeader
@@ -249,7 +249,6 @@ export default function CreateInvoice() {
           sx={{ textTransform: "none" }}
           color="grey"
           onClick={() => dispatch(resetState())}
-          // className=" w-44 bg-neutral-200 hover:bg-neutral-300 font-extrabold h-12 text-xs rounded-2xl"
         >
           Salvar como Draft
         </Button>
@@ -265,6 +264,6 @@ export default function CreateInvoice() {
           Crear y enviar
         </Button>
       </div>
-    </Card>
+    </div>
   );
 }

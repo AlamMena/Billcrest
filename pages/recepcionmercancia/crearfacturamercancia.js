@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import { Button, Divider, Grid } from "@mui/material";
 import { useState } from "react";
 import { Edit, SellOutlined } from "@mui/icons-material";
+import Card from "@mui/material/Card";
 import InvoiceDetail from "../../components/createInvoice/invoiceDetails";
 import { toast } from "react-toastify";
 import useAxios from "../../axios/index";
@@ -147,7 +148,7 @@ export default function CreateInvoiceProduct() {
   };
 
   return (
-    <div className="w-full md:px-0 px-4 md:pr-8 flex flex-col pb-5 ">
+    <div className="w-full flex flex-col pb-5 ">
       <div className="flex w-full justify-between items-center pr-0 md:pr-8 ">
         <PageHeader
           header="Recepcion de Mercancia"
@@ -169,7 +170,7 @@ export default function CreateInvoiceProduct() {
       />
       <PaymentPopUp open={paymentPopUpOpen} setPaymentPopUp={setPaymentPopUp} />
       {/* Invoice  */}
-      <div className="flex flex-col h-full w-full shadow-lg rounded-xl my-3">
+      <Card className="flex flex-col h-full w-full my-3">
         {/* Sender and Receiver */}
         <Grid container className="flex justify-between  px-8 py-3">
           <Grid item className="w-full" xs={12} md={6}>
@@ -229,7 +230,7 @@ export default function CreateInvoiceProduct() {
         />
         {/* Totals */}
         <InvoiceTotals />
-      </div>
+      </Card>
       {/* Buttons */}
       <div className="px-5 p-2 justify-end flex space-x-2">
         <Button

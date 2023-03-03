@@ -1,5 +1,5 @@
 import React from "react";
-import { InputAdornment, OutlinedInput, Tab, Tabs } from "@mui/material";
+import { Card, InputAdornment, OutlinedInput, Tab, Tabs } from "@mui/material";
 import {
   DeleteOutline,
   EditOutlined,
@@ -113,7 +113,7 @@ export default function InvoiceList({ data }) {
 
   return (
     <>
-      <div className="flex flex-col h-full  w-full shadow-lg rounded-xl my-3">
+      <Card className="flex flex-col h-full  w-full  my-3">
         <div className="flex items-center space-x-4 px-4 my-4">
           <OutlinedInput
             id="input-with-icon-adornment"
@@ -141,7 +141,7 @@ export default function InvoiceList({ data }) {
             experimentalFeatures={{ newEditingApi: true }}
           />
         </div>
-      </div>
+      </Card>
     </>
   );
 }

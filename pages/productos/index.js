@@ -50,7 +50,7 @@ export default function Products() {
   };
 
   return (
-    <div className="w-full md:px-0 px-3 md:pr-8 flex flex-col">
+    <div className="w-full  flex flex-col">
       <div className="flex w-full justify-between items-center pr-0 md:pr-8">
         <div>
           <PageHeader

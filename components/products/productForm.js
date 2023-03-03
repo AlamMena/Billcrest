@@ -201,7 +201,7 @@ export default function ProductsForm({ product }) {
             Icon={<Inventory2Rounded className="text-green-400" />}
           />
         </div>
-        <div className="grid grid-cols-12 gap-x-8 mx-4 mb-16">
+        <div className="grid grid-cols-12 gap-x-8 space-y-4 mb-16">
           <Card className="col-span-12 lg:col-span-8 p-8 space-y-6  h-min">
             <div className="flex flex-col mx-2 space-y-1">
               <span className="font-bold tracking-wider">
@@ -497,7 +497,6 @@ export default function ProductsForm({ product }) {
                 fullWidth
               />
             </Card>
-
             <div className="flex justify-center">
               <Button
                 className=" w-full max-w-xl shadow-lg text-white z-auto rounded-xl py-2 bg-green-600 hover:bg-green-700"

@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
       <Provider store={store}>
         <PrivateRouter>
           <SideBar />
-          <div className="md:ml-72 md:mr-10  ">
+          <div className="md:ml-72 mr-5 ml-5 mb-5  ">
             <div className=" max-w-screen-2xl mt-0 mb-0 mr-auto ml-auto ">
               <QueryClientProvider client={queryClient}>
                 <ReactQueryDevtools initialIsOpen={false} />

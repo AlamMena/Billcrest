@@ -272,7 +272,6 @@ export default function ProductList({
           rowHeight={60}
           pagination
           disableColumnFilter
-          selectionModel={false}
           disableColumnSelector
           localeText={{
             noRowsLabel: "No hay datos",

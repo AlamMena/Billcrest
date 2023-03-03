@@ -120,16 +120,6 @@ export default function SuppliersList({
 
   return (
     <Card className="flex flex-col h-full w-full">
-      {/* ------------------   Tab Status -------------------- */}
-      {/* <div className=" bg-slate-200 rounded-t-lg">
-        <Tabs className="text-neutral-500">
-          tab options
-          <Tab className="capitalize" value="all" label="Tabla de clientes" />
-          <Tab className="capitalize" value={"false"} label="Activos" />
-          <Tab className="capitalize" value={"true"} label="Inactivos" />
-        </Tabs>
-      </div> */}
-
       {/* ----------------------- Grid header ----------------- */}
       <div className="flex items-center space-x-4 px-4 mt-4">
         {/* search input */}
@@ -161,7 +151,7 @@ export default function SuppliersList({
           onPageChange={onDataGridPageChange}
           onPageSizeChange={onDataGridPageSizeChange}
           columns={columns}
-          rowsPerPageOptions={[5, 20, 50, 100]}
+          rowsPerPageOptions={[5, 10, 20, 50, 100]}
           experimentalFeatures={{ newEditingApi: true }}
           paginationMode="server"
           className="p-2"

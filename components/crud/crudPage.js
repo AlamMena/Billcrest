@@ -133,7 +133,7 @@ export default function CPage({
 
   return (
     <>
-      <div className="w-full md:px-0 px-4 md:pr-8 flex flex-col">
+      <div className="w-full flex flex-col">
         <div className="flex w-full justify-between items-center pr-8">
           <div>
             <PageHeader

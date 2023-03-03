@@ -32,11 +32,11 @@ export default function InvoiceInputs() {
   const invoice = useSelector((state) => state.invoice);
   const { invoiceNumber } = invoice;
   const [ncfstypes, setNCFstypes] = useState([]);
-  const [ncftype, setNCFtype] = useState();
+  const [ncftype, setNCFtype] = useState("");
   const [invoicetypes, setInvoicetypes] = useState([]);
-  const [invoicetype, setInvoicetype] = useState();
+  const [invoicetype, setInvoicetype] = useState("");
   const [warehouse, setWarehouse] = useState([]);
-  const [warehouseid, setWarehouseId] = useState();
+  const [warehouseid, setWarehouseId] = useState("");
   const [status, setStatus] = useState("Pagado");
   const [dueDate, setDueDate] = useState(dayjs().add(1, "day"));
 
