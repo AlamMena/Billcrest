@@ -1,8 +1,6 @@
 import "../styles/globals.css";
-import SideBar from "../components/sideBar/index.js";
+import Nav from "../components/nav/index.js";
 import { createTheme } from "@mui/material";
-import { StyledEngineProvider } from "@mui/material";
-import { AuthProvider } from "firebase/auth";
 import PrivateRouter from "../auth/privateRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -32,19 +30,19 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ThemeProvider>
-      <Head></Head>
+      <Head>
+        <title>Dashboard</title>
+        <link rel="icon" href="/contacts_clients_profile.png"></link>
+      </Head>
       <Provider store={store}>
         <PrivateRouter>
-          <SideBar />
-          <div className="md:ml-72 md:mr-10 ">
-            <div className=" max-w-screen-2xl mt-0 mb-0 mr-auto ml-auto ">
-              <QueryClientProvider client={queryClient}>
-                <ReactQueryDevtools initialIsOpen={false} />
-                <Component {...pageProps} />
-              </QueryClientProvider>
-              <ToastContainer />
-            </div>
-          </div>
+          <QueryClientProvider client={queryClient}>
+            <ReactQueryDevtools initialIsOpen={false} />
+            <Nav>
+              <Component {...pageProps} />
+            </Nav>
+          </QueryClientProvider>
+          <ToastContainer />
         </PrivateRouter>
       </Provider>
     </ThemeProvider>
