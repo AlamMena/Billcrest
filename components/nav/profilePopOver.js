@@ -18,7 +18,7 @@ export default function ProfilePopOver() {
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const id = open ? "profile-popover" : undefined;
 
   return (
     <div>
@@ -26,7 +26,7 @@ export default function ProfilePopOver() {
         aria-describedby={id}
         variant="contained"
         onClick={handleClick}
-        className="rounded-full  w-12 h-12 appBar-button-animation"
+        className="rounded-full w-10 h-10 appBar-button-animation"
         src="https://cdn-icons-png.flaticon.com/128/2202/2202112.png"
       />
       <Popover
