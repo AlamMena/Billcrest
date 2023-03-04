@@ -30,7 +30,7 @@ export default function Home() {
         <Loading />
       ) : (
         <>
-          <div className="px-10 max-w-2xl mx-8 md:mx-0 space-x-4 bg-green-200 flex md:flex-nowrap justify-center flex-wrap items-center p-8 rounded-2xl">
+          <div className=" max-w-2xl mx-8 md:mx-0 space-x-4 bg-green-200 flex md:flex-nowrap justify-center flex-wrap items-center p-8 rounded-2xl">
             <div className="flex flex-col ">
               <span className="font-semibold text-2xl tracking-wider">
                 Welcome back Alam
