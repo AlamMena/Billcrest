@@ -2,8 +2,9 @@ import * as React from "react";
 import Popover from "@mui/material/Popover";
 import { Divider } from "@mui/material";
 import { NotificationsRounded } from "@mui/icons-material";
+import { Box } from "@mui/system";
 
-export default function ProfilePopOver() {
+export default function NotificationPopOver() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -15,15 +16,15 @@ export default function ProfilePopOver() {
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const id = open ? "notification-popover" : undefined;
 
   return (
-    <div>
+    <Box sx={{ m: 1, p: 1 }}>
       <NotificationsRounded
         aria-describedby={id}
         variant="contained"
         onClick={handleClick}
-        className="rounded-full  w-8 h-8 appBar-button-animation"
+        className="rounded-full w-12 h-12 appBar-button-animation"
       />
       <Popover
         id={id}
@@ -60,6 +61,6 @@ export default function ProfilePopOver() {
           </div>
         </div>
       </Popover>
-    </div>
+    </Box>
   );
 }
