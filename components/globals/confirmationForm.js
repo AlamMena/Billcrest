@@ -31,10 +31,19 @@ export default function ConfirmationForm({
       </DialogContent>
       <DialogActions>
         <div className="flex space-x-4 justify-end w-full">
-          <Button color="error" onClick={() => setOpen(false)}>
+          <Button
+            color="error"
+            variant="contained"
+            onClick={() => setOpen(false)}
+          >
             Cancelar
           </Button>
-          <Button onClick={() => onConfirm()} type="submit" color="success">
+          <Button
+            onClick={() => onConfirm()}
+            type="submit"
+            color="primary"
+            variant="contained"
+          >
             Confirmar
           </Button>
         </div>

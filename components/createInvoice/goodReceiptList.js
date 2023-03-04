@@ -1,5 +1,5 @@
 import React from "react";
-import { InputAdornment, OutlinedInput } from "@mui/material";
+import { Card, InputAdornment, OutlinedInput } from "@mui/material";
 import { RemoveRedEyeOutlined, SearchRounded } from "@mui/icons-material";
 import { DataGrid } from "@mui/x-data-grid";
 import { formatCurrency } from "../../utils/methods";
@@ -111,7 +111,7 @@ export default function GoodReceiptList({ data }) {
 
   return (
     <>
-      <div className="flex flex-col h-full  w-full shadow-lg rounded-xl my-3">
+      <Card className="flex flex-col h-full  w-full  my-3">
         <div className="flex items-center space-x-4 px-4 my-4">
           <OutlinedInput
             id="input-with-icon-adornment"
@@ -139,7 +139,7 @@ export default function GoodReceiptList({ data }) {
             experimentalFeatures={{ newEditingApi: true }}
           />
         </div>
-      </div>
+      </Card>
     </>
   );
 }

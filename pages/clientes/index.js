@@ -3,7 +3,7 @@ import useAxios from "../../axios/index";
 import { Button } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import ContactForm from "../../components/contacts/contactForm";
-import ContactList from "../../components/Contacts/ContactList";
+import ContactList from "../../components/contacts/contactList";
 import PageHeader from "../../components/globals/pageHeader";
 import { toast } from "react-toastify";
 import ConfirmationForm from "../../components/globals/confirmationForm";
@@ -82,7 +82,7 @@ export default function Contacts() {
     setDataAsync();
   }, [pageState.page, pageState.pageSize, filter, contactStatus, contactType]);
   return (
-    <div className="w-full md:px-0 px-4 md:pr-8 flex flex-col">
+    <div className="w-full flex flex-col">
       <div className="flex w-full justify-between items-center pr-8">
         <div>
           <PageHeader
@@ -93,7 +93,6 @@ export default function Contacts() {
         </div>
         <div className="flex">
           <Button
-            className=" z-auto rounded-xl py-2 bg-green-600 hover:bg-green-800"
             variant="contained"
             color="primary"
             onClick={() => {

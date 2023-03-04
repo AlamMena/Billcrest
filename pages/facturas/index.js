@@ -44,7 +44,7 @@ export default function Invoices() {
 
   return (
     <>
-      <div className="w-full md:px-0 px-4 md:pr-8 flex flex-col">
+      <div className="w-full  flex flex-col">
         <div className="flex w-full justify-between items-center pr-8">
           <div>
             <PageHeader
@@ -55,7 +55,8 @@ export default function Invoices() {
           </div>
           <div className="flex">
             <Button
-              className=" z-auto rounded-xl py-2 bg-green-600 hover:bg-green-800"
+              // className=" z-auto rounded-xl py-2 bg-green-600 hover:bg-green-800"
+              color="primary"
               variant="contained"
               onClick={() => Router.push("./facturas/crearfactura")}
               startIcon={<Add className="text-white" />}

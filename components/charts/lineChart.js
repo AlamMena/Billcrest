@@ -71,7 +71,7 @@ export default function LineChart() {
   };
 
   return (
-    <Card className=" flex flex-col  p-5 flex-auto   shadow-xl rounded-xl ">
+    <Card className=" flex flex-col  p-5 flex-auto   ">
       <div className="flex justify-between items-center">
         <div className="flex flex-col text-left p-5">
           <Typography variant="h6">Ventas anuales</Typography>

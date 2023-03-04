@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import useAxios from "../../axios/index";
 import ContactForm from "../../components/contacts/contactForm";
 import PageHeader from "../../components/globals/pageHeader";
 
@@ -26,7 +24,7 @@ export default function CreateContact() {
           <PageHeader header="Crear cliente" locationRoutes={locationRoutes} />
         </div>
       </div>
-      <ContactForm></ContactForm>
+      <ContactForm />
     </>
   );
 }

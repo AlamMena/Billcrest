@@ -4,7 +4,7 @@ import {
   EditOutlined,
   SearchRounded,
 } from "@mui/icons-material";
-import { InputAdornment, OutlinedInput } from "@mui/material";
+import { Card, InputAdornment, OutlinedInput } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { debounce } from "../../utils/methods";
 
@@ -69,7 +69,7 @@ export default function GList({
 
   return (
     <>
-      <div className="flex flex-col h-full  w-full shadow-lg rounded-xl">
+      <Card className="flex flex-col h-full  w-full mb-5">
         <div className="flex items-center space-x-4 px-4 my-2">
           <OutlinedInput
             id="input-with-icon-adornment"
@@ -110,7 +110,7 @@ export default function GList({
             experimentalFeatures={{ newEditingApi: true }}
           />
         </div>
-      </div>
+      </Card>
     </>
   );
 }

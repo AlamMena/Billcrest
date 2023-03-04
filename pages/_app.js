@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import Nav from "../components/nav/index.js";
 import { createTheme } from "@mui/material";
+
 import PrivateRouter from "../auth/privateRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,19 +16,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        // Purple and green play nicely together.
-        main: "#11cb5f",
-      },
-      secondary: {
-        // This is green.A700 as hex.
-        main: "#11cb5f",
-      },
-    },
-  });
-
   return (
     <ThemeProvider>
       <Head>

@@ -5,11 +5,14 @@ import {
   Notifications,
   Receipt,
 } from "@mui/icons-material";
-import { CircularProgress, Fab } from "@mui/material";
+import { Card, CircularProgress, Typography } from "@mui/material";
+// import Card from "@mui/material/Card";
+// import CircularProgress from "@mui/material/CircularProgress";
+// import Typography from "@mui/material/Typography";
 import { formatCurrency } from "../../utils/methods";
 
 const Item = ({ title, fillPercentage, color, amount, quantity, icon }) => (
-  <div className="flex justify-center w-full space-x-4 border-r-2 border-dashed border-gray-200 last:border-0">
+  <div className="flex justify-center w-full ml-5 space-x-4 border-r-2 border-0 border-dashed border-gray-200 last:border-0">
     <div className="relative flex items-center justify-center mx-4">
       <div className={`${color} text-2xl`}>{icon}</div>
       <CircularProgress
@@ -26,7 +29,7 @@ const Item = ({ title, fillPercentage, color, amount, quantity, icon }) => (
       />
     </div>
     <div className="flex flex-col space-y-1">
-      <span className="text-lg">{title}</span>
+      <Typography variant="h6">{title}</Typography>
       <span className="text-sm text-gray-500 ">
         <b className="text-black">{quantity}</b> invoices
       </span>
@@ -38,7 +41,7 @@ const Item = ({ title, fillPercentage, color, amount, quantity, icon }) => (
 
 export default function InvoiceStatus() {
   return (
-    <div className=" flex justify-evenly items-center shadow-md rounded-lg py-4 mx-4 my-2">
+    <Card className=" flex overflow-auto items-center h-32  py-4 mx-4 my-2">
       <Item
         title="Total"
         color="text-blue-400"
@@ -79,6 +82,6 @@ export default function InvoiceStatus() {
         amount={1203.21}
         icon={<InsertDriveFile />}
       />
-    </div>
+    </Card>
   );
 }

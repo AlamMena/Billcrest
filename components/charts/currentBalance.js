@@ -1,10 +1,9 @@
-import React from "react";
-import Button from "@mui/material/Button";
 import { Card, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
 
 export default function CurrentBalance() {
   return (
-    <Card className=" p-5 space-y-3 my-2 lg:w-96   shadow-xl rounded-xl ">
+    <Card className=" p-5 space-y-3 my-2 lg:w-96 ">
       <div className="flex flex-col space-y-1">
         <Typography variant="h6">Current Balance</Typography>
         <span className=" text-2xl font-bold">$216,500</span>
@@ -22,18 +21,10 @@ export default function CurrentBalance() {
         <span className="font-bold text-lg">$3,000</span>
       </div>
       <div className="flex justify-center space-x-2">
-        <Button
-          variant="contained"
-          className="w-full bg-orange-500 text-black font-bold hover:bg-orange-600"
-          color="warning"
-        >
+        <Button variant="contained" className="w-full" color="secondary">
           Transfer
         </Button>
-        <Button
-          variant="contained"
-          className="w-full bg-green-500 text-white font-bold hover:bg-green-600"
-          color="primary"
-        >
+        <Button variant="contained" className="w-full" color="primary">
           Receive
         </Button>
       </div>

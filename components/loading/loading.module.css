@@ -1,5 +1,5 @@
 .container {
-    @apply flex flex-col w-screen h-screen justify-center items-center;
+    @apply flex flex-col  z-50 w-full h-screen  justify-center items-center;
 }
 
 .icon {
@@ -10,6 +10,3 @@
     @apply flex justify-center w-36 mb-5 items-center;
 }
 
-.loading {
-    @apply flex flex-row;
-}

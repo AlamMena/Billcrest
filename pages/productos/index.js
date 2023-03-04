@@ -1,11 +1,6 @@
-import {
-  Add,
-  ApartmentRounded,
-  Inventory2Rounded,
-  InventoryRounded,
-} from "@mui/icons-material";
+import { Add, Inventory2Rounded } from "@mui/icons-material";
 import useAxios from "../../axios/index";
-import { Button, debounce, Tab, Tabs } from "@mui/material";
+import { Button } from "@mui/material";
 import { useRef, useState } from "react";
 import PageHeader from "../../components/globals/pageHeader";
 import { toast } from "react-toastify";
@@ -55,29 +50,26 @@ export default function Products() {
   };
 
   return (
-    <div className="w-full md:px-0 px-4 md:pr-8 flex flex-col">
-      <div className="flex w-full justify-between items-center pr-8">
+    <div className="w-full  flex flex-col">
+      <div className="flex w-full justify-between items-center pr-0 md:pr-8">
         <div>
           <PageHeader
             header="Productos"
             locationRoutes={locationRoutes}
-            Icon={<Inventory2Rounded className="text-green-400" />}
+            Icon={<Inventory2Rounded />}
           />
         </div>
-        <div className="flex">
-          <Button
-            className=" z-auto rounded-xl py-2 bg-green-600 hover:bg-green-800"
-            variant="contained"
-            onClick={() => {
-              router.push("/productos/crear");
-            }}
-            startIcon={<Add className="text-white" />}
-          >
-            <span className="text-sm whitespace-nowrap text-neutral-50 capitalize font-bold">
-              Nuevo producto
-            </span>
-          </Button>
-        </div>
+
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            router.push("/productos/crear");
+          }}
+          startIcon={<Add />}
+        >
+          Nuevo producto
+        </Button>
       </div>
       <ProductList
         setItemToDelete={setItemToDelete}

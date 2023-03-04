@@ -1,5 +1,3 @@
-import { TypographyOptions } from "@mui/material/styles/createTypography";
-
 export function remToPx(value) {
   return Math.round(parseFloat(value) * 16);
 }
@@ -63,7 +61,7 @@ const typography = {
     fontWeight: 700,
     lineHeight: 28 / 18,
     fontSize: pxToRem(16),
-    ...responsiveFontSizes({ sm: 14, md: 14, lg: 14 }),
+    ...responsiveFontSizes({ sm: 14, md: 14, lg: 16 }),
     letterSpacing: 0.4,
   },
 

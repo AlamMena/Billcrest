@@ -5,7 +5,7 @@ import useAxios from "../../axios/index";
 import { useState } from "react";
 import ProductList from "../products/productsList";
 
-export default function SelectProducts({ data, open, setProductPop }) {
+export default function SelectProducts({ open, setProductPop }) {
   const dispatch = useDispatch();
   const { axiosInstance } = useAxios();
   const [products, setProducts] = useState([]);

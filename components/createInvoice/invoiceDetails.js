@@ -17,7 +17,7 @@ import {
   updateItemQuantity,
 } from "../../store/invoiceSlice";
 
-export default function InvoiceDetail({ products }) {
+export default function InvoiceDetail() {
   const { details, discountAmount, taxesAmount, subTotal } = useSelector(
     (state) => state.invoice
   );
