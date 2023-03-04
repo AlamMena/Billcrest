@@ -17,7 +17,7 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box>{children}</Box>}
     </div>
   );
 }
@@ -47,7 +47,7 @@ export default function Settings() {
   ];
 
   return (
-    <div className="-full md:px-0 px-4 md:pr-8 flex flex-col pb-5">
+    <div className="w-full flex flex-col pb-5">
       <div className="flex w-full justify-between items-center pr-8 wid">
         <PageHeader
           header="Ajustes de Perfil"
@@ -56,17 +56,48 @@ export default function Settings() {
         />
       </div>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs aria-label="basic tabs example" value={value}>
+        <Tabs
+          aria-label="basic tabs example"
+          value={value}
+          onChange={handleChange}
+        >
           <Tab
             icon={<SettingsIcon />}
             iconPosition="start"
             label="Ajustes"
             {...a11yProps(0)}
           />
+          <Tab
+            icon={<SettingsIcon />}
+            iconPosition="start"
+            label="Empresa"
+            {...a11yProps(0)}
+          />
+          <Tab
+            icon={<SettingsIcon />}
+            iconPosition="start"
+            label="NCF"
+            {...a11yProps(1)}
+          />
+          <Tab
+            icon={<SettingsIcon />}
+            iconPosition="start"
+            label="Moneda"
+            {...a11yProps(3)}
+          />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
         <ProfileSettings />
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <ProfileSettings />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        {/* <ProfileSettings /> */}
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        {/* <ProfileSettings /> */}
       </TabPanel>
     </div>
   );

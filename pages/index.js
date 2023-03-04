@@ -30,7 +30,7 @@ export default function Home() {
         <Loading />
       ) : (
         <>
-          <div className="px-10 max-w-2xl mx-8 md:mx-0 space-x-4 bg-green-200 flex md:flex-nowrap justify-center flex-wrap items-center p-8 rounded-2xl">
+          <div className="px-10 max-w-2xl space-x-4 bg-green-200 flex md:flex-nowrap justify-center flex-wrap items-center p-8 rounded-2xl">
             <div className="flex flex-col ">
               <span className="font-semibold text-2xl tracking-wider">
                 Welcome back Alam
@@ -57,16 +57,16 @@ export default function Home() {
             </div>
           </div>
 
-          <div className=" lg:flex gap-4 justify-around items-center mx-8 my-2 md:mx-0">
+          <div className=" lg:flex gap-4 justify-around items-center  my-2 ">
             {dataCharts?.map((item, index) => (
               <BarChart data={item} key={index} />
             ))}
           </div>
-          <div className="lg:flex mx-8 my-3 gap-4 md:mx-0">
+          <div className="lg:flex my-3 gap-4 ">
             <SeriesChart />
             <LineChart />
           </div>
-          <div className="lg:flex mx-8 my-3 md:mx-0 gap-4">
+          <div className="lg:flex  my-3 gap-4">
             <ProgressBar />
             <CurrentBalance />
           </div>

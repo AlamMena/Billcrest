@@ -1,7 +1,5 @@
 import React from "react";
 import PageHeader from "../../components/globals/pageHeader";
-import dayjs from "dayjs";
-
 import { Button, Divider, Grid } from "@mui/material";
 import { useState } from "react";
 import { Edit, SellOutlined } from "@mui/icons-material";

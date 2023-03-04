@@ -28,17 +28,17 @@ const routes = [
     items: [
       {
         text: "Inicio",
-        path: "./",
+        path: "../",
         Icon: <DashboardOutlined />,
       },
       {
         text: "Ajustes",
-        path: "./ajustes",
+        path: "../ajustes",
         Icon: <SettingsOutlined />,
       },
       {
         text: "Sucursales",
-        path: "/sucursales",
+        path: "../sucursales",
         Icon: <AssessmentOutlined />,
       },
     ],
@@ -50,38 +50,38 @@ const routes = [
     items: [
       {
         text: "Almacenes",
-        path: "/almacenes",
+        path: "../almacenes",
         Icon: <Inventory2Outlined />,
       },
       {
         text: "Productos",
-        path: "/productos",
+        path: "../productos",
         Icon: <Inventory2Outlined />,
       },
       {
         text: "Categorias",
-        path: "/categorias",
+        path: "../categorias",
         Icon: <CategoryOutlined />,
       },
       {
         text: "Subcategorias",
-        path: "/subcategorias",
+        path: "../subcategorias",
         Icon: <AccountTreeOutlined />,
       },
       {
         text: "Marcas",
-        path: "/marcas",
+        path: "../marcas",
         Icon: <MuseumOutlined />,
       },
 
       {
         text: "Clientes",
-        path: "/clientes",
+        path: "../clientes",
         Icon: <ContactPageOutlined />,
       },
       {
         text: "Proveedores",
-        path: "/proveedores",
+        path: "../proveedores",
         Icon: <ContactPageOutlined />,
       },
     ],
@@ -91,12 +91,12 @@ const routes = [
     items: [
       {
         text: "Ventas",
-        path: "/facturas",
+        path: "../facturas",
         Icon: <SellOutlined />,
       },
       {
         text: "Recepcion de Mercancia",
-        path: "/recepcionmercancia",
+        path: "../recepcionmercancia",
         Icon: <SellOutlined />,
       },
     ],
@@ -167,7 +167,7 @@ export default function Index() {
 
   const mobileBar = (
     <div
-      className={` h-screen flex overflow-y-auto  flex-col w-64  px-4 shadow-md`}
+      className={` h-screen flex overflow-y-auto  flex-col w-64  px-4 `}
       onClick={() => setOpen(false)}
     >
       <div className="flex items-center space-x-4">
@@ -293,7 +293,7 @@ export default function Index() {
         {dropdownBar}
       </Drawer>
       <div
-        className={` hidden md:flex z-50 overflow-y-auto fixed  flex-col w-64 h-screen px-4 shadow-md`}
+        className={` hidden md:flex  z-50 overflow-y-auto fixed  flex-col w-64 h-screen px-4 shadow-md`}
       >
         <div className="flex items-center space-x-4">
           <img
@@ -344,7 +344,12 @@ export default function Index() {
           );
         })}
       </div>
-      <Drawer open={open} anchor="left" onClose={handleClickAway}>
+      <Drawer
+        open={open}
+        anchor="left"
+        onClose={handleClickAway}
+        className="flex md:hidden"
+      >
         {mobileBar}
       </Drawer>
     </div>

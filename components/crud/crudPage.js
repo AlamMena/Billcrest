@@ -134,7 +134,7 @@ export default function CPage({
   return (
     <>
       <div className="w-full flex flex-col">
-        <div className="flex w-full justify-between items-center pr-8">
+        <div className="flex w-full justify-between items-center">
           <div>
             <PageHeader
               header={headerText}
@@ -145,16 +145,15 @@ export default function CPage({
           </div>
           <div className="flex">
             <Button
-              // className=" z-auto rounded-xl py-2 bg-green-600 "
               color="primary"
               variant="contained"
               onClick={() => {
                 setFormOpen(true);
                 setFormData({});
               }}
-              startIcon={<Add className="text-white" />}
+              startIcon={<Add className="text-white -mr-2 xs:mr-0" />}
             >
-              <span className="text-sm whitespace-nowrap text-neutral-50 capitalize font-bold">
+              <span className="hidden xs:flex text-sm whitespace-nowrap text-neutral-50 capitalize font-bold">
                 {createButtonMessage}
               </span>
             </Button>

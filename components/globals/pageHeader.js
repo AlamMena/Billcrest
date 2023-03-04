@@ -2,7 +2,7 @@ import { Breadcrumbs, Link } from "@mui/material";
 
 export default function PageHeader({ header, locationRoutes, Icon, text }) {
   return (
-    <div className="flex flex-col w-full m-2  space-y-4">
+    <div className="flex flex-col w-full m-2 shrink space-y-4">
       <div className="flex items-center ">
         <div className="bg-neutral-100 rounded-full p-2 mr-2 hidden md:flex text-green-400">
           {/* <Icon className="text-green-400" /> */}
@@ -22,7 +22,7 @@ export default function PageHeader({ header, locationRoutes, Icon, text }) {
       <div role="presentation">
         <Breadcrumbs
           aria-label="breadcrumb"
-          separator={<div className="w-1 h-1 rounded-full bg-neutral-500" />}
+          separator={<div className="w-1 h-1 rounded-full bg-neutral-500 " />}
         >
           {locationRoutes.map((item, index) => {
             return (
