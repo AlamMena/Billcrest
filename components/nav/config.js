@@ -1,33 +1,35 @@
 // component
 import { Box } from "@mui/material";
 import { list } from "postcss";
-import { forwardRef } from "react";
 
 // ----------------------------------------------------------------------
-const SvgColor = forwardRef(({ src, sx, ...other }, ref) => (
-  <Box
-    component="span"
-    className="svg-color"
-    ref={ref}
-    sx={{
-      width: 24,
-      height: 24,
-      display: "inline-block",
-      bgcolor: "currentColor",
-      mask: `url(${src}) no-repeat center / contain`,
-      WebkitMask: `url(${src}) no-repeat center / contain`,
-      ...sx,
-    }}
-    {...other}
-  />
-));
+function SvgColor({ src, sx, ...other }) {
+  return (
+    <Box
+      component="span"
+      className="svg-color"
+      sx={{
+        width: 24,
+        height: 24,
+        display: "inline-block",
+        bgcolor: "currentColor",
+        mask: `url(${src}) no-repeat center / contain`,
+        WebkitMask: `url(${src}) no-repeat center / contain`,
+        ...sx,
+      }}
+      {...other}
+    />
+  );
+}
 
-const icon = (name) => (
-  <SvgColor
-    src={`/assets/icons/navbar/${name}.svg`}
-    sx={{ width: 1, height: 1 }}
-  />
-);
+function Icon(name) {
+  return (
+    <SvgColor
+      src={`/assets/icons/navbar/${name}.svg`}
+      sx={{ width: 1, height: 1 }}
+    />
+  );
+}
 
 const config = [
   {
@@ -36,13 +38,13 @@ const config = [
       {
         title: "Inicio",
         path: "/",
-        icon: icon("apps"),
+        icon: Icon("apps"),
         info: "",
       },
       {
         title: "Sucursales",
         path: "/sucursales",
-        icon: icon("branches"),
+        icon: Icon("branches"),
         info: "",
         items: [
           { title: "Nuevo", path: "/crear" },
@@ -58,7 +60,7 @@ const config = [
       {
         title: "Almacenes",
         path: "/almacenes",
-        icon: icon("warehouses"),
+        icon: Icon("warehouses"),
         info: "",
       },
     ],
@@ -69,32 +71,32 @@ const config = [
       {
         title: "Products",
         path: "/dashboard/blog",
-        icon: icon("products"),
+        icon: Icon("products"),
         info: "",
       },
       {
         title: "Invoices",
         path: "/login",
-        icon: icon("invoices"),
+        icon: Icon("invoices"),
         info: "",
       },
 
       {
         title: "Receptions",
         path: "/login",
-        icon: icon("receptions"),
+        icon: Icon("receptions"),
         info: "",
       },
       {
         title: "Earnings",
         path: "/404",
-        icon: icon("earnings"),
+        icon: Icon("earnings"),
         info: "",
       },
       {
         title: "Loss",
         path: "/404",
-        icon: icon("losses"),
+        icon: Icon("losses"),
         info: "",
       },
     ],

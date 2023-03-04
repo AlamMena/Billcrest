@@ -11,15 +11,16 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import config from "./config";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { ExpandLess, ExpandMore, FiberManualRecord } from "@mui/icons-material";
 import palette from "../../styles/theme/palette";
 import { azAZ } from "@mui/material/locale";
+import config from "./config";
 //
 
 // ----------------------------------------------------------------------
+
 const StyledNavItem = styled((props) => (
   <ListItemButton disableGutters {...props} />
 ))(({ theme }) => ({
@@ -116,19 +117,20 @@ export default function NavSection() {
   return (
     <Box>
       <List disablePadding sx={{ p: 1 }}>
-        {config.map((groupItem) => (
-          <>
+        {config.map((groupItem, index) => (
+          <div key={index}>
             <Typography variant="h6" sx={{ p: 2 }}>
               {groupItem.groupTitle}
             </Typography>
             {groupItem.items.map((child, index) => (
               <NavItem
+                key={index}
                 currentPath={pathname}
                 item={child}
                 redirect={redirect}
               />
             ))}
-          </>
+          </div>
         ))}
         <i className="fi fi-ro-user"></i>
       </List>
