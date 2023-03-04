@@ -120,7 +120,7 @@ function Nav({ children }, props) {
       >
         <Toolbar />
         <Box>
-          <Container maxWidth="xl" sx={{ p: 0 }}>
+          <Container maxWidth="xl" sx={{ p: { sm: 0, xs: 0 } }}>
             {children}
           </Container>
         </Box>

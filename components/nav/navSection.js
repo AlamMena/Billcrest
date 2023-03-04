@@ -80,7 +80,9 @@ function NavItem({ item, currentPath, redirect }) {
         {items && (open ? <ExpandLess /> : <ExpandMore />)}
       </StyledNavItem>
 
-      <Collapse in={open || items?.find((d) => d.path == currentPath)}>
+      <Collapse
+        in={open || items?.find((d) => d.path == currentPath) != undefined}
+      >
         {items?.map((child, index) => (
           <StyledNavItem
             key={index}
