@@ -1,6 +1,5 @@
 // component
 import { Box } from "@mui/material";
-import { list } from "postcss";
 
 // ----------------------------------------------------------------------
 function SvgColor({ src, sx, ...other }) {
@@ -70,20 +69,20 @@ const config = [
     items: [
       {
         title: "Products",
-        path: "/dashboard/blog",
+        path: "/productos",
         icon: Icon("products"),
         info: "",
       },
       {
         title: "Invoices",
-        path: "/login",
+        path: "/facturas",
         icon: Icon("invoices"),
         info: "",
       },
 
       {
         title: "Receptions",
-        path: "/login",
+        path: "/recepcionmercancia",
         icon: Icon("receptions"),
         info: "",
       },

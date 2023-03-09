@@ -25,18 +25,18 @@ import {
   updateNCFType,
 } from "../../store/invoiceSlice";
 
-export default function InvoiceInputs() {
+export default function InvoiceInputs({ handlerNumber, bgcolor }) {
   const dispatch = useDispatch();
 
   const [creationDate, setCreationDate] = useState(dayjs());
   const invoice = useSelector((state) => state.invoice);
   const { invoiceNumber } = invoice;
   const [ncfstypes, setNCFstypes] = useState([]);
-  const [ncftype, setNCFtype] = useState("");
+  const [ncftype, setNCFtype] = useState();
   const [invoicetypes, setInvoicetypes] = useState([]);
-  const [invoicetype, setInvoicetype] = useState("");
+  const [invoicetype, setInvoicetype] = useState();
   const [warehouse, setWarehouse] = useState([]);
-  const [warehouseid, setWarehouseId] = useState("");
+  const [warehouseid, setWarehouseId] = useState();
   const [status, setStatus] = useState("Pagado");
   const [dueDate, setDueDate] = useState(dayjs().add(1, "day"));
 
@@ -103,8 +103,9 @@ export default function InvoiceInputs() {
   }, []);
 
   return (
-    <div className=" bg-neutral-100 flex items-center overflow-auto  ">
+    <div className={` ${bgcolor} flex items-center overflow-auto`}>
       <Grid container spacing={{ xs: 3 }} sx={{ padding: 3 }}>
+        {/* Invoice Number */}
         <Grid item xs={12} md={3}>
           <FormControl className="w-full">
             <InputLabel size="normal" htmlFor="outlined-adornment-name">
@@ -112,7 +113,7 @@ export default function InvoiceInputs() {
             </InputLabel>
             <OutlinedInput
               defaultValue={invoiceNumber}
-              disabled
+              disabled={handlerNumber}
               id="outlined-adornment-name"
               label="Numero de Factura"
               size="large"
@@ -126,6 +127,7 @@ export default function InvoiceInputs() {
             />
           </FormControl>
         </Grid>
+        {/* Status */}
         <Grid item xs={12} md={3}>
           <FormControl className="w-full">
             <InputLabel size="normal" htmlFor="outlined-adornment-name">
@@ -166,6 +168,7 @@ export default function InvoiceInputs() {
             </Select>
           </FormControl>
         </Grid>
+        {/* Creation Date */}
         <Grid item xs={12} md={3}>
           <FormControl className="w-full">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -192,6 +195,7 @@ export default function InvoiceInputs() {
             </LocalizationProvider>
           </FormControl>
         </Grid>
+        {/* Due Date */}
         <Grid item xs={12} md={3}>
           <FormControl className="w-full">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -218,6 +222,7 @@ export default function InvoiceInputs() {
             </LocalizationProvider>
           </FormControl>
         </Grid>
+        {/* NCF Type */}
         <Grid item xs={12} md={3}>
           <FormControl className="w-full">
             <InputLabel size="normal" htmlFor="outlined-adornment-name">
@@ -258,6 +263,7 @@ export default function InvoiceInputs() {
             </Select>
           </FormControl>
         </Grid>
+        {/* Invoice type */}
         <Grid item xs={12} md={3}>
           <FormControl className="w-full">
             <InputLabel size="normal" htmlFor="outlined-adornment-name">
@@ -298,6 +304,7 @@ export default function InvoiceInputs() {
             </Select>
           </FormControl>
         </Grid>
+        {/* Warehouse */}
         <Grid item xs={12} md={3}>
           <FormControl className="w-full">
             <InputLabel size="normal" htmlFor="outlined-adornment-name">

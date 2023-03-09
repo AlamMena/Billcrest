@@ -5,6 +5,7 @@ const initialState = {
   branchId: 1,
   invoiceNumber: "F00000",
   supplierId: 0,
+  supplier: {},
   warehouseId: 0,
   ncfTypeId: 0,
   typeId: 0,
@@ -55,8 +56,13 @@ const invoiceSlice = createSlice({
     updateNCFType: (state, actions) => {
       state.ncfTypeId = actions.payload;
     },
-    updateSupplier: (state, actions) => {
+    updateSupplierId: (state, actions) => {
       state.supplierId = actions.payload;
+    },
+    updateSupplier: (state, { payload }) => {
+      state.supplier.name = payload.name;
+      state.supplier.address = payload.addresses[0].address1;
+      state.supplier.phone = payload.contacts[0].number;
     },
     updateWarehouse: (state, actions) => {
       state.warehouseId = actions.payload;
@@ -201,5 +207,6 @@ export const {
   resetState,
   updateItemQuantity,
   updateSupplier,
+  updateSupplierId,
 } = invoiceSlice.actions;
 export default invoiceSlice.reducer;

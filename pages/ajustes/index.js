@@ -5,6 +5,7 @@ import { useState } from "react";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ProfileSettings from "./perfil";
 import { SettingsOutlined } from "@mui/icons-material";
+import CompanySettings from "./company";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -17,7 +18,7 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box>{children}</Box>}
+      {value === index && <Box className="mt-4">{children}</Box>}
     </div>
   );
 }
@@ -48,7 +49,7 @@ export default function Settings() {
 
   return (
     <div className="w-full flex flex-col pb-5">
-      <div className="flex w-full justify-between items-center pr-8 wid">
+      <div className="flex w-full justify-between items-center pr-8">
         <PageHeader
           header="Ajustes de Perfil"
           locationRoutes={locationRoutes}
@@ -91,7 +92,7 @@ export default function Settings() {
         <ProfileSettings />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ProfileSettings />
+        <CompanySettings />
       </TabPanel>
       <TabPanel value={value} index={2}>
         {/* <ProfileSettings /> */}

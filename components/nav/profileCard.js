@@ -1,4 +1,5 @@
 import { alpha, Avatar, Box, Link, styled, Typography } from "@mui/material";
+import useAuth from "../../auth/useAuth";
 
 const StyledAccount = styled("div")(({ theme }) => ({
   display: "flex",
@@ -8,6 +9,8 @@ const StyledAccount = styled("div")(({ theme }) => ({
   backgroundColor: alpha(theme.palette.grey[500], 0.12),
 }));
 export default function ProfileCard() {
+  const { LogOut } = useAuth();
+
   const account = {
     photoURL: "https://cdn-icons-png.flaticon.com/512/2202/2202112.png",
     displayName: "Admin user",

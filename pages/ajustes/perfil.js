@@ -23,7 +23,7 @@ export default function ProfileSettings() {
   };
 
   return (
-    <div className="w-full h-full grid grid-cols-12 gap-4 mt-4">
+    <div className="w-full h-full grid grid-cols-12 gap-4 ">
       {/* Image Setting Container */}
       <div className="flex justify-center col-span-12 lg:col-span-4">
         <Card className="  w-full px-8 py-12 flex flex-col items-center">
@@ -75,7 +75,6 @@ export default function ProfileSettings() {
               })}
               id="outlined-adornment-name"
               label="Nombre"
-              size="medium"
               error={errors.name && "value"}
               className="input-rounded"
               helperText={errors.name && `El campo no es valido`}

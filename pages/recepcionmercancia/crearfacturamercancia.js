@@ -10,8 +10,10 @@ import useAxios from "../../axios/index";
 import {
   InvoiceRecipient,
   InvoiceBeneficiary,
+  InvoiceSupplier,
 } from "../../components/createInvoice/invoiceContact";
 import SelectPopUp from "../../components/createInvoice/selectPopUp";
+import SelectSupplierPopUp from "../../components/createInvoice/selectSupplierPopUp";
 import { useDispatch } from "react-redux";
 import { resetState } from "../../store/invoiceSlice";
 import { useSelector } from "react-redux";
@@ -154,11 +156,8 @@ export default function CreateInvoiceProduct() {
           Icon={<SellOutlined />}
         />
       </div>
-      <SelectPopUp
-        open={openSelect}
-        setOpenSelect={setOpenSelect}
-        type={type}
-      />
+      <SelectSupplierPopUp open={openSelect} setOpenSelect={setOpenSelect} />
+
       <SelectProducts open={openProductPop} setProductPop={setProductPopUp} />
       <ConfirmationForm
         open={confirmOpen}
@@ -192,23 +191,23 @@ export default function CreateInvoiceProduct() {
               }}
             ></Divider>
             <div className=" flex items-center justify-between">
-              <span className="text-neutral-500 text-lg">Para:</span>
+              <span className="text-neutral-500 text-lg">Suplidor:</span>
               <Button
                 startIcon={<Edit />}
                 className="h-10 font-bold"
                 size="small"
                 onClick={() => {
-                  setOpenSelect(true), setType("recipiente");
+                  setOpenSelect(true);
                 }}
               >
                 Cambiar
               </Button>
             </div>
-            <InvoiceRecipient />
+            <InvoiceSupplier />
           </Grid>
         </Grid>
         {/* Invoice settings Inputs */}
-        <InvoiceInputs />
+        <InvoiceInputs handlerNumber={false} bgcolor="bg-green-100" />
 
         {/* Details */}
         <div className="p-3">

@@ -28,6 +28,8 @@ export default function CreateInvoice() {
   const [paymentPopUpOpen, setPaymentPopUp] = useState(false);
   const [type, setType] = useState("");
   const [confirmOpen, setConfirmOpen] = useState(false);
+  const [confirmDraftOpen, setConfirmDraftOpen] = useState(false);
+
   const invoice = useSelector((state) => state.invoice);
   const {
     total,
@@ -168,6 +170,12 @@ export default function CreateInvoice() {
         onConfirm={upserAsyncInvoice}
         message="Estas seguro que quieres crear la factura?"
       />
+      <ConfirmationForm
+        open={confirmDraftOpen}
+        setOpen={setConfirmDraftOpen}
+        // onConfirm={upserAsyncInvoice}
+        message="Estas seguro que quieres salvar la factura como un Draft?"
+      />
       <PaymentPopUp open={paymentPopUpOpen} setPaymentPopUp={setPaymentPopUp} />
       {/* Invoice  */}
       <Card className="flex flex-col h-full w-full shadow-lg rounded-xl my-3">
@@ -222,7 +230,7 @@ export default function CreateInvoice() {
           </Grid>
         </Grid>
         {/* Invoice settings Inputs */}
-        <InvoiceInputs />
+        <InvoiceInputs handlerNumber={true} bgcolor="bg-neutral-100" />
         {/* Details */}
         <div className="p-3">
           <span className=" text-xl text-neutral-400">Detalles:</span>
@@ -248,17 +256,15 @@ export default function CreateInvoice() {
           variant="contained"
           sx={{ textTransform: "none" }}
           color="grey"
-          onClick={() => dispatch(resetState())}
+          onClick={() => setConfirmDraftOpen(true)}
         >
           Salvar como Draft
         </Button>
-
         <Button
           variant="contained"
           sx={{ textTransform: "none" }}
           type="submit"
           color="primary"
-          // className=" w-44 bg-green-600 text-white font-extrabold h-12 rounded-2xl"
           onClick={() => setConfirmOpen(true)}
         >
           Crear y enviar

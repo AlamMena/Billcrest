@@ -22,22 +22,15 @@ export default function ConfirmationForm({
       onClose={() => setOpen(false)}
     >
       <DialogTitle>
-        <Typography variant="h6"> Confirmar procedimiento</Typography>
+        <Typography variant="h6">Confirmar procedimiento</Typography>
       </DialogTitle>
       <DialogContent dividers={true}>
         <div className=" text-md tracking-wide  p-2 mr-5">
-          <h2>{message}</h2>
+          <Typography variant="h5">{message}</Typography>
         </div>
       </DialogContent>
       <DialogActions>
         <div className="flex space-x-4 justify-end w-full">
-          <Button
-            color="error"
-            variant="contained"
-            onClick={() => setOpen(false)}
-          >
-            Cancelar
-          </Button>
           <Button
             onClick={() => onConfirm()}
             type="submit"
@@ -45,6 +38,14 @@ export default function ConfirmationForm({
             variant="contained"
           >
             Confirmar
+          </Button>
+
+          <Button
+            color="error"
+            variant="contained"
+            onClick={() => setOpen(false)}
+          >
+            Cancelar
           </Button>
         </div>
       </DialogActions>
