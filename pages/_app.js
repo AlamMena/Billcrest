@@ -25,7 +25,6 @@ function MyApp({ Component, pageProps }) {
       <Provider store={store}>
         <PrivateRouter>
           <QueryClientProvider client={queryClient}>
-            <ReactQueryDevtools initialIsOpen={false} />
             <Nav>
               <Component {...pageProps} />
             </Nav>

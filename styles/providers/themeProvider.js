@@ -11,12 +11,22 @@ import shadows from "../theme/shadows";
 
 export default function ThemeProvider({ children }) {
   const themeOptions = {
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 640,
+        md: 768,
+        lg: 1024,
+        xl: 1280,
+      },
+    },
     palette,
     shape: { borderRadius: 6 },
     typography: typography,
     shadows: shadows(),
   };
   const theme = createTheme(themeOptions);
+
   theme.components = ComponentsOverrides({
     ...theme,
     customShadows: customShadows(),

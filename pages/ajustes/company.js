@@ -1,7 +1,17 @@
 import { Card, TextField, Button } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { CameraAltRounded, FormGroup } from "@mui/icons-material";
 
 export default function CompanySettings() {
+  const [fileContainer, setFileContainer] = useState();
+  const [currentImage, setCurrentImage] = useState();
+
+  const handleImageInput = (e) => {
+    setCurrentImage(URL.createObjectURL(e.target.files[0]));
+    setFileContainer(e.target.files[0]);
+  };
+
   const {
     handleSubmit,
     register,
@@ -11,11 +21,48 @@ export default function CompanySettings() {
   } = useForm();
 
   return (
-    <Card className=" col-span-12 lg:col-span-8 max-w-3xl ">
-      <form
-        //   onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col p-8 space-y-6 px-6"
-      >
+    <form
+      //   onSubmit={handleSubmit(onSubmit)}
+      className="flex p-8 space-y-6 space-x-3 "
+    >
+      <Card className="flex w-full justify-center">
+        <div className=" px-8 py-12 flex flex-col   mb-10">
+          <figure className="relative m-auto w-40 h-40 outline-dashed outline-2 outline-neutral-200  p-2 rounded-full">
+            <Button
+              component="label"
+              className=" button-image absolute inset-0 m-2"
+            >
+              <div className="w-full flex flex-col justify-center space-y-2 items-center">
+                <CameraAltRounded />
+                <span className="text-xs capitalize">Actualizar imagen</span>
+              </div>
+
+              <input
+                onChange={handleImageInput}
+                hidden
+                accept="image/*"
+                multiple
+                type="file"
+              />
+            </Button>
+            <img
+              src={
+                currentImage
+                  ? currentImage
+                  : // : contact?.imageUrl
+                    // ? contact.imageUrl
+                    "/dashboard_welcome.png"
+              }
+              alt=""
+              className=" w-36 h-36 rounded-full transition-all  "
+            />
+          </figure>
+          <span className="text-xs px-8 m-5 text-center max-w-sm  text-neutral-500">
+            Allowed *.jpeg, *.jpg, *.png, *.gif max size of 3.1 MB
+          </span>
+        </div>
+      </Card>
+      <Card className="flex flex-col w-full space-y-4 p-5">
         <div className="md:flex md:space-x-4 space-y-6 md:space-y-0">
           <TextField
             {...register("name", {
@@ -135,7 +182,7 @@ export default function CompanySettings() {
             Guardar
           </Button>
         </div>
-      </form>
-    </Card>
+      </Card>
+    </form>
   );
 }

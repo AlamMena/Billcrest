@@ -6,12 +6,12 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import NavSection from "./navSection";
 import config from "./config";
 import ProfileCard from "./profileCard";
 import { Container } from "@mui/material";
 import palette from "../../styles/theme/palette";
+import TopSection from "./topSection";
 
 const drawerWidth = 240;
 
@@ -51,14 +51,7 @@ function Nav({ children }, props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ color: palette.text.primary }}
-          >
-            Responsive drawer
-          </Typography>
+          <TopSection />
         </Toolbar>
       </AppBar>
       <Box

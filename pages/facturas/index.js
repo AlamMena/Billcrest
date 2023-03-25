@@ -43,40 +43,38 @@ export default function Invoices() {
   }, []);
 
   return (
-    <>
-      <div className="w-full  flex flex-col">
-        <div className="flex w-full justify-between items-center pr-8">
-          <div>
-            <PageHeader
-              header="Facturas"
-              locationRoutes={locationRoutes}
-              Icon={<SellOutlined />}
-            />
-          </div>
-          <div className="flex">
-            <Button
-              // className=" z-auto rounded-xl py-2 bg-green-600 hover:bg-green-800"
-              color="primary"
-              variant="contained"
-              onClick={() => Router.push("./facturas/crearfactura")}
-              startIcon={<Add className="text-white" />}
-            >
-              <span className="text-sm whitespace-nowrap text-neutral-50 capitalize font-bold">
-                Nueva factura
-              </span>
-            </Button>
-          </div>
+    <div className="w-full h-full  flex flex-col">
+      <div className="flex w-full justify-between items-center pr-8">
+        <div>
+          <PageHeader
+            header="Facturas"
+            locationRoutes={locationRoutes}
+            Icon={<SellOutlined />}
+          />
         </div>
-        <InvoiceStatus />
-        {/* <CategoryList
+        <div className="flex">
+          <Button
+            // className=" z-auto rounded-xl py-2 bg-green-600 hover:bg-green-800"
+            color="primary"
+            variant="contained"
+            onClick={() => Router.push("./facturas/crearfactura")}
+            startIcon={<Add className="text-white" />}
+          >
+            <span className="text-sm whitespace-nowrap text-neutral-50 capitalize font-bold">
+              Nueva factura
+            </span>
+          </Button>
+        </div>
+      </div>
+      <InvoiceStatus />
+      {/* <CategoryList
           setFormOpen={setFormOpen}
           data={categories}
           setFormData={setFormData}
           setItemToDelete={setItemToDelete}
           setConfirmOpen={setConfirmOpen}
         /> */}
-        <InvoiceList data={invoices} />
-      </div>
-    </>
+      <InvoiceList data={invoices} />
+    </div>
   );
 }

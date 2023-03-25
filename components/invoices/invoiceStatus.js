@@ -12,9 +12,9 @@ import { Card, CircularProgress, Typography } from "@mui/material";
 import { formatCurrency } from "../../utils/methods";
 
 const Item = ({ title, fillPercentage, color, amount, quantity, icon }) => (
-  <div className="flex justify-center w-full ml-5 space-x-4 border-r-2 border-0 border-dashed border-gray-200 last:border-0">
+  <div className="flex w-full justify-center ml-5 space-x-4 border-r-2 border-0 border-dashed border-gray-200 last:border-0">
     <div className="relative flex items-center justify-center mx-4">
-      <div className={`${color} text-2xl`}>{icon}</div>
+      <div className={`${color} text-xl mt-2`}>{icon}</div>
       <CircularProgress
         className="absolute z-10 text-gray-100"
         size={60}
@@ -41,7 +41,7 @@ const Item = ({ title, fillPercentage, color, amount, quantity, icon }) => (
 
 export default function InvoiceStatus() {
   return (
-    <Card className=" flex overflow-auto items-center h-32  py-4 mx-4 my-2">
+    <Card className=" flex xs:w-screen sm:w-full overflow-x-auto items-center h-32  py-4 my-2">
       <Item
         title="Total"
         color="text-blue-400"

@@ -17,7 +17,7 @@ import {
   Box,
   Card,
 } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import useAxios from "../../axios/index";
@@ -78,8 +78,6 @@ export default function ContactForm({ contact, invoices }) {
   const [clientTypes, setClientTypes] = useState();
   const [discount, setDiscount] = useState();
   const [credit, setCredit] = useState();
-
-  const toastId = useRef(null);
 
   const { axiosInstance } = useAxios();
   const router = useRouter();
