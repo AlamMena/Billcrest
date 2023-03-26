@@ -43,7 +43,7 @@ export default function Invoices() {
   }, []);
 
   return (
-    <div className="w-full h-full  flex flex-col">
+    <div className="w-full h-full flex flex-col">
       <div className="flex w-full justify-between items-center pr-8">
         <div>
           <PageHeader

@@ -230,7 +230,11 @@ export default function CreateInvoice() {
           </Grid>
         </Grid>
         {/* Invoice settings Inputs */}
-        <InvoiceInputs handlerNumber={true} bgcolor="bg-neutral-100" />
+        <InvoiceInputs
+          upser={upserAsyncInvoice}
+          handlerNumber={true}
+          bgcolor="bg-neutral-100"
+        />
         {/* Details */}
         <div className="p-3">
           <span className=" text-xl text-neutral-400">Detalles:</span>

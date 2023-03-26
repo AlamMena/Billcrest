@@ -24,6 +24,7 @@ import {
   updateWarehouse,
   updateNCFType,
 } from "../../store/invoiceSlice";
+import { useForm } from "react-hook-form";
 
 export default function InvoiceInputs({ handlerNumber, bgcolor }) {
   const dispatch = useDispatch();
@@ -41,6 +42,12 @@ export default function InvoiceInputs({ handlerNumber, bgcolor }) {
   const [dueDate, setDueDate] = useState(dayjs().add(1, "day"));
 
   const { axiosInstance } = useAxios();
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
 
   const handleCreationDateChange = (value) => {
     setCreationDate(value);
@@ -103,7 +110,7 @@ export default function InvoiceInputs({ handlerNumber, bgcolor }) {
   }, []);
 
   return (
-    <div className={` ${bgcolor} flex items-center overflow-auto`}>
+    <form className={` ${bgcolor} flex items-center overflow-auto`}>
       <Grid container spacing={{ xs: 3 }} sx={{ padding: 3 }}>
         {/* Invoice Number */}
         <Grid item xs={12} md={3}>
@@ -138,7 +145,9 @@ export default function InvoiceInputs({ handlerNumber, bgcolor }) {
               label="Estatus"
               size="normal"
               type="number"
-              value={status}
+              {...register("estatus", { required: true })}
+              error={errors.estatus && "value"}
+              helperText={errors.estatus && `El campo no es valido`}
               className="rounded-xl"
               variant="outlined"
               startAdornment={
@@ -346,6 +355,6 @@ export default function InvoiceInputs({ handlerNumber, bgcolor }) {
           </FormControl>
         </Grid>
       </Grid>
-    </div>
+    </form>
   );
 }
