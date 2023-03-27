@@ -128,18 +128,6 @@ export default function InvoiceInputs({ handlerNumber, bgcolor }) {
             error={errors.estatus && "value"}
             helperText={errors.estatus && `El campo no es valido`}
             variant="outlined"
-            variant="outlined"
-            startAdornment={
-              <InputAdornment position="start">
-                {/* <AttachMoney /> */}
-              </InputAdornment>
-            }
-            variant="outlined"
-            startAdornment={
-              <InputAdornment position="start">
-                {/* <AttachMoney /> */}
-              </InputAdornment>
-            }
           >
             <MenuItem value={"Pagado"}>Pagado</MenuItem>
             <MenuItem value={"No Pagado"}>No Pagado</MenuItem>
