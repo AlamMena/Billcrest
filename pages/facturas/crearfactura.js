@@ -45,6 +45,8 @@ export default function CreateInvoice() {
   const dispatch = useDispatch();
   const router = Router;
 
+  const onSubmit = (data) => alert(data);
+
   // handles
 
   const handleInvoiceError = (error) => {
@@ -167,13 +169,13 @@ export default function CreateInvoice() {
       <ConfirmationForm
         open={confirmOpen}
         setOpen={setConfirmOpen}
-        onConfirm={upserAsyncInvoice}
+        onConfirm={onSubmit}
         message="Estas seguro que quieres crear la factura?"
       />
       <ConfirmationForm
         open={confirmDraftOpen}
         setOpen={setConfirmDraftOpen}
-        // onConfirm={upserAsyncInvoice}
+        // onConfirm={onSubmit}
         message="Estas seguro que quieres salvar la factura como un Draft?"
       />
       <PaymentPopUp open={paymentPopUpOpen} setPaymentPopUp={setPaymentPopUp} />
@@ -231,6 +233,7 @@ export default function CreateInvoice() {
         </Grid>
         {/* Invoice settings Inputs */}
         <InvoiceInputs
+          onSubmit={onSubmit}
           upser={upserAsyncInvoice}
           handlerNumber={true}
           bgcolor="bg-neutral-100"
@@ -269,7 +272,7 @@ export default function CreateInvoice() {
           sx={{ textTransform: "none" }}
           type="submit"
           color="primary"
-          onClick={() => setConfirmOpen(true)}
+          // onClick={() => setConfirmOpen(true)}
         >
           Crear y enviar
         </Button>

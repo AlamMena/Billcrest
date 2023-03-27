@@ -6,6 +6,7 @@ import {
   InputAdornment,
   Select,
   MenuItem,
+  TextField,
 } from "@mui/material";
 import { useSelector } from "react-redux";
 import { LocalizationProvider } from "@mui/x-date-pickers";
@@ -33,12 +34,12 @@ export default function InvoiceInputs({ handlerNumber, bgcolor }) {
   const invoice = useSelector((state) => state.invoice);
   const { invoiceNumber } = invoice;
   const [ncfstypes, setNCFstypes] = useState([]);
-  const [ncftype, setNCFtype] = useState();
+
   const [invoicetypes, setInvoicetypes] = useState([]);
-  const [invoicetype, setInvoicetype] = useState();
+
   const [warehouse, setWarehouse] = useState([]);
   const [warehouseid, setWarehouseId] = useState();
-  const [status, setStatus] = useState("Pagado");
+
   const [dueDate, setDueDate] = useState(dayjs().add(1, "day"));
 
   const { axiosInstance } = useAxios();
@@ -49,6 +50,8 @@ export default function InvoiceInputs({ handlerNumber, bgcolor }) {
     handleSubmit,
   } = useForm();
 
+  const onSubmit = (data) => alert(data);
+
   const handleCreationDateChange = (value) => {
     setCreationDate(value);
     dispatch(updateCreationDate(value.toString()));
@@ -56,25 +59,6 @@ export default function InvoiceInputs({ handlerNumber, bgcolor }) {
   const handleDueDateChange = (value) => {
     setDueDate(value);
     dispatch(updateDueDate(value.toString()));
-  };
-  const handleStatus = (value) => {
-    setStatus(value);
-    dispatch(updateStatus(value));
-  };
-
-  const handleNCFtype = (value, id) => {
-    setNCFtype(value);
-    dispatch(updateNCFType(id));
-  };
-
-  const handleWarehouse = (value, id) => {
-    setWarehouseId(value);
-    dispatch(updateWarehouse(id));
-  };
-
-  const handleInvoicetype = (value, id) => {
-    setInvoicetype(value);
-    dispatch(updateInvoiceType(id));
   };
 
   const getNCFType = async () => {
@@ -110,7 +94,11 @@ export default function InvoiceInputs({ handlerNumber, bgcolor }) {
   }, []);
 
   return (
-    <form className={` ${bgcolor} flex items-center overflow-auto`}>
+    <form
+      className={` ${bgcolor} flex items-center overflow-auto`}
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <button type="submit">submit</button>
       <Grid container spacing={{ xs: 3 }} sx={{ padding: 3 }}>
         {/* Invoice Number */}
         <Grid item xs={12} md={3}>
@@ -126,56 +114,38 @@ export default function InvoiceInputs({ handlerNumber, bgcolor }) {
               size="large"
               className="rounded-xl"
               variant="outlined"
-              startAdornment={
-                <InputAdornment position="start">
-                  {/* <AttachMoney /> */}
-                </InputAdornment>
-              }
             />
           </FormControl>
         </Grid>
         {/* Status */}
         <Grid item xs={12} md={3}>
-          <FormControl className="w-full">
-            <InputLabel size="normal" htmlFor="outlined-adornment-name">
-              Estatus
-            </InputLabel>
-            <Select
-              id="outlined-adornment-name"
-              label="Estatus"
-              size="normal"
-              type="number"
-              {...register("estatus", { required: true })}
-              error={errors.estatus && "value"}
-              helperText={errors.estatus && `El campo no es valido`}
-              className="rounded-xl"
-              variant="outlined"
-              startAdornment={
-                <InputAdornment position="start">
-                  {/* <AttachMoney /> */}
-                </InputAdornment>
-              }
-            >
-              <MenuItem value={"Pagado"} onClick={() => handleStatus("Pagado")}>
-                Pagado
-              </MenuItem>
-              <MenuItem
-                value={"No Pagado"}
-                onClick={() => handleStatus("No Pagado")}
-              >
-                No Pagado
-              </MenuItem>
-              <MenuItem
-                value={"Overdue"}
-                onClick={() => handleStatus("Overdue")}
-              >
-                Overdue
-              </MenuItem>
-              <MenuItem value={"Draft"} onClick={() => handleStatus("Draft")}>
-                Draft
-              </MenuItem>
-            </Select>
-          </FormControl>
+          <TextField
+            id="outlined-adornment-name"
+            label="Estatus"
+            className="w-full"
+            select
+            {...register("estatus", { required: true })}
+            error={errors.estatus && "value"}
+            helperText={errors.estatus && `El campo no es valido`}
+            variant="outlined"
+            variant="outlined"
+            startAdornment={
+              <InputAdornment position="start">
+                {/* <AttachMoney /> */}
+              </InputAdornment>
+            }
+            variant="outlined"
+            startAdornment={
+              <InputAdornment position="start">
+                {/* <AttachMoney /> */}
+              </InputAdornment>
+            }
+          >
+            <MenuItem value={"Pagado"}>Pagado</MenuItem>
+            <MenuItem value={"No Pagado"}>No Pagado</MenuItem>
+            <MenuItem value={"Overdue"}>Overdue</MenuItem>
+            <MenuItem value={"Draft"}>Draft</MenuItem>
+          </TextField>
         </Grid>
         {/* Creation Date */}
         <Grid item xs={12} md={3}>
@@ -188,7 +158,6 @@ export default function InvoiceInputs({ handlerNumber, bgcolor }) {
                 label="Fecha de creacion"
                 inputFormat="MM/DD/YYYY"
                 value={creationDate}
-                className="rounded-xl"
                 onChange={handleCreationDateChange}
                 renderInput={(params) => (
                   <OutlinedInput
@@ -233,126 +202,86 @@ export default function InvoiceInputs({ handlerNumber, bgcolor }) {
         </Grid>
         {/* NCF Type */}
         <Grid item xs={12} md={3}>
-          <FormControl className="w-full">
-            <InputLabel size="normal" htmlFor="outlined-adornment-name">
-              Tipo de NCF
-            </InputLabel>
-            <Select
-              id="outlined-adornment-name"
-              label="Tipo de NCF"
-              size="normal"
-              type="number"
-              value={ncftype}
-              className="rounded-xl"
-              variant="outlined"
-              startAdornment={
-                <InputAdornment position="start">
-                  {/* <AttachMoney /> */}
-                </InputAdornment>
-              }
-            >
-              {ncfstypes.length > 0 &&
-                ncfstypes.map((item, index) => {
-                  return (
-                    <MenuItem
-                      key={index}
-                      value={item.id}
-                      onClick={() => handleNCFtype(item.name, item.id)}
-                    >
-                      {item.name}
-                    </MenuItem>
-                  );
-                })}
-              {/* <MenuItem
+          <TextField
+            id="outlined-adornment-name"
+            label="Tipo de NCF"
+            className="w-full"
+            select
+            size="normal"
+            {...register("ncftype", { required: true })}
+            error={errors.ncftype && "value"}
+            helperText={errors.ncftype && `El campo no es valido`}
+            variant="outlined"
+          >
+            {ncfstypes.length > 0 &&
+              ncfstypes.map((item, index) => {
+                return (
+                  <MenuItem key={index} value={item.id}>
+                    {item.name}
+                  </MenuItem>
+                );
+              })}
+            {/* <MenuItem
                     value={"Pagado"}
                     onClick={() => handleNCFtype("Pagado")}
                   >
                     Credito Fiscal
                   </MenuItem> */}
-            </Select>
-          </FormControl>
+          </TextField>
         </Grid>
         {/* Invoice type */}
         <Grid item xs={12} md={3}>
-          <FormControl className="w-full">
-            <InputLabel size="normal" htmlFor="outlined-adornment-name">
-              Tipo de Factura
-            </InputLabel>
-            <Select
-              id="outlined-adornment-name"
-              label="Tipo de Factura"
-              size="normal"
-              type="number"
-              value={invoicetype}
-              className="rounded-xl"
-              variant="outlined"
-              startAdornment={
-                <InputAdornment position="start">
-                  {/* <AttachMoney /> */}
-                </InputAdornment>
-              }
-            >
-              {invoicetypes.length > 0 &&
-                invoicetypes.map((item, index) => {
-                  return (
-                    <MenuItem
-                      key={index}
-                      value={item.id}
-                      onClick={() => handleInvoicetype(item.name, item.id)}
-                    >
-                      {item.name}
-                    </MenuItem>
-                  );
-                })}
-              {/* <MenuItem
+          <TextField
+            id="outlined-adornment-name"
+            label="Tipo de Factura"
+            className="w-full"
+            size="normal"
+            select
+            type="number"
+            {...register("invoicetype", { required: true })}
+            error={errors.invoicetype && "value"}
+            helperText={errors.invoicetype && `El campo no es valido`}
+            variant="outlined"
+          >
+            {invoicetypes.length > 0 &&
+              invoicetypes.map((item, index) => {
+                return (
+                  <MenuItem key={index} value={item.id}>
+                    {item.name}
+                  </MenuItem>
+                );
+              })}
+            {/* <MenuItem
                     value={"Pagado"}
                     onClick={() => handleNCFtype("Pagado")}
                   >
                     Credito Fiscal
                   </MenuItem> */}
-            </Select>
-          </FormControl>
+          </TextField>
         </Grid>
         {/* Warehouse */}
         <Grid item xs={12} md={3}>
-          <FormControl className="w-full">
-            <InputLabel size="normal" htmlFor="outlined-adornment-name">
-              Almacen
-            </InputLabel>
-            <Select
-              id="outlined-adornment-name"
-              label="Almacen"
-              size="normal"
-              type="number"
-              value={warehouseid}
-              className="rounded-xl"
-              variant="outlined"
-              startAdornment={
-                <InputAdornment position="start">
-                  {/* <AttachMoney /> */}
-                </InputAdornment>
-              }
-            >
-              {warehouse.length > 0 &&
-                warehouse.map((item, index) => {
-                  return (
-                    <MenuItem
-                      key={index}
-                      value={item.id}
-                      onClick={() => handleWarehouse(item.name, item.id)}
-                    >
-                      {item.name}
-                    </MenuItem>
-                  );
-                })}
-              {/* <MenuItem
-                    value={"Pagado"}
-                    onClick={() => handleNCFtype("Pagado")}
-                  >
-                    Credito Fiscal
-                  </MenuItem> */}
-            </Select>
-          </FormControl>
+          <TextField
+            select
+            id="outlined-adornment-name"
+            label="Almacen"
+            size="normal"
+            value={warehouseid}
+            {...register("warehouseid", { required: true })}
+            error={errors.warehouseid && "value"}
+            helperText={errors.warehouseid && `El campo no es valido`}
+            className="w-full"
+            variant="outlined"
+          >
+            {warehouse.length > 0 &&
+              warehouse.map((item, index) => {
+                return (
+                  <MenuItem key={index} value={item.id}>
+                    {item.name}
+                  </MenuItem>
+                );
+              })}
+          </TextField>
         </Grid>
       </Grid>
     </form>

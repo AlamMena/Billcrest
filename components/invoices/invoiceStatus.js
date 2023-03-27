@@ -6,9 +6,6 @@ import {
   Receipt,
 } from "@mui/icons-material";
 import { Card, CircularProgress, Typography } from "@mui/material";
-// import Card from "@mui/material/Card";
-// import CircularProgress from "@mui/material/CircularProgress";
-// import Typography from "@mui/material/Typography";
 import { formatCurrency } from "../../utils/methods";
 
 const Item = ({ title, fillPercentage, color, amount, quantity, icon }) => (
