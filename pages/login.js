@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Checkbox, Link, Avatar, AvatarGroup } from "@mui/material";
+import { Info } from "@mui/icons-material";
 import TextField from "@mui/material/TextField";
 import { FaGoogle } from "react-icons/fa";
 import { FiFacebook, FiGithub } from "react-icons/fi";
@@ -58,7 +59,7 @@ export default function Login() {
       <div className="grid grid-cols-12 h-screen">
         {/*---------------------------------- Login Form -------------------------------------*/}
         <div className=" lg:ml-14 md:ml-0 lg:col-span-5 col-span-12 flex lg:items-center sm:items-baseline md:items-center pt-12 md:pt-0 justify-center bg-inherit lg:bg-inherit md:bg-gray-200">
-          <div className=" lg:bg-inherit bg-inherit md:bg-white md:h-fit md:w-80 md:shadow-lg shadow-none lg:shadow-none rounded-xl  lg:h-96 lg:w-80 h-96 w-96 md:py-10 md:p-4 p-2 m-2 lg:py-0 lg:p-2">
+          <div className=" lg:bg-inherit bg-inherit md:bg-white md:h-fit md:w-80 md:shadow-lg shadow-none lg:shadow-none rounded-xl lg:w-80 h-96 w-96 md:py-10 md:p-4 p-2 m-2 lg:py-0 lg:p-2">
             <div>
               <Avatar
                 alt="Metaverse"
@@ -67,14 +68,21 @@ export default function Login() {
                 sx={{ width: 65, height: 65 }}
               />
             </div>
+
             <div className=" text-3xl font-bold tracking-tighter mt-5">
               Iniciar Sesion
             </div>
-            <div className="text-xs mb-5">
+            <div className="text-xs mb-2">
               <span>No tienes una cuenta? </span>
               <Link href="#" underline="always">
                 <span>Crea una</span>
               </Link>
+            </div>
+            <div className=" flex flex-nowrap items-center gap-2 bg-slate-200 text-sm p-2  my-2 rounded-xl">
+              <Info />
+              <p>
+                Use email: <b>testuser@gmail.com</b> / password: <b>1234567</b>
+              </p>
             </div>
             {/* Inputs */}
             <form onSubmit={handleSubmit((data) => handleLogin(data))}>
