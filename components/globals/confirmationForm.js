@@ -17,32 +17,31 @@ export default function ConfirmationForm({
     <Dialog
       open={open}
       PaperProps={{
-        style: { borderRadius: 15 },
+        style: { borderRadius: 15, width: "490px", padding: "10px" },
       }}
       onClose={() => setOpen(false)}
     >
       <DialogTitle>
-        <Typography variant="h6">Confirmar procedimiento</Typography>
+        <Typography variant="h5">Eliminar</Typography>
       </DialogTitle>
-      <DialogContent dividers={true}>
-        <div className=" text-md tracking-wide  p-2 mr-5">
-          <Typography variant="h5">{message}</Typography>
-        </div>
+      <DialogContent>
+        <Typography>Estas seguro que quieres eliminar?</Typography>
       </DialogContent>
       <DialogActions>
-        <div className="flex space-x-4 justify-end w-full">
+        <div className="flex space-x-3 justify-end w-full">
           <Button
             onClick={() => onConfirm()}
             type="submit"
-            color="primary"
+            color="error"
             variant="contained"
           >
-            Confirmar
+            Eliminar
           </Button>
 
           <Button
-            color="error"
-            variant="contained"
+            color="inherit"
+            className=" border-gray-300"
+            variant="outlined"
             onClick={() => setOpen(false)}
           >
             Cancelar

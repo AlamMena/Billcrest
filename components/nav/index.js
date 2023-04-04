@@ -27,14 +27,16 @@ function Nav({ children }, props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box>
       <CssBaseline />
       <AppBar
         position="fixed"
+        elevation={0}
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          bgcolor: palette.background.neutral,
+          backgroundColor: "rgba(249, 250, 251, 0.8)",
+          backdropFilter: "blur(6px)",
         }}
       >
         <Toolbar>
@@ -112,7 +114,7 @@ function Nav({ children }, props) {
         }}
       >
         <Toolbar />
-        <Box>
+        <Box sx={{ ml: { sm: `${drawerWidth}px` }, width: "100%" }}>
           <Container maxWidth="xl" sx={{ p: { sm: 0, xs: 0 } }}>
             {children}
           </Container>

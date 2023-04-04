@@ -65,9 +65,11 @@ export default function TopSection() {
   }
 
   return (
-    <div className="flex  w-full items-center justify-between ">
-      <div className={`flex justify-center   p-2`}>{Icon("search")}</div>
-      <div className="flex p-2 items-center justify-center space-x-4">
+    <div className="flex w-full items-center justify-between ">
+      <div className={`flex justify-cente items-center   p-2`}>
+        {Icon("search")}
+      </div>
+      <div className="flex  p-2 items-center justify-center space-x-4">
         {Icon("users")}
         {Icon("notification")}
 
