@@ -45,10 +45,10 @@ const config = [
         path: "/sucursales",
         icon: Icon("branches"),
         info: "",
-        items: [
-          { title: "Nuevo", path: "/crear" },
-          { title: "lista", path: "/sucursales" },
-        ],
+        // items: [
+        //   { title: "Nuevo", path: "/crear" },
+        //   { title: "lista", path: "/sucursales" },
+        // ],
       },
       // {
       //   title: "Almacenes",
@@ -62,15 +62,51 @@ const config = [
         icon: Icon("warehouses"),
         info: "",
       },
+      {
+        title: "Categorias",
+        path: "/categorias",
+        icon: Icon("categories"),
+        info: "",
+        items: [
+          { title: "Categorias", path: "/categorias" },
+          { title: "SubCategorias", path: "/subcategorias" },
+        ],
+      },
+      {
+        title: "Marcas",
+        path: "/marcas",
+        icon: Icon("brands"),
+        info: "",
+      },
+      {
+        title: "Proveedores",
+        path: "/proveedores",
+        icon: Icon("supplier"),
+        info: "",
+        items: [
+          { title: "Nuevo", path: "/proveedores/crear" },
+          { title: "Lista", path: "/proveedores" },
+        ],
+      },
     ],
   },
   {
-    groupTitle: "Inventory",
+    groupTitle: "Gestion",
     items: [
       {
         title: "Products",
         path: "/productos",
         icon: Icon("products"),
+        info: "",
+        items: [
+          { title: "Nuevo", path: "/productos/crear" },
+          { title: "Lista", path: "/productos" },
+        ],
+      },
+      {
+        title: "Clientes",
+        path: "/clientes",
+        icon: Icon("users"),
         info: "",
       },
       {
@@ -78,6 +114,10 @@ const config = [
         path: "/facturas",
         icon: Icon("invoices"),
         info: "",
+        items: [
+          { title: "Nuevo", path: "/facturas/crearfactura" },
+          { title: "Lista", path: "/facturas" },
+        ],
       },
 
       {
@@ -85,6 +125,10 @@ const config = [
         path: "/recepcionmercancia",
         icon: Icon("receptions"),
         info: "",
+        items: [
+          { title: "Nuevo", path: "/recepcionmercancia/crearfacturamercancia" },
+          { title: "Lista", path: "/recepcionmercancia" },
+        ],
       },
       {
         title: "Earnings",

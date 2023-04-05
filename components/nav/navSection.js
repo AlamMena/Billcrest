@@ -119,7 +119,7 @@ export default function NavSection() {
 
   return (
     <Box>
-      <List disablePadding sx={{ p: 1 }}>
+      <List disablePadding sx={{ p: 2 }}>
         {config.map((groupItem, index) => (
           <div key={index}>
             <Typography variant="h6" sx={{ p: 2 }}>

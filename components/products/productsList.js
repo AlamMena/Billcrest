@@ -25,8 +25,6 @@ export default function ProductList({
   setConfirmOpen,
   actions,
   onRowClick,
-  maxRow,
-  autoHeight,
 }) {
   const [pageState, setPageState] = useState({
     isLoading: true,
@@ -160,15 +158,14 @@ export default function ProductList({
       width: 250,
       renderCell: (cells) => {
         return (
-          <div className="flex space-x-4">
+          <div className="flex space-x-4 items-center">
             <a
               onClick={() => {
                 router.push(`/productos/${cells.row.id}`);
               }}
               className="text-green-400 cursor-pointer"
             >
-              <EditOutlined className="text-green-400 mx-2" />
-              Editar
+              <EditOutlined className="text-green-400 mx-2 " />
             </a>
             <a
               onClick={() => {
@@ -177,7 +174,7 @@ export default function ProductList({
               }}
               className="text-red-500 cursor-pointer"
             >
-              <DeleteOutline className="text-red-500 mx-2" /> Eliminar
+              <DeleteOutline className="text-red-500 mx-2" />
             </a>
           </div>
         );

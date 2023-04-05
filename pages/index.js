@@ -33,7 +33,7 @@ export default function Home() {
           <div className=" max-w-2xl  space-x-4 bg-green-200 flex md:flex-nowrap justify-center flex-wrap items-center p-8 rounded-2xl">
             <div className="flex flex-col ">
               <span className="font-semibold text-2xl tracking-wider">
-                Welcome back Alam
+                Welcome back Test User
               </span>
               <p className="text-xs mt-4">
                 If you are going to use a passage of Lorem Ipsum, you need to be
@@ -56,7 +56,6 @@ export default function Home() {
               />
             </div>
           </div>
-
           <div className=" lg:flex gap-4 justify-around items-center  my-2 ">
             {dataCharts?.map((item, index) => (
               <BarChart data={item} key={index} />

@@ -79,7 +79,7 @@ export default function Form({
         >
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col p-6 space-y-6 px-10"
+            className="flex flex-col p-6 space-y-5 px-10"
           >
             <div>
               <div className="flex items-center mb-2">
@@ -158,13 +158,14 @@ export default function Form({
               );
             })}
             <DialogActions>
-              <div className="flex space-x-1 justify-end w-full">
+              <div className="flex space-x-3 justify-end w-full">
                 <Button
                   type="button"
-                  color="error"
-                  variant="contained"
+                  color="inherit"
+                  variant="outlined"
                   onClick={() => setOpen(false)}
                   size="medium"
+                  className=" border-gray-300"
                 >
                   Cancelar
                 </Button>

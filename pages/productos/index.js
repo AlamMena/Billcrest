@@ -50,7 +50,7 @@ export default function Products() {
   };
 
   return (
-    <div className="w-full  flex flex-col">
+    <div className="w-full flex flex-col">
       <div className="flex w-full justify-between items-center pr-0 md:pr-8">
         <div>
           <PageHeader
@@ -66,9 +66,11 @@ export default function Products() {
           onClick={() => {
             router.push("/productos/crear");
           }}
-          startIcon={<Add />}
+          startIcon={<Add className="text-white ml-2 xs:ml-0" />}
         >
-          Nuevo producto
+          <span className="text-sm hidden xs:flex whitespace-nowrap text-neutral-50 capitalize font-bold">
+            Nuevo producto
+          </span>
         </Button>
       </div>
       <ProductList

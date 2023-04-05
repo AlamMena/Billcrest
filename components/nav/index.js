@@ -9,11 +9,11 @@ import Toolbar from "@mui/material/Toolbar";
 import NavSection from "./navSection";
 import config from "./config";
 import ProfileCard from "./profileCard";
-import { Container } from "@mui/material";
+import { Container, Avatar } from "@mui/material";
 import palette from "../../styles/theme/palette";
 import TopSection from "./topSection";
 
-const drawerWidth = 240;
+const drawerWidth = 270;
 
 function Nav({ children }, props) {
   const { window } = props;
@@ -100,7 +100,14 @@ function Nav({ children }, props) {
           open
         >
           {" "}
-          <Box sx={{ px: 2.5, py: 3, display: "inline-flex" }}></Box>
+          <Box sx={{ px: 2.5, py: 2.5, display: "inline-flex" }}>
+            <Avatar
+              alt="logo"
+              variant="square"
+              src="/logo.png"
+              sx={{ width: 45, height: 45 }}
+            />
+          </Box>
           <ProfileCard />
           <NavSection data={config} />
         </Drawer>

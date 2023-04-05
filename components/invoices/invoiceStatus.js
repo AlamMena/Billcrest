@@ -39,8 +39,8 @@ const Item = ({ title, fillPercentage, color, amount, quantity, icon }) => (
 export default function InvoiceStatus() {
   return (
     <Card
-      sx={{ width: "87vw" }}
-      className=" flex  sm:w-full overflow-x-scroll items-center h-32 my-2"
+      // sx={{ width: "87vw" }}
+      className=" flex  overflow-x-scroll items-center h-32 my-2"
     >
       <Item
         title="Total"

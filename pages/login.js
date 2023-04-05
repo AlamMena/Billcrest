@@ -60,14 +60,12 @@ export default function Login() {
         {/*---------------------------------- Login Form -------------------------------------*/}
         <div className=" lg:ml-14 md:ml-0 lg:col-span-5 col-span-12 flex lg:items-center sm:items-baseline md:items-center pt-12 md:pt-0 justify-center bg-inherit lg:bg-inherit md:bg-gray-200">
           <div className=" lg:bg-inherit bg-inherit md:bg-white md:h-fit md:w-80 md:shadow-lg shadow-none lg:shadow-none rounded-xl lg:w-80 h-96 w-96 md:py-10 md:p-4 p-2 m-2 lg:py-0 lg:p-2">
-            <div>
-              <Avatar
-                alt="Metaverse"
-                variant="square"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3bAlqaZSh0mViahdE_MNIduBQZBWwyBEZtA&usqp=CAU"
-                sx={{ width: 65, height: 65 }}
-              />
-            </div>
+            <Avatar
+              alt="logo"
+              variant="square"
+              src="/logo.png"
+              sx={{ width: 65, height: 65 }}
+            />
 
             <div className=" text-3xl font-bold tracking-tighter mt-5">
               Iniciar Sesion

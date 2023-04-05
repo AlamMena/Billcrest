@@ -46,7 +46,7 @@ export default function Invoices() {
   return (
     <>
       <div className="w-full  flex flex-col">
-        <div className="flex w-full justify-between items-center pr-8">
+        <div className="flex w-full justify-between items-center">
           <div>
             <PageHeader
               header="Recepcion de Mercancias"
@@ -60,10 +60,10 @@ export default function Invoices() {
               onClick={() =>
                 Router.push("./recepcionmercancia/crearfacturamercancia")
               }
-              startIcon={<Add className="text-white" />}
+              startIcon={<Add className="text-white ml-2 xs:ml-0" />}
               color="primary"
             >
-              <span className="text-sm whitespace-nowrap text-neutral-50 capitalize font-bold">
+              <span className="text-sm hidden xs:flex whitespace-nowrap text-neutral-50 capitalize font-bold">
                 Nueva Factura
               </span>
             </Button>
