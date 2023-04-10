@@ -10,10 +10,12 @@ import {
 import { Typography } from "@mui/material";
 import ApexCharts from "./apexCharts";
 import { useTheme } from "@mui/system";
+import { useTranslation } from "react-i18next";
 
 export default function LineChart() {
   const theme = useTheme();
   const [year, setYear] = useState(2022);
+  const { t } = useTranslation();
 
   const handleChange = (event) => {
     setYear(event.target.value);
@@ -74,7 +76,7 @@ export default function LineChart() {
     <Card className=" flex flex-col  p-5 flex-auto   ">
       <div className="flex justify-between items-center">
         <div className="flex flex-col text-left p-5">
-          <Typography variant="h6">Ventas anuales</Typography>
+          <Typography variant="h6">{t("home.annual")}</Typography>
           <span className="text-xs text-neutral-500">(+45 el ano pasado)</span>
         </div>
         <div>

@@ -74,7 +74,7 @@ export default function Home() {
           <div className=" max-w-4xl  space-x-4 bg-green-200 flex md:flex-nowrap justify-center flex-wrap items-center p-8 rounded-2xl">
             <div className="flex flex-col ">
               <span className="font-semibold text-2xl tracking-wider">
-                {t("welcome")}
+                {t("home.welcome")}
               </span>
               <p className="text-xs mt-4">
                 If you are going to use a passage of Lorem Ipsum, you need to be
@@ -85,7 +85,7 @@ export default function Home() {
                   // onClick={generatePDF}
                   className=" my-4 shadow-sm w-24 bg-green-500 border-0 cursor-pointer hover:scale-110 transition-all duration-200 py-2 px-4 text-xs rounded-xl text-white"
                 >
-                  Go now
+                  {t("home.go")}
                 </button>
               </div>
             </div>
@@ -100,17 +100,15 @@ export default function Home() {
           <div className=" w-full lg:max-w-md mt-3 lg:mt-0  space-x-4 bg-yellow-100 flex md:flex-nowrap justify-center flex-wrap items-center p-8 rounded-2xl">
             <div className="flex flex-col ">
               <span className="font-semibold text-2xl tracking-wider">
-                Congratulations Test User
+                {t("home.congrats")}
               </span>
-              <p className="text-lg font-bold mt-4">
-                Best seller of the month, you have done 57.6% more sales today.
-              </p>
+              <p className="text-lg font-bold mt-4">{t("home.seller")}</p>
               <div className="flex w-full justify-center md:justify-start my-4">
                 <button
                   // onClick={generatePDF}
                   className=" my-4 shadow-sm border-0 cursor-pointer hover:scale-110 transition-all duration-200 bg-yellow-500 py-2 px-4 text-xs rounded-xl text-white"
                 >
-                  Claim your prize
+                  {t("home.claim")}
                 </button>
               </div>
             </div>

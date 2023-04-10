@@ -1,0 +1,61 @@
+{
+  "login": {
+    "welcome": "Welcome to our Comunity",
+    "login": "Log in",
+    "exist": "You dont have an account?",
+    "create": "Create one",
+    "email": "Email",
+    "passw": "Password",
+    "remember": "Remember me",
+    "forgotP": "Forgot your password?",
+    "found": "The user was not found"
+  },
+  "home": {
+    "welcome": "Welcome Back Test User",
+    "congrats": "Congratulations",
+    "seller": "Best seller of the month, you have done 57.6% more sales today.",
+    "go": "Go now",
+    "claim": "Claim your prize",
+    "sales": "Sales and purchases",
+    "annual": "Annual Sales",
+    "summary": "Sales Sumary",
+    "currentB": "Current Balance"
+  },
+  "nav": {
+    "titles": {
+      "management": "Management"
+    },
+    "home": "Home",
+    "branches": "Branches",
+    "warehouses": "Warehouses",
+    "categories": "Categories",
+    "brands": "Brands",
+    "providers": "Providers",
+    "products": "Products",
+    "clients": "Clients",
+    "invoices": "Invoices",
+    "receptions": "Receptions",
+    "earnings": "Earnings",
+    "losses": "Losses"
+  },
+  "ndata": "No data available",
+  "actions": "Actions",
+  "formPhrase": "Create or edit your information and keep your company organized",
+  "inputRequired": "This input is required",
+  "inputValid": "This input is not valid",
+  "cancel": "Cancel",
+  "save": "Save",
+  "updateImg": "Update image",
+  "applyDiscount": "Apply discounts to this contact",
+  "discount": "Discounts",
+  "credit": "Credit",
+  "creditDays": "Credit Days",
+  "allowCredit": "Allow to this contact to have credit",
+  "clientType": "Client type",
+  "addClientD": "Enter specific contact information",
+  "clientInfo": "Contact information",
+  "name": "Name",
+  "noIdentification": "Number of identification",
+  "address": "Address",
+  "phone": "Phone Number"
+}

@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
 import useAxios from "../../axios/index";
+import { useTranslation } from "react-i18next";
 
 export default function Form({
   onSave,
@@ -31,6 +32,7 @@ export default function Form({
   } = useForm({
     defaultValues: data,
   });
+  const { t } = useTranslation();
 
   const [catalog, setCatalog] = useState([]);
   const onSubmit = async (data) => {
@@ -87,8 +89,7 @@ export default function Form({
                 <h2 className="text-xl font-bold ml-2">{headerText} </h2>
               </div>
               <span className="text-sm text-black text-opacity-50">
-                Crea o edita tus {headerText.toLowerCase()} y manten tu empresa
-                organizada.
+                {t("formPhrase")}
               </span>
               <Divider className="mt-4" />
             </div>
@@ -120,7 +121,7 @@ export default function Form({
                                 getCatalogAsync(item.name, e.target.value)
                               }
                               inputRef={ref}
-                              helperText={error && "Campo requerido"}
+                              helperText={error && t("inputRequired")}
                               label={item.label}
                               variant="outlined"
                             />
@@ -151,7 +152,7 @@ export default function Form({
                       className="input-rounded"
                       variant="outlined"
                       error={error}
-                      helperText={error && `El campo no es valido`}
+                      helperText={error && t("inputValid")}
                     />
                   )}
                 />
@@ -167,7 +168,7 @@ export default function Form({
                   size="medium"
                   className=" border-gray-300"
                 >
-                  Cancelar
+                  {t("cancel")}
                 </Button>
                 <Button
                   type="submit"
@@ -175,7 +176,7 @@ export default function Form({
                   variant="contained"
                   size="medium"
                 >
-                  Guardar
+                  {t("save")}
                 </Button>
               </div>
             </DialogActions>

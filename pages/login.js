@@ -8,12 +8,14 @@ import { useForm } from "react-hook-form";
 import useAuth from "../auth/useAuth";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 export default function Login() {
   const { register, handleSubmit } = useForm();
   const [error, setError] = useState(false);
   const { LogIn } = useAuth();
   const router = useRouter();
+  const { t } = useTranslation();
 
   const handleLogin = async (data) => {
     try {
@@ -68,12 +70,12 @@ export default function Login() {
             />
 
             <div className=" text-3xl font-bold tracking-tighter mt-5">
-              Iniciar Sesion
+              {t("login.login")}
             </div>
             <div className="text-xs mb-2">
-              <span>No tienes una cuenta? </span>
+              <span> {t("login.exist")}</span>
               <Link href="#" underline="always">
-                <span>Crea una</span>
+                <span> {t("login.create")}</span>
               </Link>
             </div>
             <div className=" flex flex-nowrap items-center gap-2 bg-slate-200 text-sm p-2  my-2 rounded-xl">
@@ -88,7 +90,7 @@ export default function Login() {
                 <TextField
                   required
                   id="email"
-                  label="Correo electronico"
+                  label={t("login.email")}
                   {...register("email")}
                   size="small"
                   error={error}
@@ -102,8 +104,8 @@ export default function Login() {
                   required
                   id="password"
                   error={error}
-                  helperText={error ? "No se ha encontrado el usuario" : ""}
-                  label="Contrasena"
+                  helperText={error ? t("login.found") : ""}
+                  label={t("login.passw")}
                   {...register("password")}
                   size="small"
                   type="password"
@@ -115,11 +117,11 @@ export default function Login() {
               <div className="flex justify-between items-center mt-2">
                 <div className="flex items-center tracking-wide text-xs">
                   <Checkbox />
-                  Recuerdame
+                  {t("login.remember")}
                 </div>
                 <div className="tracking-wide text-xs font-bold text-right">
                   <Link href="#" underline="always">
-                    {"Olvidaste la contrasena?"}
+                    {t("login.forgotP")}
                   </Link>
                 </div>
               </div>
@@ -133,7 +135,7 @@ export default function Login() {
                   type="submit"
                 >
                   <span className=" text-white font-bold tracking-wider">
-                    Iniciar Sesion
+                    {t("login.login")}
                   </span>
                 </Button>
               </div>
@@ -158,7 +160,7 @@ export default function Login() {
           <div className=" px-20">
             {/* Title and subtitle */}
             <div className=" text-white text-5xl p-3 font-bold">
-              Bienvenido a <div> nuestra comunidad</div>
+              {t("login.welcome")}
             </div>
             <div className=" text-white p-3">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe non

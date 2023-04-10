@@ -7,6 +7,7 @@ import {
 import { Card, InputAdornment, OutlinedInput } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { debounce } from "../../utils/methods";
+import { useTranslation } from "react-i18next";
 
 export default function GList({
   setFormOpen,
@@ -19,6 +20,8 @@ export default function GList({
   cols,
   searchText,
 }) {
+  const { t } = useTranslation();
+
   const columns = [
     {
       field: "id",
@@ -27,7 +30,7 @@ export default function GList({
     },
     ...cols,
     {
-      field: "Acciones",
+      field: t("actions"),
       sortable: false,
       width: 220,
       renderCell: (cells) => {
@@ -100,7 +103,7 @@ export default function GList({
             rowsPerPageOptions={[5, 20, 50, 100]}
             paginationMode="server"
             localeText={{
-              noRowsLabel: "No hay datos",
+              noRowsLabel: t("ndata"),
             }}
             hideFooterSelectedRowCount
             autoHeight

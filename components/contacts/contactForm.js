@@ -23,6 +23,7 @@ import { useForm } from "react-hook-form";
 import useAxios from "../../axios/index";
 import { postImage } from "../globals/imageHandler";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -64,6 +65,7 @@ export default function ContactForm({ contact, invoices }) {
           discount: 0,
         },
   });
+  const { t } = useTranslation();
 
   const [content, setContent] = useState(0);
   // const [invoices, setInvoices] = useState(false);
@@ -184,7 +186,7 @@ export default function ContactForm({ contact, invoices }) {
               >
                 <div className="w-full flex flex-col justify-center space-y-2 items-center">
                   <CameraAltRounded />
-                  <span className="text-xs capitalize">Actualizar imagen</span>
+                  <span className="text-xs capitalize">{t("updateImg")}</span>
                 </div>
 
                 <input
@@ -213,9 +215,9 @@ export default function ContactForm({ contact, invoices }) {
             <FormGroup>
               <div className="flex items-center justify-between w-full">
                 <div className="text-xs flex flex-col">
-                  <span className="font-bold">Descuento</span>
+                  <span className="font-bold">{t("discount")}</span>
                   <span className="text-neutral-500">
-                    Aplica descuentos a este contacto
+                    {t("applyDiscount")}{" "}
                   </span>
                 </div>
                 <FormControlLabel
@@ -232,10 +234,8 @@ export default function ContactForm({ contact, invoices }) {
               </div>
               <div className="flex items-center justify-between w-full">
                 <div className="text-xs flex flex-col">
-                  <span className="font-bold">Credito</span>
-                  <span className="text-neutral-500">
-                    Permitir credito a este contacto
-                  </span>
+                  <span className="font-bold">{t("credit")}</span>
+                  <span className="text-neutral-500">{t("allowCredit")} </span>
                 </div>
                 <FormControlLabel
                   control={
@@ -256,12 +256,8 @@ export default function ContactForm({ contact, invoices }) {
         {/* Personal info client */}
         <Card className="flex flex-col justify-around space-y-3 col-span-12 lg:col-span-8  p-6 ">
           <div className="flex flex-col mx-2 py-2">
-            <span className="font-bold tracking-wider">
-              Informacion de contacto
-            </span>
-            <span className="text-sm text-neutral-500">
-              Ingresa datos especificos del contacto.
-            </span>
+            <span className="font-bold tracking-wider">{t("clientInfo")}</span>
+            <span className="text-sm text-neutral-500">{t("addClientD")} </span>
           </div>
           <div className="lg:flex w-full space-y-3 lg:space-y-0 lg:space-x-4">
             <FormControl className="w-full">
@@ -271,21 +267,12 @@ export default function ContactForm({ contact, invoices }) {
                 })}
                 InputLabelProps={{ shrink: true }}
                 id="outlined-adornment-name"
-                label="Nombre"
+                label={t("name")}
                 size="medium"
                 error={errors.name && "value"}
                 className="input-rounded"
-                helperText={errors.name && `El campo no es valido`}
+                helperText={errors.name && t("inputValid")}
                 variant="outlined"
-                // InputProps={{
-                //   startAdornment: (
-                //     <InputAdornment position="start">
-                //       <BadgeOutlined
-                //         className={`${errors.name && "text-red-500"} `}
-                //       />
-                //     </InputAdornment>
-                //   ),
-                // }}
                 fullWidth
               />
             </FormControl>
@@ -295,29 +282,20 @@ export default function ContactForm({ contact, invoices }) {
                   required: true,
                 })}
                 id="outlined-adornment-name"
-                label="Numero de Identificacion"
+                label={t("noIdentification")}
                 size="large"
                 error={errors.noIdentification && "value"}
                 className="input-rounded"
-                helperText={errors.noIdentification && `El campo no es valido`}
+                helperText={errors.noIdentification && t("inputValid")}
                 variant="outlined"
                 InputLabelProps={{ shrink: true }}
-                // InputProps={{
-                //   startAdornment: (
-                //     <InputAdornment position="start">
-                //       <EmailOutlined
-                //         className={`${errors.website && "text-red-500"} `}
-                //       />
-                //     </InputAdornment>
-                //   ),
-                // }}
                 fullWidth
               />
             </FormControl>
           </div>
           <FormControl className="w-full">
             <InputLabel id="select-type-identification">
-              Tipo de Cliente
+              {t("clientType")}
             </InputLabel>
             <Select
               {...register("clientType")}
@@ -327,7 +305,7 @@ export default function ContactForm({ contact, invoices }) {
               onChange={(params) => setClientType(params.target.value)}
               size="large"
               className="rounded-xl text-md"
-              label="Tipo de cliente"
+              label={t("clientType")}
             >
               {clientTypes &&
                 clientTypes.map((type, index) => {
@@ -346,7 +324,7 @@ export default function ContactForm({ contact, invoices }) {
             <TextField
               {...register("email")}
               id="outlined-adornment-email"
-              label="E-mail"
+              label={t("login.email")}
               size="medium"
               className="input-rounded text-md"
               variant="outlined"
@@ -358,7 +336,7 @@ export default function ContactForm({ contact, invoices }) {
               <TextField
                 {...register("addresses.0.address1")}
                 id="outlined-adornment-address"
-                label="Direccion"
+                label={t("address")}
                 size="medium"
                 className="input-rounded text-md"
                 variant="outlined"
@@ -369,7 +347,7 @@ export default function ContactForm({ contact, invoices }) {
               <TextField
                 {...register("contacts.0.number")}
                 id="outlined-adornment-phone"
-                label="Numero de Telefono"
+                label={t("phone")}
                 size="medium"
                 className="input-rounded text-md"
                 variant="outlined"
@@ -384,7 +362,7 @@ export default function ContactForm({ contact, invoices }) {
               <TextField
                 {...register("creditDays")}
                 id="outlined-adornment-phone"
-                label="Dias de credito"
+                label={t("creditDays")}
                 size="medium"
                 type="number"
                 className="input-rounded text-md"
@@ -404,7 +382,7 @@ export default function ContactForm({ contact, invoices }) {
               <TextField
                 {...register("discount")}
                 id="outlined-adornment-phone"
-                label="Descuento"
+                label={t("discount")}
                 size="medium"
                 type="number"
                 className="input-rounded text-md"
@@ -432,13 +410,8 @@ export default function ContactForm({ contact, invoices }) {
                 >
                   Cancelar
                 </Button> */}
-            <Button
-              variant="contained"
-              type="submit"
-              color="primary"
-              // className="font-semibold w-28 shadow-xl bg-green-600 text-white rounded-2xl"
-            >
-              Guardar
+            <Button variant="contained" type="submit" color="primary">
+              {t("save")}
             </Button>
           </div>
         </Card>

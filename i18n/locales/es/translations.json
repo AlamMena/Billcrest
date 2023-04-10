@@ -1,0 +1,61 @@
+{
+  "login": {
+    "welcome": "Bienvenido a nuestra Comunidad",
+    "login": "Iniciar sesion",
+    "exist": "No tienes una cuenta?",
+    "create": "Crea una",
+    "email": "Correo electronico",
+    "passw": "Contraseña",
+    "remember": "Recuerdame",
+    "forgotP": "Olvidaste la contrasena?",
+    "found": "No se ha encontrado el usuario"
+  },
+  "home": {
+    "welcome": "Bienvenido de nuevo Test User",
+    "congrats": "Felicidades",
+    "seller": "La mejor venta de este mes, has vendido un 57.6% mas solamente hoy.",
+    "go": "Ir ahora",
+    "claim": "Reclamar premio",
+    "sales": "Ventas y compras",
+    "annual": "Ventas anuales",
+    "summary": "Resumen de ventas",
+    "currentB": "Balance actual"
+  },
+  "nav": {
+    "titles": {
+      "management": "Gestion"
+    },
+    "home": "Inicio",
+    "branches": "Sucursales",
+    "warehouses": "Almacenes",
+    "categories": "Categorias",
+    "brands": "Marcas",
+    "providers": "Proveedores",
+    "products": "Productos",
+    "clients": "Clientes",
+    "invoices": "Facturas",
+    "receptions": "Recepciones",
+    "earnings": "Ganancias",
+    "losses": "Perdidas"
+  },
+  "ndata": "No hay datos",
+  "actions": "Acciones",
+  "formPhrase": "Crea o edita tu información y mantén tu empresa organizada",
+  "inputRequired": "Este campo es requerido",
+  "inputValid": "Este campo no es valido ",
+  "cancel": "Cancelar",
+  "save": "Salvar",
+  "updateImg": "Actualizar imagen",
+  "applyDiscount": "Aplica descuentos a este contacto",
+  "discount": "Descuentos",
+  "credit": "Credito",
+  "creditDays": "Dias de credito",
+  "allowCredit": "Permitir credito a este contacto",
+  "clientType": "Tipo de cliente",
+  "addClientD": "Ingresa datos especificos del contacto.",
+  "clientInfo": "Informacion de contacto",
+  "name": "Nombre",
+  "noIdentification": "Numero de identificacion",
+  "address": "Direccion",
+  "phone": "Numero de telefono"
+}
