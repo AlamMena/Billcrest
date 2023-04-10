@@ -50,14 +50,14 @@ const StyledSubNavItemIcon = styled(ListItemIcon)({
   justifyContent: "center",
 });
 
-function NavItem({ item, currentPath, redirect }) {
+function NavItem({ item, currentPath, redirect, onClose }) {
   const [open, setOpen] = useState(false);
   const { icon, title, items, info, path } = item;
   return (
     <Box>
       <StyledNavItem
         //   component={RouterLink}
-        onClick={() => (items ? setOpen(!open) : redirect(path))}
+        onClick={() => (items ? setOpen(!open) : redirect(path), onClose())}
         selected={currentPath === path}
         sx={{
           "&.active": {
@@ -114,7 +114,7 @@ function NavItem({ item, currentPath, redirect }) {
   );
 }
 
-export default function NavSection() {
+export default function NavSection({ onClose }) {
   const { pathname, push: redirect } = useRouter();
 
   return (
@@ -131,6 +131,7 @@ export default function NavSection() {
                 currentPath={pathname}
                 item={child}
                 redirect={redirect}
+                onClose={onClose}
               />
             ))}
           </div>

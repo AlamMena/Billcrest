@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect, useState, createContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,10 +15,12 @@ import palette from "../../styles/theme/palette";
 import TopSection from "./topSection";
 
 const drawerWidth = 270;
+const drawerHeight = 75;
 
-function Nav({ children }, props) {
+export default function Nav({ children }, props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  // const [drawerHeight, setHeight] = React.useState("80px");
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -33,6 +36,10 @@ function Nav({ children }, props) {
         position="fixed"
         elevation={0}
         sx={{
+          height: drawerHeight,
+          position: "flex",
+          alignContent: "center",
+          justifyContent: "center",
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
           backgroundColor: "rgba(249, 250, 251, 0.8)",
@@ -80,7 +87,7 @@ function Nav({ children }, props) {
         >
           {/* <Logo /> */}
           <ProfileCard />
-          <NavSection />
+          <NavSection onClose={handleDrawerToggle} />
         </Drawer>
         <Drawer
           variant="permanent"
@@ -100,7 +107,7 @@ function Nav({ children }, props) {
           open
         >
           {" "}
-          <Box sx={{ px: 2.5, py: 2.5, display: "inline-flex" }}>
+          <Box sx={{ px: 2.5, pt: 2, display: "inline-flex" }}>
             <Avatar
               alt="logo"
               variant="square"
@@ -130,4 +137,3 @@ function Nav({ children }, props) {
     </Box>
   );
 }
-export default Nav;

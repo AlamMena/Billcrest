@@ -58,24 +58,24 @@ export default function BarChart({ data }) {
         <Typography variant="h6">{data.label}</Typography>
         <span className=" text-2xl font-bold">
           {(data.total <= 0 && <span>-</span>) ||
-            (data.label !== "Products Sold" ? (
+            (data.label !== "" ? (
               <span>{formatCurrency(data.total)}</span>
             ) : (
               data.total
             ))}
         </span>
-        <div className="text-xs text-neutral-500 w-72">
+        <div className="text-xs flex items-center gap-1 text-neutral-500 w-72">
           {data.increasePercentage > 0 ? (
-            <TrendingUpOutlined className=" bg-green-100 rounded-full p-1 text-green-600 mr-2 wide" />
+            <TrendingUpOutlined className=" bg-green-100 rounded-full p-1 text-green-600  wide" />
           ) : (
-            <TrendingDownOutlined className=" bg-red-100 rounded-full p-1 text-red-600 mr-2 wide" />
+            <TrendingDownOutlined className=" bg-red-100 rounded-full p-1 text-red-600  wide" />
           )}
-          <span className=" font-bold text-black">
+          <p className=" font-bold text-black">
             {(data.increasePercentage <= 0 && <span>-</span>) || (
               <span>{formatCurrency(data.increasePercentage)}</span>
             )}
-          </span>
-          <span> la semana pasada</span>
+          </p>
+          <p>la semana pasada</p>
         </div>
       </div>
       <div className=" max-w-xs flex-auto p-3">

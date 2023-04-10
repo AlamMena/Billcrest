@@ -3,9 +3,13 @@ import { Box, Avatar, Popover, Divider } from "@mui/material";
 import palette from "../../styles/theme/palette";
 import { useState } from "react";
 import useAuth from "../../auth/useAuth";
+import { LanContext } from "../../pages/_app";
+import { useContext } from "react";
 import { useRouter } from "next/router";
 
 export default function TopSection() {
+  const { language, changeLanguage } = useContext(LanContext);
+
   const { LogOut } = useAuth();
   const Router = useRouter();
 
@@ -16,14 +20,27 @@ export default function TopSection() {
     email: "testuser@gmail.com",
   };
   const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorTr, setAnchorTr] = useState(null);
+
   const id = open ? "profile-popover" : undefined;
+  const idTr = openTr ? "profile-popover" : undefined;
+
   const open = Boolean(anchorEl);
+  const openTr = Boolean(anchorTr);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+  const handleClickTranslate = (event) => {
+    setAnchorTr(event.currentTarget);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleCloseTr = () => {
+    setAnchorTr(null);
   };
 
   function SvgColor({ src, sx, ...other }) {
@@ -70,8 +87,44 @@ export default function TopSection() {
         {Icon("search")}
       </div>
       <div className="flex  p-2 items-center justify-center space-x-4">
-        {Icon("users")}
-        {Icon("notification")}
+        <div>{Icon("notification")}</div>
+        <div aria-describedby={idTr} onClick={handleClickTranslate}>
+          {Icon("translate")}
+        </div>
+        <Popover
+          id={idTr}
+          open={openTr}
+          anchorEl={anchorTr}
+          onClose={handleCloseTr}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+        >
+          <div className="flex flex-col rounded-xl p-2 gap-2">
+            <div
+              className="flex justify-center items-center cursor-pointer text-sm gap-3"
+              onClick={() => {
+                handleCloseTr();
+                changeLanguage("es");
+              }}
+            >
+              <img src="./spainFlag.svg" alt="" className=" w-10 h-10  " />
+              <p>Español</p>
+            </div>
+            <Divider className="px-0" />
+            <div
+              className="flex justify-cente cursor-pointer items-center text-sm gap-3"
+              onClick={() => {
+                handleCloseTr();
+                changeLanguage("en");
+              }}
+            >
+              <img src="./englandFlag.svg" alt="" className=" w-10 h-10 " />
+              <p>English</p>
+            </div>
+          </div>
+        </Popover>
 
         <Avatar
           src={account.photoURL}

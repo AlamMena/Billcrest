@@ -3,7 +3,7 @@
 }
 
 .icon {
-    @apply animate-spin h-5 w-5 mr-4;
+    @apply h-10 w-10 mr-4;
 }
 
 .img_container {

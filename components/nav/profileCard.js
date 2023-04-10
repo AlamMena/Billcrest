@@ -17,7 +17,7 @@ export default function ProfileCard() {
     role: "admin",
   };
   return (
-    <Box sx={{ mx: 2.5 }}>
+    <Box sx={{ mx: 2.5, mt: 2 }}>
       <Link underline="none">
         <StyledAccount>
           <Avatar src={account.photoURL} alt="photoURL" />

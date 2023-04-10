@@ -1,5 +1,6 @@
 // component
 import { Box } from "@mui/material";
+// import { useTranslation } from "react-i18next";
 
 // ----------------------------------------------------------------------
 function SvgColor({ src, sx, ...other }) {
@@ -29,6 +30,8 @@ function Icon(name) {
     />
   );
 }
+
+// const { t } = useTranslation();
 
 const config = [
   {
