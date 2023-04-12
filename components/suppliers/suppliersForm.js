@@ -68,7 +68,7 @@ export default function SuppliersForm({ supplier }) {
           discount: 0,
         },
   });
-
+  // alert(supplier);
   const [fileContainer, setFileContainer] = useState();
   const [currentImage, setCurrentImage] = useState(
     supplier && supplier.imageUrl
@@ -318,6 +318,10 @@ export default function SuppliersForm({ supplier }) {
                   })}
                   id="outlined-adornment-name"
                   label="Nombre"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  placeholder="Supplier - 001"
                   size="medium"
                   error={errors.name && "value"}
                   className="input-rounded"
@@ -334,6 +338,10 @@ export default function SuppliersForm({ supplier }) {
                   id="outlined-adornment-name"
                   label="Numero de Identificacion"
                   size="large"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  placeholder="10002-001-001"
                   error={errors.noIdentification && "value"}
                   className="input-rounded"
                   helperText={
@@ -402,6 +410,10 @@ export default function SuppliersForm({ supplier }) {
                 {...register("description")}
                 label="Descripcion"
                 variant="outlined"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                placeholder="Description"
                 multiline
                 minRows={3}
                 size="medium"
@@ -425,6 +437,7 @@ export default function SuppliersForm({ supplier }) {
                 variant="contained"
                 color="primary"
                 className="font-semibold w-28 shadow-xl bg-green-600 text-white rounded-2xl"
+                type="submit"
               >
                 Guardar
               </Button>

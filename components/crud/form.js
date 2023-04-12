@@ -39,7 +39,6 @@ export default function Form({
     let parsedData = data;
     if (formatAutoComplete) {
       parsedData = formatAutoComplete(parsedData);
-      alert(JSON.stringify(parsedData));
     }
     await onSave(parsedData);
     // alert(JSON.stringify(data));

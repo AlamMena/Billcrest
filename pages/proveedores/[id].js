@@ -33,15 +33,16 @@ function a11yProps(index) {
 
 export default function UpsertSuplier({ id }) {
   const [value, setValue] = useState(0);
-  const [suplier, setSuplier] = useState();
+  const [supplier, setSupplier] = useState();
   const { axiosInstance } = useAxios();
-  const getSuplierAsync = async () => {
-    const { data } = await axiosInstance.get(`v1/suplier?id=${id}`);
-    setSuplier(data);
+
+  const getSupplierAsync = async () => {
+    const { data } = await axiosInstance.get(`/supplier/${id}`);
+    setSupplier(data);
   };
 
   useEffect(() => {
-    getSuplierAsync();
+    getSupplierAsync();
   }, []);
 
   const handleChange = (e, newValue) => {
@@ -71,6 +72,8 @@ export default function UpsertSuplier({ id }) {
           locationRoutes={locationRoutes}
         />
       </div>
+      <SuplierForm supplier={supplier} />
+      {/* 
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           aria-label="basic tabs example"
@@ -101,18 +104,16 @@ export default function UpsertSuplier({ id }) {
           />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
-        <SuplierForm suplier={suplier} />
-      </TabPanel>
+      <TabPanel value={value} index={0}></TabPanel>
       <TabPanel value={value} index={1}>
-        {/* <ContactHistory contact={contact} /> */}
-      </TabPanel>
+        <ContactHistory contact={contact} />
+      </TabPanel> */}
     </div>
   );
 }
 
-// export async function getServerSideProps({ params }) {
-//   return {
-//     props: { id: params.id },
-//   };
-// }
+export async function getServerSideProps({ params }) {
+  return {
+    props: { id: params.id },
+  };
+}

@@ -214,7 +214,7 @@ export default function ProductsForm({ product }) {
             <TextField
               {...register("name", { required: true })}
               className="input-rounded"
-              label="Nombre *"
+              label="Nombre*"
               placeholder="Producto - 001"
               fullWidth
               error={errors.name}

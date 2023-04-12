@@ -33,7 +33,7 @@ export default function UpsertContact({ id }) {
   const { axiosInstance } = useAxios();
 
   const getClientAsync = async () => {
-    const { data } = await axiosInstance.get(`client/${id}`);
+    const { data } = await axiosInstance.get(`/client/${id}`);
     setClient(data);
   };
 
@@ -109,8 +109,8 @@ export default function UpsertContact({ id }) {
   );
 }
 
-// export async function getServerSideProps({ params }) {
-//   return {
-//     props: { id: params.id },
-//   };
-// }
+export async function getServerSideProps({ params }) {
+  return {
+    props: { id: params.id },
+  };
+}
