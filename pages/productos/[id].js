@@ -14,8 +14,8 @@ export default function Product({ id }) {
   }, []);
   return <ProductForm product={product} />;
 }
-export async function getServerSideProps({ params }) {
-  return {
-    props: { id: params.id },
-  };
-}
+// export async function getServerSideProps({ params }) {
+//   return {
+//     props: { id: params.id },
+//   };
+// }

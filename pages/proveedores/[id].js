@@ -111,8 +111,8 @@ export default function UpsertSuplier({ id }) {
   );
 }
 
-export async function getServerSideProps({ params }) {
-  return {
-    props: { id: params.id },
-  };
-}
+// export async function getServerSideProps({ params }) {
+//   return {
+//     props: { id: params.id },
+//   };
+// }

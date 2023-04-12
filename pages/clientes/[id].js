@@ -69,6 +69,7 @@ export default function UpsertContact({ id }) {
           Icon={<SettingsOutlined />}
         />
       </div>
+      <ContactForm contact={client} invoices={true} />
       {/* <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           aria-label="basic tabs example"
@@ -100,7 +101,6 @@ export default function UpsertContact({ id }) {
         </Tabs>
       </Box> */}
       {/* <TabPanel value={value} index={0}> */}
-      <ContactForm contact={client} invoices={true} />
       {/* </TabPanel> */}
       {/* <TabPanel value={value} index={1}>
         <ContactHistory contact={client} />
@@ -109,8 +109,8 @@ export default function UpsertContact({ id }) {
   );
 }
 
-export async function getServerSideProps({ params }) {
-  return {
-    props: { id: params.id },
-  };
-}
+// export async function getServerSideProps({ params }) {
+//   return {
+//     props: { id: params.id },
+//   };
+// }
