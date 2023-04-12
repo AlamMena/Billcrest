@@ -74,9 +74,10 @@ export default function SuppliersList({
         return (
           <div className="flex space-x-4">
             <a
-              onClick={() => {
-                router.push(`/proveedores/${cells.row.id}`);
-              }}
+              href={`/proveedores/${cells.row.id}`}
+              // onClick={() => {
+              //   router.push(`/proveedores/${cells.row.id}`);
+              // }}
               className="text-green-400 cursor-pointer"
             >
               <EditOutlined className="text-green-400 mx-2" />
