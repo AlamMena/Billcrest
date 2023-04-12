@@ -41,6 +41,21 @@ export default function Contacts() {
     },
   ];
 
+  const deleteAsync = async () => {
+    try {
+      await toast.promise(axiosInstance.delete(`client/${itemToDelete.id}`), {
+        pending: "Eliminando cliente",
+        success: "Genial!, tu cliente ha sido eliminado.",
+        error: "Oops, algo ha ocurrido",
+      });
+
+      setConfirmOpen(false);
+      await setDataAsync();
+    } catch (error) {
+      toast.error(`Opps!, Algo ha ocurrido`);
+    }
+  };
+
   const setDataAsync = async () => {
     try {
       setPageState({ ...pageState, isLoading: true });
@@ -60,21 +75,6 @@ export default function Contacts() {
     } catch (error) {
       toast.error(`Opps!, algo ha ocurrido ${error}`);
       setPageState({ ...pageState, isLoading: false });
-    }
-  };
-
-  const deleteAsync = async () => {
-    try {
-      await toast.promise(axiosInstance.delete(`client/${itemToDelete.id}`), {
-        pending: "Eliminando cliente",
-        success: "Genial!, tu cliente ha sido eliminado.",
-        error: "Oops, algo ha ocurrido",
-      });
-
-      setConfirmOpen(false);
-      await setDataAsync();
-    } catch (error) {
-      toast.error(`Opps!, Algo ha ocurrido`);
     }
   };
 

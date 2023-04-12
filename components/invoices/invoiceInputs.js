@@ -91,7 +91,7 @@ export default function InvoiceInputs({ handlerNumber, bgcolor }) {
     getInvoiceType();
     dispatch(updateCreationDate(creationDate.toString()));
     dispatch(updateDueDate(dueDate.toString()));
-  }, []);
+  });
 
   return (
     <form

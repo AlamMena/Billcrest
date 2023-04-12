@@ -18,6 +18,7 @@ import currency from "currency.js";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import useAxios from "../../axios/index";
+import Image from "next/image.js";
 
 export default function ProductList({
   statusFilter,
@@ -66,7 +67,8 @@ export default function ProductList({
       renderCell: (cells) => {
         return (
           <div className="flex space-x-4 items-center ">
-            <img
+            <Image
+              alt=""
               className=" rounded-xl w-10 h-10"
               src={
                 cells.row.imageUrl

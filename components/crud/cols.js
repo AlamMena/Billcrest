@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function colImageName(name) {
   return {
     field: "name",
@@ -7,7 +9,8 @@ export function colImageName(name) {
     renderCell: (cells) => {
       return (
         <div className="flex space-x-4 items-center ">
-          <img
+          <Image
+            alt=""
             className=" w-10 h-10"
             src={
               cells.row.imageUrl

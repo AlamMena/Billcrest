@@ -2,6 +2,7 @@ import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import app from "../../auth/fireBaseAppConfig";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import styles from "../globals/imageHandlerStyles.module.css";
+import Image from "next/image";
 
 export default function ImagePoster({
   images,
@@ -33,7 +34,7 @@ export default function ImagePoster({
             return (
               <div key={index} className={styles.img_container}>
                 <div className={styles.img_content}>
-                  <img className={styles.img} src={url}></img>
+                  <Image alt="" className={styles.img} src={url}></Image>
                   <AiOutlineCloseCircle
                     onClick={() => {
                       setFile();

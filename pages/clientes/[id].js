@@ -39,7 +39,7 @@ export default function UpsertContact({ id }) {
 
   useEffect(() => {
     getClientAsync();
-  }, []);
+  });
 
   const handleChange = (e, newValue) => {
     setValue(newValue);

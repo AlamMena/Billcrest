@@ -3,6 +3,7 @@ import Popover from "@mui/material/Popover";
 import { Divider } from "@mui/material";
 import useAuth from "../../auth/useAuth";
 import Router from "next/router";
+import Image from "next/image";
 
 export default function ProfilePopOver() {
   const { LogOut } = useAuth();
@@ -22,7 +23,8 @@ export default function ProfilePopOver() {
 
   return (
     <div>
-      <img
+      <Image
+        alt=""
         aria-describedby={id}
         variant="contained"
         onClick={handleClick}

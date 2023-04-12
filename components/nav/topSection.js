@@ -6,6 +6,7 @@ import useAuth from "../../auth/useAuth";
 import { LanContext } from "../../pages/_app";
 import { useContext } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function TopSection() {
   const { language, changeLanguage } = useContext(LanContext);
@@ -109,7 +110,7 @@ export default function TopSection() {
                 changeLanguage("es");
               }}
             >
-              <img src="./spainFlag.svg" alt="" className=" w-10 h-10  " />
+              <Image src="./spainFlag.svg" alt="" className=" w-10 h-10  " />
               <p>Español</p>
             </div>
             <Divider className="px-0" />
@@ -120,7 +121,7 @@ export default function TopSection() {
                 changeLanguage("en");
               }}
             >
-              <img src="./englandFlag.svg" alt="" className=" w-10 h-10 " />
+              <Image src="./englandFlag.svg" alt="" className=" w-10 h-10 " />
               <p>English</p>
             </div>
           </div>

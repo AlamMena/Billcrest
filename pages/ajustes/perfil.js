@@ -2,6 +2,7 @@ import React from "react";
 import { Button, TextField, Card } from "@mui/material";
 import { CameraAltRounded, PhoneOutlined } from "@mui/icons-material";
 import { useForm } from "react-hook-form";
+import Image from "next/image";
 
 export default function ProfileSettings() {
   const {
@@ -45,7 +46,7 @@ export default function ProfileSettings() {
                 type="file"
               />
             </Button>
-            <img
+            <Image
               // src={
               //   currentImage
               //     ? currentImage

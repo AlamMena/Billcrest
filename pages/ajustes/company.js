@@ -2,6 +2,7 @@ import { Card, TextField, Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { CameraAltRounded, FormGroup } from "@mui/icons-material";
+import Image from "next/image";
 
 export default function CompanySettings() {
   const [fileContainer, setFileContainer] = useState();
@@ -45,7 +46,8 @@ export default function CompanySettings() {
                 type="file"
               />
             </Button>
-            <img
+            <Image
+              alt=""
               src={
                 currentImage
                   ? currentImage
@@ -53,7 +55,6 @@ export default function CompanySettings() {
                     // ? contact.imageUrl
                     "/dashboard_welcome.png"
               }
-              alt=""
               className=" w-36 h-36 rounded-full transition-all  "
             />
           </figure>

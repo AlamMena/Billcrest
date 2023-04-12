@@ -26,6 +26,7 @@ import { useForm } from "react-hook-form";
 import useAxios from "../../axios/index";
 import { postImage } from "../globals/imageHandler";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -244,7 +245,7 @@ export default function SuppliersForm({ supplier }) {
                     type="file"
                   />
                 </Button>
-                <img
+                <Image
                   src={
                     currentImage
                       ? currentImage

@@ -3,6 +3,7 @@ import { renderToString } from "react-dom/server";
 import * as React from "react";
 
 import { formatCurrency } from "../../utils/methods";
+import Image from "next/image";
 
 function InvoicePdf({ invoice }) {
   return (
@@ -12,7 +13,8 @@ function InvoicePdf({ invoice }) {
           <div className="bg-[white] rounded-b-md">
             <div className=" pb-4 flex justify-between">
               <div className=" text-slate-700">
-                <img
+                <Image
+                  alt=""
                   className="object-cover h-12"
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDERLwwAIqQ01S6ftSksvj0NaXIX7964O3MQ&usqp=CAU"
                 />
