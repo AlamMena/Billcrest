@@ -50,6 +50,187 @@ const StyledSubNavItemIcon = styled(ListItemIcon)({
   justifyContent: "center",
 });
 
+export default function NavSection({ onClose }) {
+  const { pathname, push } = useRouter();
+  const { t } = useTranslation();
+
+  const config = [
+    {
+      groupTitle: t("nav.invoices"),
+      items: [
+        {
+          title: t("nav.invoices"),
+          path: "/facturas",
+          icon: Icon("invoices"),
+          info: "",
+          items: [
+            { title: t("new"), path: "/facturas/crearfactura" },
+            { title: t("list"), path: "/facturas" },
+          ],
+        },
+        {
+          title: t("nav.receptions"),
+          path: "/recepcionmercancia",
+          icon: Icon("receptions"),
+          info: "",
+          items: [
+            {
+              title: t("new"),
+              path: "/recepcionmercancia/crearfacturamercancia",
+            },
+            { title: t("list"), path: "/recepcionmercancia" },
+          ],
+        },
+      ],
+    },
+    {
+      groupTitle: "General",
+      items: [
+        {
+          title: t("nav.home"),
+          path: "/",
+          icon: Icon("apps"),
+          info: "",
+        },
+        {
+          title: t("nav.branches"),
+          path: "/sucursales",
+          icon: Icon("branches"),
+          info: "",
+          // items: [
+          //   { title: "Nuevo", path: "/crear" },
+          //   { title: "lista", path: "/sucursales" },
+          // ],
+        },
+        // {
+        //   title: "Almacenes",
+        //   path: "/almacenes",
+        //   icon: icon("dashboard"),
+        //   info: "",
+        // },
+        {
+          title: t("nav.warehouses"),
+          path: "/almacenes",
+          icon: Icon("warehouses"),
+          info: "",
+        },
+        {
+          title: t("nav.categories"),
+          path: "/categorias",
+          icon: Icon("categories"),
+          info: "",
+          items: [
+            { title: t("nav.categories"), path: "/categorias" },
+            { title: t("nav.subcategories"), path: "/subcategorias" },
+          ],
+        },
+        {
+          title: t("nav.brands"),
+          path: "/marcas",
+          icon: Icon("brands"),
+          info: "",
+        },
+        {
+          title: t("nav.providers"),
+          path: "/proveedores",
+          icon: Icon("supplier"),
+          info: "",
+          items: [
+            { title: t("new"), path: "/proveedores/crear" },
+            { title: t("list"), path: "/proveedores" },
+          ],
+        },
+      ],
+    },
+    {
+      groupTitle: t("nav.titles.management"),
+      items: [
+        {
+          title: t("nav.products"),
+          path: "/productos",
+          icon: Icon("products"),
+          info: "",
+          items: [
+            { title: t("new"), path: "/productos/crear" },
+            { title: t("list"), path: "/productos" },
+          ],
+        },
+        {
+          title: t("nav.clients"),
+          path: "/clientes",
+          icon: Icon("users"),
+          info: "",
+        },
+
+        {
+          title: t("nav.earnings"),
+          path: "/404",
+          icon: Icon("earnings"),
+          info: "",
+        },
+        {
+          title: t("nav.losses"),
+          path: "/404",
+          icon: Icon("losses"),
+          info: "",
+        },
+      ],
+    },
+  ];
+
+  function SvgColor({ src, sx, ...other }) {
+    return (
+      <Box
+        component="span"
+        className="svg-color"
+        sx={{
+          width: 24,
+          height: 24,
+          display: "inline-block",
+          bgcolor: "currentColor",
+          mask: `url(${src}) no-repeat center / contain`,
+          WebkitMask: `url(${src}) no-repeat center / contain`,
+          ...sx,
+        }}
+        {...other}
+      />
+    );
+  }
+
+  function Icon(name) {
+    return (
+      <SvgColor
+        src={`/assets/icons/navbar/${name}.svg`}
+        sx={{ width: 1, height: 1 }}
+      />
+    );
+  }
+
+  return (
+    <Box>
+      <List disablePadding sx={{ p: 2 }}>
+        {config.map((groupItem, index) => (
+          <div key={index}>
+            <Typography variant="h6" sx={{ p: 2 }}>
+              {groupItem.groupTitle}
+            </Typography>
+            {groupItem.items.map((child, index) => (
+              <NavItem
+                key={index}
+                currentPath={pathname}
+                item={child}
+                redirect={push}
+                onClose={onClose}
+              />
+            ))}
+          </div>
+        ))}
+        <i className="fi fi-ro-user"></i>
+      </List>
+    </Box>
+  );
+}
+
 function NavItem({ item, currentPath, redirect, onClose }) {
   const [open, setOpen] = useState(false);
   const { icon, title, items, info, path } = item;
@@ -116,180 +297,4 @@ function NavItem({ item, currentPath, redirect, onClose }) {
     </Box>
   );
 }
-
-export default function NavSection({ onClose }) {
-  const { pathname, push: redirect } = useRouter();
-  const { t } = useTranslation();
-
-  function SvgColor({ src, sx, ...other }) {
-    return (
-      <Box
-        component="span"
-        className="svg-color"
-        sx={{
-          width: 24,
-          height: 24,
-          display: "inline-block",
-          bgcolor: "currentColor",
-          mask: `url(${src}) no-repeat center / contain`,
-          WebkitMask: `url(${src}) no-repeat center / contain`,
-          ...sx,
-        }}
-        {...other}
-      />
-    );
-  }
-
-  function Icon(name) {
-    return (
-      <SvgColor
-        src={`/assets/icons/navbar/${name}.svg`}
-        sx={{ width: 1, height: 1 }}
-      />
-    );
-  }
-
-  const config = [
-    {
-      groupTitle: "General",
-      items: [
-        {
-          title: t("nav.home"),
-          path: "/",
-          icon: Icon("apps"),
-          info: "",
-        },
-        {
-          title: t("nav.branches"),
-          path: "/sucursales",
-          icon: Icon("branches"),
-          info: "",
-          // items: [
-          //   { title: "Nuevo", path: "/crear" },
-          //   { title: "lista", path: "/sucursales" },
-          // ],
-        },
-        // {
-        //   title: "Almacenes",
-        //   path: "/almacenes",
-        //   icon: icon("dashboard"),
-        //   info: "",
-        // },
-        {
-          title: t("nav.warehouses"),
-          path: "/almacenes",
-          icon: Icon("warehouses"),
-          info: "",
-        },
-        {
-          title: t("nav.categories"),
-          path: "/categorias",
-          icon: Icon("categories"),
-          info: "",
-          items: [
-            { title: "Categorias", path: "/categorias" },
-            { title: "SubCategorias", path: "/subcategorias" },
-          ],
-        },
-        {
-          title: t("nav.brands"),
-          path: "/marcas",
-          icon: Icon("brands"),
-          info: "",
-        },
-        {
-          title: t("nav.providers"),
-          path: "/proveedores",
-          icon: Icon("supplier"),
-          info: "",
-          items: [
-            { title: "Nuevo", path: "/proveedores/crear" },
-            { title: "Lista", path: "/proveedores" },
-          ],
-        },
-      ],
-    },
-    {
-      groupTitle: t("nav.titles.management"),
-      items: [
-        {
-          title: t("nav.products"),
-          path: "/productos",
-          icon: Icon("products"),
-          info: "",
-          items: [
-            { title: "Nuevo", path: "/productos/crear" },
-            { title: "Lista", path: "/productos" },
-          ],
-        },
-        {
-          title: t("nav.clients"),
-          path: "/clientes",
-          icon: Icon("users"),
-          info: "",
-        },
-        {
-          title: t("nav.invoices"),
-          path: "/facturas",
-          icon: Icon("invoices"),
-          info: "",
-          items: [
-            { title: "Nuevo", path: "/facturas/crearfactura" },
-            { title: "Lista", path: "/facturas" },
-          ],
-        },
-
-        {
-          title: t("nav.receptions"),
-          path: "/recepcionmercancia",
-          icon: Icon("receptions"),
-          info: "",
-          items: [
-            {
-              title: "Nuevo",
-              path: "/recepcionmercancia/crearfacturamercancia",
-            },
-            { title: "Lista", path: "/recepcionmercancia" },
-          ],
-        },
-        {
-          title: t("nav.earnings"),
-          path: "/404",
-          icon: Icon("earnings"),
-          info: "",
-        },
-        {
-          title: t("nav.losses"),
-          path: "/404",
-          icon: Icon("losses"),
-          info: "",
-        },
-      ],
-    },
-  ];
-  return (
-    <Box>
-      <List disablePadding sx={{ p: 2 }}>
-        {config.map((groupItem, index) => (
-          <div key={index}>
-            <Typography variant="h6" sx={{ p: 2 }}>
-              {groupItem.groupTitle}
-            </Typography>
-            {groupItem.items.map((child, index) => (
-              <NavItem
-                key={index}
-                currentPath={pathname}
-                item={child}
-                redirect={redirect}
-                onClose={onClose}
-              />
-            ))}
-          </div>
-        ))}
-        <i className="fi fi-ro-user"></i>
-      </List>
-    </Box>
-  );
-}
-
 // ----------------------------------------------------------------------

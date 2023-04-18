@@ -12,7 +12,6 @@ import {
 import { DataGrid } from "@mui/x-data-grid";
 import { useRouter } from "next/router.js";
 import { debounce } from "../../utils/methods.js";
-import Image from "next/image.js";
 
 export default function SuppliersList({
   pageState,
@@ -36,7 +35,7 @@ export default function SuppliersList({
       renderCell: (cells) => {
         return (
           <div className="flex space-x-4 items-center">
-            <Image
+            <img
               alt=""
               className=" rounded-xl w-10 h-10"
               src={

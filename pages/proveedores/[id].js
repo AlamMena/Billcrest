@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAxios from "../../axios/index";
 import { Box, Tabs, Tab, Typography } from "@mui/material";
 import { AccountCircle, Receipt } from "@mui/icons-material";
+import axios from "axios";
 import SuplierForm from "../../components/suppliers/suppliersForm";
 import PageHeader from "../../components/globals/pageHeader";
 
@@ -36,14 +37,14 @@ export default function UpsertSuplier({ id }) {
   const [supplier, setSupplier] = useState();
   const { axiosInstance } = useAxios();
 
-  const getSupplierAsync = async () => {
-    const { data } = await axiosInstance.get(`/supplier/${id}`);
-    setSupplier(data);
-  };
+  // const getSupplierAsync = async () => {
+  //   const { data } = await axiosInstance.get(`/supplier/${id}`);
+  //   setSupplier(data);
+  // };
 
-  useEffect(() => {
-    getSupplierAsync();
-  }, []);
+  // useEffect(() => {
+  //   getSupplierAsync();
+  // }, []);
 
   const handleChange = (e, newValue) => {
     setValue(newValue);
@@ -113,7 +114,14 @@ export default function UpsertSuplier({ id }) {
 }
 
 export async function getServerSideProps({ params }) {
-  return {
-    props: { id: params.id },
-  };
+  try {
+    const response = await axios.get(
+      `https://fastbilling.azurewebsites.net/api/supplier/${params.id}`
+    );
+    const data = response.data;
+    return { props: { data } };
+  } catch (error) {
+    console.error(error);
+    return { props: {} };
+  }
 }

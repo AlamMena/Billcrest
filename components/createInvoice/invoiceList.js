@@ -9,8 +9,10 @@ import {
 import { DataGrid } from "@mui/x-data-grid";
 import { formatCurrency } from "../../utils/methods";
 import { generatePDF, InvoicePdf } from "../invoices/invoicePdf";
+import { useTranslation } from "react-i18next";
 
 export default function InvoiceList({ data }) {
+  const { t } = useTranslation();
   const columns = [
     {
       field: "id",
@@ -22,13 +24,13 @@ export default function InvoiceList({ data }) {
       field: "clientName",
       minWidth: 160,
       flex: 1,
-      headerName: "Recipiente",
+      headerName: t("clientName"),
     },
     {
       field: "invoiceTypeName",
       minWidth: 160,
       flex: 1,
-      headerName: "Tipo de Factura",
+      headerName: t("invoiceType"),
     },
     {
       field: "ncf",
@@ -40,7 +42,7 @@ export default function InvoiceList({ data }) {
       field: "date",
       minWidth: 180,
       flex: 1,
-      headerName: "Fecha",
+      headerName: t("date"),
     },
     {
       field: "total",
@@ -62,7 +64,10 @@ export default function InvoiceList({ data }) {
             <div className="hidden">
               <InvoicePdf invoice={cells.row} />
             </div>
-            <RemoveRedEyeOutlined onClick={() => generatePDF(cells.row)} />
+            <RemoveRedEyeOutlined
+              onClick={() => generatePDF(cells.row)}
+              className=" cursor-pointer hover:text-blue-500 inline-block"
+            />
           </>
         );
       },
@@ -119,7 +124,7 @@ export default function InvoiceList({ data }) {
             id="input-with-icon-adornment"
             className="input-rounded rounded-xl"
             fullWidth
-            placeholder="Buscar facturas..."
+            placeholder={t("searchInvoice")}
             startAdornment={
               <InputAdornment position="start">
                 <SearchRounded className="text-slate-400" />

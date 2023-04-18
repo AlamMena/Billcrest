@@ -36,7 +36,7 @@ export default function ContactList({
       renderCell: (cells) => {
         return (
           <div className="flex space-x-4 items-center">
-            <Image
+            <img
               alt=""
               className=" rounded-xl w-10 h-10"
               src={

@@ -21,7 +21,6 @@ import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Drawer from "@mui/material/Drawer";
 import { useEffect } from "react";
-import Image from "next/image";
 
 const routes = [
   {
@@ -172,15 +171,15 @@ export default function Index() {
       onClick={() => setOpen(false)}
     >
       <div className="flex items-center space-x-4">
-        <Image
+        <img
           alt=""
           className=" w-8 h-8 my-4"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3bAlqaZSh0mViahdE_MNIduBQZBWwyBEZtA&usqp=CAU"
-        ></Image>
+        ></img>
         <span>Fast Billing 2</span>
       </div>
       <div className=" px-4 py-2 my-4 flex space-x-3 bg-neutral-100 rounded-lg">
-        <Image
+        <img
           alt=""
           className=" rounded-full w-12 h-12"
           src="https://cdn-icons-png.flaticon.com/128/2202/2202112.png"
@@ -244,7 +243,7 @@ export default function Index() {
       </div>
 
       <div className="flex items-center space-x-4">
-        <Image
+        <img
           alt=""
           className="w-6 h-5 mx-2 appBar-button-animation"
           src="https://cdn-icons-png.flaticon.com/128/299/299901.png"
@@ -284,7 +283,7 @@ export default function Index() {
         </div>
 
         <div className="flex items-center space-x-4">
-          <Image
+          <img
             alt=""
             className="w-6 h-5 mx-2 appBar-button-animation"
             src="https://cdn-icons-png.flaticon.com/128/299/299901.png"
@@ -301,15 +300,15 @@ export default function Index() {
         className={` hidden md:flex  z-50 overflow-y-auto fixed  flex-col w-64 h-screen px-4 shadow-md`}
       >
         <div className="flex items-center space-x-4">
-          <Image
+          <img
             alt=""
             className=" w-8 h-8 my-4"
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3bAlqaZSh0mViahdE_MNIduBQZBWwyBEZtA&usqp=CAU"
-          ></Image>
+          ></img>
           <span>Fast Billing 2</span>
         </div>
         <div className=" px-4 py-2 my-4 flex space-x-3 bg-neutral-100 rounded-lg">
-          <Image
+          <img
             alt=""
             className=" rounded-full w-12 h-12"
             src="https://cdn-icons-png.flaticon.com/128/2202/2202112.png"

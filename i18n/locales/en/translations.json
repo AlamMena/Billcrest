@@ -29,6 +29,7 @@
     "branches": "Branches",
     "warehouses": "Warehouses",
     "categories": "Categories",
+    "subcategories": "Subcategories",
     "brands": "Brands",
     "providers": "Providers",
     "products": "Products",
@@ -38,6 +39,8 @@
     "earnings": "Earnings",
     "losses": "Losses"
   },
+  "new": "New",
+  "list": "List",
   "ndata": "No data available",
   "actions": "Actions",
   "formPhrase": "Create or edit your information and keep your company organized",
@@ -57,5 +60,11 @@
   "name": "Name",
   "noIdentification": "Number of identification",
   "address": "Address",
-  "phone": "Phone Number"
+  "phone": "Phone Number",
+  "error": "Opps!, something went wrong",
+  "newInvoice": "New Invoice",
+  "clientName": "Client",
+  "invoiceType": "Invoice Type",
+  "date": "Date",
+  "searchInvoice": "Search for Invoices..."
 }

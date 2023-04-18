@@ -57,6 +57,7 @@ export default function SelectPopUp({ open, setOpenSelect, type }) {
             >
               <div className="h-14 w-14">
                 <Image
+                  layout="fill"
                   alt=""
                   src="https://cdn-icons-png.flaticon.com/128/3321/3321752.png"
                   className="rounded-full w-full"

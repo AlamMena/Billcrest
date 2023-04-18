@@ -9,8 +9,10 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { SellOutlined } from "@mui/icons-material";
 import InvoiceStatus from "../../components/invoices/invoiceStatus";
+import { useTranslation } from "react-i18next";
 
 export default function Invoices() {
+  const { t } = useTranslation();
   const [invoices, setInvoices] = useState({
     isLoading: true,
     data: [],
@@ -23,17 +25,17 @@ export default function Invoices() {
       const response = await axiosInstance.get("/invoices?limit=200&page=1");
       setInvoices({ isLoading: false, data: response.data.data });
     } catch (error) {
-      toast.error(`Opps!, something went wrong${error}`);
+      toast.error(t("error"));
     }
   };
 
   const locationRoutes = [
     {
-      text: "Inicio",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Facturas",
+      text: t("nav.invoices"),
       link: "/facturas",
     },
   ];
@@ -47,7 +49,7 @@ export default function Invoices() {
       <div className="flex w-full justify-between items-center ">
         <div>
           <PageHeader
-            header="Facturas"
+            header={t("nav.invoices")}
             locationRoutes={locationRoutes}
             Icon={<SellOutlined />}
           />
@@ -60,7 +62,7 @@ export default function Invoices() {
             startIcon={<Add className="text-white ml-2 xs:ml-0" />}
           >
             <span className="text-sm hidden xs:flex whitespace-nowrap text-neutral-50 capitalize font-bold">
-              Nueva factura
+              {t("newInvoice")}
             </span>
           </Button>
         </div>

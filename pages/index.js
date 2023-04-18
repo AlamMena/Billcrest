@@ -8,7 +8,7 @@ import useAxios from "../axios/index";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../components/loading";
 import { useTranslation } from "react-i18next";
-import Image from "next/image";
+
 export default function Home() {
   const { t } = useTranslation();
   const { axiosInstance } = useAxios();
@@ -91,7 +91,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex">
-              <Image
+              <img
                 alt="welcome image"
                 className="md:w-72 h-full w-64"
                 src="/dashboard_welcome.png"

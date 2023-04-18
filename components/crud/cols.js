@@ -10,6 +10,7 @@ export function colImageName(name) {
       return (
         <div className="flex space-x-4 items-center ">
           <Image
+            layout="fill"
             alt=""
             className=" w-10 h-10"
             src={

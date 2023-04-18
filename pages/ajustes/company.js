@@ -2,7 +2,6 @@ import { Card, TextField, Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { CameraAltRounded, FormGroup } from "@mui/icons-material";
-import Image from "next/image";
 
 export default function CompanySettings() {
   const [fileContainer, setFileContainer] = useState();
@@ -46,7 +45,7 @@ export default function CompanySettings() {
                 type="file"
               />
             </Button>
-            <Image
+            <img
               alt=""
               src={
                 currentImage
