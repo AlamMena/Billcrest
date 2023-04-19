@@ -10,7 +10,6 @@ import { updateBeneficiary, updateRecipient } from "../../store/invoiceSlice";
 import { useState, useEffect } from "react";
 import useAxios from "../../axios/index";
 import { toast } from "react-toastify";
-import Image from "next/image";
 
 export default function SelectPopUp({ open, setOpenSelect, type }) {
   const [contacts, setContacts] = useState({
@@ -56,7 +55,7 @@ export default function SelectPopUp({ open, setOpenSelect, type }) {
               }}
             >
               <div className="h-14 w-14">
-                <Image
+                <img
                   layout="fill"
                   alt=""
                   src="https://cdn-icons-png.flaticon.com/128/3321/3321752.png"

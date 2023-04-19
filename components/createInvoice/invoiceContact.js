@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -8,7 +7,7 @@ export function InvoiceBeneficiary() {
   return (
     <div className="p-3 flex space-x-3 items-center space-y-1">
       <div className="h-14 w-14">
-        <Image
+        <img
           layout="fill"
           alt=""
           src={beneficiary.imageUrl}
@@ -35,7 +34,7 @@ export function InvoiceRecipient() {
       {(Object.keys(recipient).length <= 0 && <span></span>) || (
         <div className="flex space-y-1 space-x-3 items-center">
           <div className="h-14 w-14">
-            <Image
+            <img
               layout="fill"
               alt=""
               src={recipient.imageUrl}
@@ -64,7 +63,7 @@ export function InvoiceSupplier() {
       {(Object.keys(supplier).length <= 0 && <span></span>) || (
         <div className="flex space-y-1 space-x-3 items-center">
           <div className="h-14 w-14">
-            <Image
+            <img
               layout="fill"
               alt=""
               src="https://cdn-icons-png.flaticon.com/128/3321/3321752.png"
