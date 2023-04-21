@@ -8,8 +8,10 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { SellOutlined } from "@mui/icons-material";
 import GoodReceiptList from "../../components/createInvoice/goodReceiptList";
+import { useTranslation } from "react-i18next";
 
 export default function Invoices() {
+  const { t } = useTranslation();
   const [goodreceipt, setGoodReceipt] = useState({
     isLoading: true,
     data: [],
@@ -24,17 +26,17 @@ export default function Invoices() {
       );
       setGoodReceipt({ isLoading: false, data: response.data.data });
     } catch (error) {
-      toast.error(`Opps!, something went wrong${error}`);
+      toast.error(t("error"));
     }
   };
 
   const locationRoutes = [
     {
-      text: "Inicio",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Facturas",
+      text: t("nav.invoices"),
       link: "/recepcionmercancia",
     },
   ];
@@ -64,7 +66,7 @@ export default function Invoices() {
               color="primary"
             >
               <span className="text-sm hidden xs:flex whitespace-nowrap text-neutral-50 capitalize font-bold">
-                Nueva Factura
+                {t("newInvoice")}
               </span>
             </Button>
           </div>

@@ -6,8 +6,10 @@ import {
   DialogActions,
   Typography,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export default function ConfirmDialogCreate({ onConfirm, open, setOpen }) {
+  const { t } = useTranslation();
   return (
     <Dialog
       open={open}
@@ -17,10 +19,10 @@ export default function ConfirmDialogCreate({ onConfirm, open, setOpen }) {
       onClose={() => setOpen(false)}
     >
       <DialogTitle>
-        <Typography variant="h5">Crear Factura</Typography>
+        <Typography variant="h5">{t("createInvoice")}</Typography>
       </DialogTitle>
       <DialogContent>
-        <Typography>Estas seguro que quieres crear la factura?</Typography>
+        <Typography>{t("createInvoice?")}</Typography>
       </DialogContent>
       <DialogActions>
         <div className="flex space-x-3 justify-end w-full">
@@ -30,7 +32,7 @@ export default function ConfirmDialogCreate({ onConfirm, open, setOpen }) {
             color="primary"
             variant="contained"
           >
-            Confirmar
+            {t("confirm")}
           </Button>
 
           <Button
@@ -39,7 +41,7 @@ export default function ConfirmDialogCreate({ onConfirm, open, setOpen }) {
             variant="outlined"
             onClick={() => setOpen(false)}
           >
-            Cancelar
+            {t("cancel")}
           </Button>
         </div>
       </DialogActions>

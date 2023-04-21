@@ -6,6 +6,7 @@ import {
   DialogActions,
   Typography,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export default function ConfirmationForm({
   onConfirm,
@@ -13,6 +14,7 @@ export default function ConfirmationForm({
   setOpen,
   message,
 }) {
+  const {t} = useTranslation()
   return (
     <Dialog
       open={open}
@@ -22,10 +24,10 @@ export default function ConfirmationForm({
       onClose={() => setOpen(false)}
     >
       <DialogTitle>
-        <Typography variant="h5">Eliminar</Typography>
+        <Typography variant="h5">{t('delete')}</Typography>
       </DialogTitle>
       <DialogContent>
-        <Typography>Estas seguro que quieres eliminar?</Typography>
+        <Typography>{t("delete?")}</Typography>
       </DialogContent>
       <DialogActions>
         <div className="flex space-x-3 justify-end w-full">
@@ -35,7 +37,7 @@ export default function ConfirmationForm({
             color="error"
             variant="contained"
           >
-            Eliminar
+            {t("delete")}
           </Button>
 
           <Button
@@ -44,7 +46,7 @@ export default function ConfirmationForm({
             variant="outlined"
             onClick={() => setOpen(false)}
           >
-            Cancelar
+            {t("cancel")}
           </Button>
         </div>
       </DialogActions>

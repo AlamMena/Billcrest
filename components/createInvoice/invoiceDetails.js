@@ -16,8 +16,10 @@ import {
   updateItemPrice,
   updateItemQuantity,
 } from "../../store/invoiceSlice";
+import { useTranslation } from "react-i18next";
 
 export default function InvoiceDetail() {
+  const { t } = useTranslation();
   const { details, discountAmount, taxesAmount, subTotal } = useSelector(
     (state) => state.invoice
   );
@@ -50,10 +52,10 @@ export default function InvoiceDetail() {
                 {" "}
                 <FormControl className="w-full">
                   <InputLabel htmlFor="outlined-adornment-name">
-                    Articulo
+                    {t("article")}
                   </InputLabel>
                   <OutlinedInput
-                    label="Articulo"
+                    label={t("article")}
                     id="outlined-adornment-name"
                     disabled
                     defaultValue={item.name}
@@ -66,11 +68,11 @@ export default function InvoiceDetail() {
               <Grid item xs={12} md={4}>
                 <FormControl className="w-full">
                   <InputLabel htmlFor="outlined-adornment-name">
-                    Descripcion
+                    {t("description")}
                   </InputLabel>
                   <OutlinedInput
                     id="outlined-adornment-name"
-                    label="descripcion"
+                    label={t("description")}
                     disabled
                     defaultValue={item.description}
                     className="rounded-xl"
@@ -84,11 +86,11 @@ export default function InvoiceDetail() {
                 {" "}
                 <FormControl className="w-full">
                   <InputLabel htmlFor="outlined-adornment-name">
-                    Cantidad
+                    {t("quantity")}
                   </InputLabel>
                   <OutlinedInput
                     id="outlined-adornment-name"
-                    label="Cantidad"
+                    label={t("quantity")}
                     type="number"
                     onChange={(e) =>
                       handleQuantity({
@@ -107,11 +109,11 @@ export default function InvoiceDetail() {
                 {" "}
                 <FormControl className="w-full">
                   <InputLabel htmlFor="outlined-adornment-name">
-                    Precio
+                    {t("price")}
                   </InputLabel>
                   <OutlinedInput
                     id="outlined-adornment-name"
-                    label="Precio"
+                    label={t("price")}
                     type="number"
                     onChange={(e) =>
                       handlePrice({

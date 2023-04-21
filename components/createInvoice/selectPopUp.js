@@ -10,8 +10,10 @@ import { updateBeneficiary, updateRecipient } from "../../store/invoiceSlice";
 import { useState, useEffect } from "react";
 import useAxios from "../../axios/index";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 export default function SelectPopUp({ open, setOpenSelect, type }) {
+  const { t } = useTranslation();
   const [contacts, setContacts] = useState({
     isLoading: true,
     data: [],
@@ -43,7 +45,7 @@ export default function SelectPopUp({ open, setOpenSelect, type }) {
 
   return (
     <Dialog open={open} fullWidth={true} maxWidth={"sm"}>
-      <DialogTitle>Selecciona un {type}</DialogTitle>
+      <DialogTitle>{t("selectContact")}</DialogTitle>
       <DialogContent dividers={true}>
         {contacts.data.map((item, index) => {
           return (
@@ -67,17 +69,19 @@ export default function SelectPopUp({ open, setOpenSelect, type }) {
                 <span className="font-bold">{item.name}</span>
                 {/* Address */}
                 <span className="text-sm">
-                  Direccion: {item.addresses[0].address1}
+                  {t("address")}: {item.addresses[0].address1}
                 </span>
                 {/* Phone */}
-                <span className="text-sm">Tel: {item.contacts[0].number}</span>
+                <span className="text-sm">
+                  {t("phone")}: {item.contacts[0].number}
+                </span>
               </div>
             </div>
           );
         })}
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => setOpenSelect(false)}>Cerrar</Button>
+        <Button onClick={() => setOpenSelect(false)}>{t("close")}</Button>
       </DialogActions>
     </Dialog>
   );

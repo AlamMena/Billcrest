@@ -17,12 +17,13 @@ import { updatePayment } from "../../store/invoiceSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import useAxios from "../../axios/index";
+import { useTranslation } from "react-i18next";
 
 export default function PaymentPopUp({ open, setPaymentPopUp }) {
   const invoice = useSelector((state) => state.invoice);
   const { paymentQuantity, payments, total } = invoice;
   const { axiosInstance } = useAxios();
-
+  const { t } = useTranslation();
   const [method, setMethod] = useState(1);
   const [pquantity, setPaymentQuantity] = useState();
   const dispatch = useDispatch();
@@ -52,16 +53,16 @@ export default function PaymentPopUp({ open, setPaymentPopUp }) {
   return (
     <>
       <Dialog open={open} fullWidth={true} maxWidth={"sm"}>
-        <DialogTitle>Informacion de pago</DialogTitle>
+        <DialogTitle>{t("paymentInfo")}</DialogTitle>
         <DialogContent dividers={true}>
           <FormControl className="flex space-y-3 md:space-y-0  md:flex-row items-center md:space-x-2">
             <FormControl className="w-full">
               <InputLabel size="normal" htmlFor="outlined-adornment-name">
-                Metodo de pago
+                {t("paymentMethod")}
               </InputLabel>
               <Select
                 id="outlined-adornment-name"
-                label="Metodo de pago"
+                label={t("paymentMethod")}
                 size="normal"
                 type="number"
                 value={method}
@@ -101,13 +102,13 @@ export default function PaymentPopUp({ open, setPaymentPopUp }) {
             </FormControl>
             <FormControl className="w-full">
               <InputLabel size="normal" htmlFor="outlined-adornment-name">
-                Monto a pagar
+                {t("paymentQuantity")}
               </InputLabel>
               <OutlinedInput
                 type="number"
                 id="outlined-adornment-name"
                 onChange={(e) => setPaymentQuantity(e.target.value)}
-                label="Monto a pagar"
+                label={t("paymentQuantity")}
                 size="large"
                 value={pquantity}
                 className="rounded-xl"
@@ -123,7 +124,7 @@ export default function PaymentPopUp({ open, setPaymentPopUp }) {
         </DialogContent>
         <DialogActions>
           {/* <Button onClick={() => setPaymentPopUp(false)}>Cerrar</Button> */}
-          <Button onClick={() => upsertPaymentMethod()}>Aceptar</Button>
+          <Button onClick={() => upsertPaymentMethod()}>{t("confirm")}</Button>
         </DialogActions>
       </Dialog>
     </>

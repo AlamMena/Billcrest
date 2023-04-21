@@ -1,8 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { formatCurrency } from "../../utils/methods";
+import { useTranslation } from "react-i18next";
 
 export default function InvoiceTotals() {
+  const { t } = useTranslation();
   const invoice = useSelector((state) => state.invoice);
   const { subTotal, discountAmount, taxAmount, total, payments } = invoice;
 
@@ -15,7 +17,7 @@ export default function InvoiceTotals() {
         </span>
       </div>
       <div className="flex justify-end p-2">
-        <span className="">Descuento:</span>
+        <span className="">{t("discount")}:</span>
         <span className=" w-32 text-right overflow-hidden text-red-600">
           {(discountAmount <= 0 && <span>-</span>) || (
             <span>-{formatCurrency(discountAmount)}</span>
@@ -31,13 +33,13 @@ export default function InvoiceTotals() {
         </span>
       </div>
       <div className="flex justify-end p-2 font-bold">
-        <span className="">Precio Total:</span>
+        <span className="">{t("totalPrice")}:</span>
         <span className=" w-32 text-right overflow-hidden">
           {formatCurrency(total)}
         </span>
       </div>
       <div className="flex justify-end p-2">
-        <span className="">Monto a pagar:</span>
+        <span className="">{t("paymentQuantity")}:</span>
         <span className=" w-32 text-right overflow-hidden">
           {(payments[0].amount <= 0 && <span>-</span>) || (
             <span>{formatCurrency(payments[0].amount)}</span>

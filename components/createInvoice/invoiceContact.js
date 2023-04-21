@@ -1,7 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 export function InvoiceBeneficiary() {
+  const { t } = useTranslation();
   const { beneficiary } = useSelector((state) => state.invoice);
 
   return (
@@ -18,9 +20,13 @@ export function InvoiceBeneficiary() {
         {/* Name */}
         <span className="font-bold">{beneficiary.name}</span>
         {/* Address */}
-        <span className="text-sm">Direccion: {beneficiary.address}</span>
+        <span className="text-sm">
+          {t("address")}: {beneficiary.address}
+        </span>
         {/* Phone */}
-        <span className="text-sm">Tel: {beneficiary.phone}</span>
+        <span className="text-sm">
+          {t("phone")}: {beneficiary.phone}
+        </span>
       </div>
     </div>
   );
@@ -28,6 +34,7 @@ export function InvoiceBeneficiary() {
 
 export function InvoiceRecipient() {
   const { recipient } = useSelector((state) => state.invoice);
+  const { t } = useTranslation();
 
   return (
     <div className="p-3">
@@ -45,9 +52,13 @@ export function InvoiceRecipient() {
             {/* Name */}
             <span className="font-bold">{recipient.name}</span>
             {/* Address */}
-            <span className="text-sm">Direccion: {recipient.address}</span>
+            <span className="text-sm">
+              {t("address")}: {recipient.address}
+            </span>
             {/* Phone */}
-            <span className="text-sm">Tel: {recipient.phone}</span>
+            <span className="text-sm">
+              {t("phone")}: {recipient.phone}
+            </span>
           </div>
         </div>
       )}
@@ -57,6 +68,7 @@ export function InvoiceRecipient() {
 
 export function InvoiceSupplier() {
   const { supplier } = useSelector((state) => state.invoice);
+  const { t } = useTranslation();
 
   return (
     <div className="p-3">
@@ -74,9 +86,13 @@ export function InvoiceSupplier() {
             {/* Name */}
             <span className="font-bold">{supplier.name}</span>
             {/* Address */}
-            <span className="text-sm">Direccion: {supplier.address}</span>
+            <span className="text-sm">
+              {t("address")}: {supplier.address}
+            </span>
             {/* Phone */}
-            <span className="text-sm">Tel: {supplier.phone}</span>
+            <span className="text-sm">
+              {t("phone")}: {supplier.phone}
+            </span>
           </div>
         </div>
       )}
