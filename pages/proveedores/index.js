@@ -82,6 +82,7 @@ export default function Contacts() {
   useEffect(() => {
     setDataAsync();
   }, [pageState.page, pageState.pageSize, filter]);
+
   return (
     <div className="w-full  flex flex-col">
       <div className="flex w-full justify-between items-center pr-8">

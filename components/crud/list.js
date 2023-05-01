@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   DeleteOutline,
   EditOutlined,
@@ -8,6 +8,7 @@ import { Card, InputAdornment, OutlinedInput } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { debounce } from "../../utils/methods";
 import { useTranslation } from "react-i18next";
+import useAxios from "../../axios";
 
 export default function GList({
   setFormOpen,
@@ -21,6 +22,11 @@ export default function GList({
   searchText,
 }) {
   const { t } = useTranslation();
+  const { axiosInstance } = useAxios();
+
+  const getEntityByIdAsync = async ({}) => {
+    const res = axiosInstance.get("/");
+  };
 
   const columns = [
     {
