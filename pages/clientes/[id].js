@@ -4,6 +4,7 @@ import ContactForm from "../../components/contacts/contactForm";
 import PageHeader from "../../components/globals/pageHeader";
 import { Box } from "@mui/material";
 import { SettingsOutlined } from "@mui/icons-material";
+import { useRouter } from "next/router";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -27,10 +28,13 @@ function a11yProps(index) {
   };
 }
 
-export default function UpsertContact({ id }) {
+export default function UpsertContact() {
   const [value, setValue] = useState(0);
   const [client, setClient] = useState();
   const { axiosInstance } = useAxios();
+
+  const router = useRouter();
+  const { id } = router.query;
 
   const getClientAsync = async () => {
     const { data } = await axiosInstance.get(`/client/${id}`);
@@ -39,7 +43,7 @@ export default function UpsertContact({ id }) {
 
   useEffect(() => {
     getClientAsync();
-  });
+  }, []);
 
   const handleChange = (e, newValue) => {
     setValue(newValue);
@@ -111,6 +115,6 @@ export default function UpsertContact({ id }) {
 
 export async function getServerSideProps({ params }) {
   return {
-    props: { id: params.id },
+    // props: { id: params.id },
   };
 }

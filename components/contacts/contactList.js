@@ -12,7 +12,6 @@ import {
 import { DataGrid } from "@mui/x-data-grid";
 import { useRouter } from "next/router.js";
 import { debounce } from "../../utils/methods.js";
-import Image from "next/image.js";
 
 export default function ContactList({
   pageState,
