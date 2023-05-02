@@ -42,7 +42,7 @@ export default function Invoices() {
 
   useEffect(() => {
     setInvoicesAsync();
-  });
+  }, []);
 
   return (
     <div className="w-full h-full flex flex-col">

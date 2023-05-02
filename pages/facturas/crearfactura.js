@@ -170,10 +170,6 @@ export default function CreateInvoice() {
           toast.error(t("mountPay"));
         }
       } else {
-        dispatch(updateWarehouse(inputData.warehouseid));
-        dispatch(updateStatus(inputData.estatus));
-        dispatch(updateNCFType(inputData.ncftype));
-        dispatch(updateInvoiceType(inputData.invoicetype));
         // console.log(invoice);
         if (invoice.id !== undefined) {
           // if the item exists
@@ -197,10 +193,6 @@ export default function CreateInvoice() {
               },
             },
           });
-          // dispatch(updateWarehouse(inputData.warehouseid));
-          // dispatch(updateStatus(inputData.estatus));
-          // dispatch(updateNCFType(inputData.ncftype));
-          // dispatch(updateInvoiceType(inputData.invoicetype));
         }
         router.push("/facturas");
         dispatch(resetState());
@@ -217,6 +209,18 @@ export default function CreateInvoice() {
     dispatch(updateCreationDate(creationDate.toString()));
     dispatch(updateDueDate(dueDate.toString()));
   }, []);
+
+  useEffect(() => {
+    dispatch(updateWarehouse(inputData.warehouseid));
+    dispatch(updateStatus(inputData.estatus));
+    dispatch(updateNCFType(inputData.ncftype));
+    dispatch(updateInvoiceType(inputData.invoicetype));
+  }, [
+    inputData.warehouseid,
+    inputData.estatus,
+    inputData.ncftype,
+    inputData.invoicetype,
+  ]);
 
   return (
     <form
@@ -413,12 +417,6 @@ export default function CreateInvoice() {
                       </MenuItem>
                     );
                   })}
-                {/* <MenuItem
-                    value={"Pagado"}
-                    onClick={() => handleNCFtype("Pagado")}
-                  >
-                    Credito Fiscal
-                  </MenuItem> */}
               </TextField>
             </Grid>
             {/* Invoice type */}
@@ -443,12 +441,6 @@ export default function CreateInvoice() {
                       </MenuItem>
                     );
                   })}
-                {/* <MenuItem
-                    value={"Pagado"}
-                    onClick={() => handleNCFtype("Pagado")}
-                  >
-                    Credito Fiscal
-                  </MenuItem> */}
               </TextField>
             </Grid>
             {/* Warehouse */}
