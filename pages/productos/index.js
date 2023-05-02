@@ -31,7 +31,7 @@ export default function Products() {
 
   const deleteAsync = async () => {
     try {
-      await toast.promise(axiosInstance.delete(`product/${itemToDelete.id}`), {
+      await toast.promise(axiosInstance.delete(`product/${itemToDelete}`), {
         pending: "Eliminando producto...",
         success: "Genial!, tu producto ha sido eliminado.",
         error: "Oops, algo ha ocurrido",

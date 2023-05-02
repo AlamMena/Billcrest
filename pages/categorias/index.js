@@ -1,28 +1,30 @@
 import { CategoryOutlined } from "@mui/icons-material";
 import React from "react";
 import CrudPage from "../../components/crud/crudPage";
+import { useTranslation } from "react-i18next";
 
 export default function Branch() {
+  const { t } = useTranslation();
   const locationRoutes = [
     {
-      text: "Inicio",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Categorias",
+      text: t("nav.categories"),
       link: "/categorias",
     },
   ];
   const cols = [
     {
       field: "name",
-      headerName: "Categoria",
+      headerName: t("category"),
       minWidth: 270,
       flex: 1,
     },
     {
       field: "description",
-      headerName: "Descripcion",
+      headerName: t("description"),
       minWidth: 270,
       flex: 1,
     },
@@ -31,8 +33,8 @@ export default function Branch() {
   const fields = [
     {
       name: "name",
-      placeholder: "Categoria - 001",
-      label: "Nombre",
+      placeholder: t("categoryNamePlaceh"),
+      label: t("name"),
       validation: {
         required: true,
       },
@@ -40,8 +42,8 @@ export default function Branch() {
     },
     {
       name: "description",
-      placeholder: "Categorias para productos x ...",
-      label: "Descripcion",
+      placeholder: t("categoryDescPlaceh"),
+      label: t("description"),
       multiline: true,
       fullWidth: false,
     },
@@ -54,14 +56,15 @@ export default function Branch() {
       updateUrl={"category"}
       postUrl={"category"}
       deleteUrl={"category"}
-      createButtonMessage={"Nueva categoria"}
+      createButtonMessage={t("newCategory")}
       deleteConfirmMessage="¿Estas seguro que deseas eliminar esta categoria?"
       headerMessage="Cada vez que un negocio se expande trae mayores desafíos para todos los niveles de operación. Maneja tus categorias y cada uno de sus niveles operativos."
-      succesUpsertMessage={"Categoria guardada exitosamente!"}
-      successDeleteMessage={"Categoria eliminada exitosamente!"}
-      headerText={"Categorias"}
+      succesUpsertMessage={t("categorySaved")}
+      successDeleteMessage={t("categoryDeleted")}
+      headerText={t("nav.categories")}
       icon={<CategoryOutlined className="text-green-400" />}
       locationRoutes={locationRoutes}
+      search={t("searchCategory")}
     />
   );
 }

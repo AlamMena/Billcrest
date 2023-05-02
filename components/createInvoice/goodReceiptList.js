@@ -4,8 +4,10 @@ import { RemoveRedEyeOutlined, SearchRounded } from "@mui/icons-material";
 import { DataGrid } from "@mui/x-data-grid";
 import { formatCurrency } from "../../utils/methods";
 import { generatePDF, InvoicePdf } from "../invoices/invoicePdf";
+import { useTranslation } from "react-i18next";
 
 export default function GoodReceiptList({ data }) {
+  const { t } = useTranslation();
   const columns = [
     {
       field: "id",
@@ -17,13 +19,13 @@ export default function GoodReceiptList({ data }) {
       field: "invoiceNumber",
       minWidth: 160,
       flex: 1,
-      headerName: "Numero de Factura",
+      headerName: t("invoiceN"),
     },
     {
       field: "invoiceTypeName",
       minWidth: 160,
       flex: 1,
-      headerName: "Tipo de Factura",
+      headerName: t("invoiceType"),
     },
     // {
     //   field: "ncf",
@@ -117,7 +119,7 @@ export default function GoodReceiptList({ data }) {
             id="input-with-icon-adornment"
             className="input-rounded rounded-xl"
             fullWidth
-            placeholder="Buscar facturas..."
+            placeholder={t("searchInvoice")}
             startAdornment={
               <InputAdornment position="start">
                 <SearchRounded className="text-slate-400" />

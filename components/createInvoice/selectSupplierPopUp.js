@@ -15,6 +15,7 @@ import {
 import { useState, useEffect } from "react";
 import useAxios from "../../axios/index";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 export default function SelectSupplierPopUp({ open, setOpenSelect, type }) {
   const [supplier, setSupplier] = useState({
@@ -24,12 +25,14 @@ export default function SelectSupplierPopUp({ open, setOpenSelect, type }) {
   const dispatch = useDispatch();
   const { axiosInstance } = useAxios();
 
+  const { t } = useTranslation();
+
   const setDataAsync = async () => {
     try {
       const response = await axiosInstance.get("suppliers?page=1&limit=200");
       setSupplier({ isLoading: false, data: response.data.data });
     } catch (error) {
-      toast.error(`Opps!, something went wrong${error}`);
+      toast.error(t("error"));
       setSupplier({ isLoading: false, data: [] });
     }
   };
@@ -46,7 +49,7 @@ export default function SelectSupplierPopUp({ open, setOpenSelect, type }) {
 
   return (
     <Dialog open={open} fullWidth={true} maxWidth={"sm"}>
-      <DialogTitle>Selecciona un suplidor</DialogTitle>
+      <DialogTitle>{t("selectSupplier")}</DialogTitle>
       <DialogContent dividers={true}>
         {supplier.data.map((item, index) => {
           return (
@@ -70,17 +73,19 @@ export default function SelectSupplierPopUp({ open, setOpenSelect, type }) {
                 <span className="font-bold">{item.name}</span>
                 {/* Address */}
                 <span className="text-sm">
-                  Direccion: {item.addresses[0].address1}
+                  {t("address")} {item.addresses[0].address1}
                 </span>
                 {/* Phone */}
-                <span className="text-sm">Tel: {item.contacts[0].number}</span>
+                <span className="text-sm">
+                  {t("phone")}: {item.contacts[0].number}
+                </span>
               </div>
             </div>
           );
         })}
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => setOpenSelect(false)}>Cerrar</Button>
+        <Button onClick={() => setOpenSelect(false)}>{t("close")}</Button>
       </DialogActions>
     </Dialog>
   );

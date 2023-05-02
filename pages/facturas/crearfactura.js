@@ -197,9 +197,10 @@ export default function CreateInvoice() {
         router.push("/facturas");
         dispatch(resetState());
       }
-
+    } catch (error) {
+    } finally {
       setConfirmOpen(false);
-    } catch (error) {}
+    }
   };
 
   useEffect(() => {

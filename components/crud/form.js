@@ -122,7 +122,7 @@ export default function Form({
                               inputRef={ref}
                               helperText={error && t("inputRequired")}
                               label={item.label}
-                              inputProps={{ maxlength: 50 }}
+                              inputProps={{ maxLength: 50 }}
                               variant="outlined"
                             />
                           )}
@@ -153,7 +153,7 @@ export default function Form({
                       variant="outlined"
                       error={error}
                       helperText={error && t("inputValid")}
-                      inputProps={{ maxlength: 50 }}
+                      inputProps={{ maxLength: 50 }}
                     />
                   )}
                 />

@@ -142,8 +142,8 @@ export default function ProductsForm({ product }) {
     setIsLoading(false);
   };
 
-  const getCategoriesAsync = async (filter) => {
-    const queryFilters = `page=${1}&limit=${100}&value=${filter}`;
+  const getCategoriesAsync = async () => {
+    const queryFilters = `page=${1}&limit=${100}`;
     const { data: apiResponse } = await axiosInstance.get(
       `categories?${queryFilters}`
     );
@@ -152,8 +152,8 @@ export default function ProductsForm({ product }) {
   const handleSearchCategories = debounce((e) =>
     getCategoriesAsync(e.target.value)
   );
-  const getBrandsAsync = async (filter) => {
-    const queryFilters = `page=${1}&limit=${100}&value=${filter}`;
+  const getBrandsAsync = async () => {
+    const queryFilters = `page=${1}&limit=${100}`;
     const { data: apiResponse } = await axiosInstance.get(
       `brands?${queryFilters}`
     );
@@ -161,18 +161,19 @@ export default function ProductsForm({ product }) {
   };
   const handleSearchBrands = debounce((e) => getBrandsAsync(e.target.value));
 
-  const getSubcategoriesAsync = async (filter) => {
-    const queryFilters = `page=${1}&limit=${100}&value=${filter}`;
+  const getSubcategoriesAsync = async () => {
+    const queryFilters = `page=${1}&limit=${100}`;
     const { data: apiResponse } = await axiosInstance.get(
       `subcategories?${queryFilters}`
     );
     setSubcategories(apiResponse.data);
+    console.log(apiResponse.data);
   };
   const handleSearchSubcategories = debounce((e) =>
     getSubcategoriesAsync(e.target.value)
   );
-  const getWarehousesAsync = async (filter) => {
-    const queryFilters = `page=${1}&limit=${100}&value=${filter}`;
+  const getWarehousesAsync = async () => {
+    const queryFilters = `page=${1}&limit=${100}`;
     const { data: apiResponse } = await axiosInstance.get(
       `warehouses?${queryFilters}`
     );
@@ -191,6 +192,13 @@ export default function ProductsForm({ product }) {
       link: "/productos",
     },
   ];
+
+  useEffect(() => {
+    getSubcategoriesAsync();
+    getWarehousesAsync();
+    getBrandsAsync();
+    getCategoriesAsync();
+  }, []);
   return (
     <form className="flex" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col">

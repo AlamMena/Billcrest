@@ -46,6 +46,7 @@ import InvoiceTotals from "../../components/invoices/invoiceTotals";
 import InvoiceInputs from "../../components/invoices/invoiceInputs";
 import ConfirmDialogCreate from "../../components/globals/confirmDialogCreate";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 export default function CreateInvoiceProduct() {
   const [openSelect, setOpenSelect] = useState(false);
@@ -62,6 +63,8 @@ export default function CreateInvoiceProduct() {
   const [invoicetypes, setInvoicetypes] = useState([]);
   const [warehouse, setWarehouse] = useState([]);
   const [warehouseid, setWarehouseId] = useState();
+
+  const { t } = useTranslation();
 
   const {
     register,
@@ -138,15 +141,15 @@ export default function CreateInvoiceProduct() {
   // Location Routes
   const locationRoutes = [
     {
-      text: "Inicio",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Facturas",
+      text: t("nav.invoices"),
       link: "/recepcionmercancia",
     },
     {
-      text: "Nueva Factura",
+      text: t("newInvoice"),
       link: "/recepcionmercancia/crearfacturamercancia",
     },
   ];
@@ -164,24 +167,18 @@ export default function CreateInvoiceProduct() {
         }
 
         if (details.length <= 0) {
-          toast.error(`Porfavor agrega al menos un detalle`);
+          toast.error(t("addItem"));
         }
         if (payments[0].amount < total || payments[0].amount === undefined) {
-          toast.error(
-            `El monto a pagar tiene que ser igual o mayor al precio a pagar`
-          );
+          toast.error("mountPay");
         }
       } else {
-        dispatch(updateWarehouse(inputData.warehouseid));
-        dispatch(updateStatus(inputData.estatus));
-        dispatch(updateNCFType(inputData.ncftype));
-        dispatch(updateInvoiceType(inputData.invoicetype));
         if (invoice.id !== undefined) {
           // logic
           // if the item exists
           await toast.promise(axiosInstance.put("/goodreceipt", invoice), {
-            pending: "Creando factura",
-            success: "Genial!, tu factura ha sido actualizada.",
+            pending: t("creatingInvoice"),
+            success: t("invoiceCreated"),
             error: {
               render({ data }) {
                 return handleInvoiceError(data);
@@ -193,8 +190,8 @@ export default function CreateInvoiceProduct() {
         } else {
           // if the item doesnt exists
           await toast.promise(axiosInstance.post("/goodreceipt", invoice), {
-            pending: "Actualizando factura",
-            success: "Genial!, tu factura ha sido creada.",
+            pending: t("updatingInvoice"),
+            success: t("invoiceCreated"),
             error: {
               render({ data }) {
                 return handleInvoiceError(data);
@@ -205,11 +202,10 @@ export default function CreateInvoiceProduct() {
         router.push("/recepcionmercancia");
         dispatch(resetState());
       }
-
-      setConfirmOpen(false);
     } catch (error) {
       // alert(error);
       // console.log(JSON.stringify(invoice));
+    } finally {
       setConfirmOpen(false);
     }
   };
@@ -221,6 +217,17 @@ export default function CreateInvoiceProduct() {
     dispatch(updateCreationDate(creationDate.toString()));
     dispatch(updateDueDate(dueDate.toString()));
   }, []);
+  useEffect(() => {
+    dispatch(updateWarehouse(inputData.warehouseid));
+    dispatch(updateStatus(inputData.estatus));
+    dispatch(updateNCFType(inputData.ncftype));
+    dispatch(updateInvoiceType(inputData.invoicetype));
+  }, [
+    inputData.warehouseid,
+    inputData.estatus,
+    inputData.ncftype,
+    inputData.invoicetype,
+  ]);
 
   return (
     <form
@@ -229,7 +236,7 @@ export default function CreateInvoiceProduct() {
     >
       <div className="flex w-full justify-between items-center pr-0 md:pr-8 ">
         <PageHeader
-          header="Recepcion de Mercancia"
+          header={t("invoiceRecep")}
           locationRoutes={locationRoutes}
           Icon={<SellOutlined />}
         />
@@ -240,7 +247,6 @@ export default function CreateInvoiceProduct() {
         open={confirmOpen}
         setOpen={setConfirmOpen}
         onConfirm={upserAsyncInvoice}
-        message="Estas seguro que quieres crear la factura?"
       />
       <PaymentPopUp open={paymentPopUpOpen} setPaymentPopUp={setPaymentPopUp} />
       {/* Invoice  */}
@@ -248,7 +254,7 @@ export default function CreateInvoiceProduct() {
         {/* Sender and Receiver */}
         <Grid container className="flex justify-between  px-8 py-3">
           <Grid item className="w-full" xs={12} md={6}>
-            <span className="text-neutral-500 text-lg">De:</span>
+            <span className="text-neutral-500 text-lg">{t("from")}:</span>
             <InvoiceBeneficiary />
           </Grid>
           <Divider
@@ -268,7 +274,7 @@ export default function CreateInvoiceProduct() {
               }}
             ></Divider>
             <div className=" flex items-center justify-between">
-              <span className="text-neutral-500 text-lg">Suplidor:</span>
+              <span className="text-neutral-500 text-lg">{t("supplier")}:</span>
               <Button
                 startIcon={<Edit />}
                 className="h-10 font-bold"
@@ -277,7 +283,7 @@ export default function CreateInvoiceProduct() {
                   setOpenSelect(true);
                 }}
               >
-                Cambiar
+                {t("change")}
               </Button>
             </div>
             <InvoiceSupplier />
@@ -290,13 +296,13 @@ export default function CreateInvoiceProduct() {
             <Grid item xs={12} md={3}>
               <FormControl className="w-full">
                 <InputLabel size="normal" htmlFor="outlined-adornment-name">
-                  Numero de Factura
+                  {t("invoiceN")}
                 </InputLabel>
                 <OutlinedInput
                   defaultValue={invoiceNumber}
                   disabled
                   id="outlined-adornment-name"
-                  label="Numero de Factura"
+                  label={t("invoiceN")}
                   size="large"
                   className="rounded-xl"
                   variant="outlined"
@@ -312,11 +318,11 @@ export default function CreateInvoiceProduct() {
                 select
                 {...register("estatus", { required: true })}
                 error={errors.estatus && "value"}
-                helperText={errors.estatus && `El campo no es valido`}
+                helperText={errors.estatus && t("inputValid")}
                 variant="outlined"
               >
-                <MenuItem value={"Pagado"}>Pagado</MenuItem>
-                <MenuItem value={"No Pagado"}>No Pagado</MenuItem>
+                <MenuItem value={"Pagado"}>{t("paid")}</MenuItem>
+                <MenuItem value={"No Pagado"}>{t("notPaid")}</MenuItem>
                 <MenuItem value={"Overdue"}>Overdue</MenuItem>
                 <MenuItem value={"Draft"}>Draft</MenuItem>
               </TextField>
@@ -326,10 +332,10 @@ export default function CreateInvoiceProduct() {
               <FormControl className="w-full">
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <InputLabel size="normal" htmlFor="outlined-adornment-name">
-                    Fecha de creacion
+                    {t("creationDate")}
                   </InputLabel>
                   <MobileDatePicker
-                    label="Fecha de creacion"
+                    label={t("creationDate")}
                     inputFormat="MM/DD/YYYY"
                     value={creationDate}
                     onChange={handleCreationDateChange}
@@ -352,10 +358,10 @@ export default function CreateInvoiceProduct() {
               <FormControl className="w-full">
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <InputLabel size="normal" htmlFor="outlined-adornment-name">
-                    Fecha de vencimiento
+                    {t("dueDate")}
                   </InputLabel>
                   <MobileDatePicker
-                    label="Fecha de vencimiento"
+                    label={t("dueDate")}
                     inputFormat="MM/DD/YYYY"
                     value={dueDate}
                     className="rounded-xl"
@@ -378,13 +384,13 @@ export default function CreateInvoiceProduct() {
             <Grid item xs={12} md={3}>
               <TextField
                 id="outlined-adornment-name"
-                label="Tipo de NCF"
+                label={t("ncfType")}
                 className="w-full"
                 select
                 size="normal"
                 {...register("ncftype", { required: true })}
                 error={errors.ncftype && "value"}
-                helperText={errors.ncftype && `El campo no es valido`}
+                helperText={errors.ncftype && t("inputValid")}
                 variant="outlined"
               >
                 {ncfstypes.length > 0 &&
@@ -407,14 +413,14 @@ export default function CreateInvoiceProduct() {
             <Grid item xs={12} md={3}>
               <TextField
                 id="outlined-adornment-name"
-                label="Tipo de Factura"
+                label={t("invoiceType")}
                 className="w-full"
                 size="normal"
                 select
                 type="number"
                 {...register("invoicetype", { required: true })}
                 error={errors.invoicetype && "value"}
-                helperText={errors.invoicetype && `El campo no es valido`}
+                helperText={errors.invoicetype && t("inputValid")}
                 variant="outlined"
               >
                 {invoicetypes.length > 0 &&
@@ -438,12 +444,12 @@ export default function CreateInvoiceProduct() {
               <TextField
                 select
                 id="outlined-adornment-name"
-                label="Almacen"
+                label={t("warehouse")}
                 size="normal"
                 value={warehouseid}
                 {...register("warehouseid", { required: true })}
                 error={errors.warehouseid && "value"}
-                helperText={errors.warehouseid && `El campo no es valido`}
+                helperText={errors.warehouseid && t("inputValid")}
                 className="w-full"
                 variant="outlined"
               >
@@ -461,12 +467,12 @@ export default function CreateInvoiceProduct() {
         </div>
         {/* Details */}
         <div className="p-3">
-          <span className=" text-xl text-neutral-400">Detalles:</span>
+          <span className=" text-xl text-neutral-400">{t("details")}</span>
           <InvoiceDetail />
         </div>
         {details.length < 1 && (
           <span className="text-lg text-neutral-400 text-center p-2">
-            No hay detalles
+            {t("nodetails")}
           </span>
         )}
         <Divider orientation="horizontal" variant="middle" flexItem></Divider>
@@ -486,7 +492,7 @@ export default function CreateInvoiceProduct() {
           color="grey"
           // onClick={() => dispatch(resetState())}
         >
-          Salvar como Draft
+          {t("draft")}
         </Button>
 
         <Button
@@ -496,7 +502,7 @@ export default function CreateInvoiceProduct() {
           color="primary"
           // onClick={() => setConfirmOpen(true)}
         >
-          Crear y enviar
+          {t("create")}
         </Button>
       </div>
     </form>

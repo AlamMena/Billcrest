@@ -1,18 +1,21 @@
+import { useTranslation } from "react-i18next";
 import ContactForm from "../../components/contacts/contactForm";
 import PageHeader from "../../components/globals/pageHeader";
+import { ContactPageOutlined } from "@mui/icons-material";
 
 export default function CreateContact() {
+  const { t } = useTranslation();
   const locationRoutes = [
     {
-      text: "Inicio",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Clientes",
+      text: t("nav.clients"),
       link: "/clientes",
     },
     {
-      text: "Crear",
+      text: t("create"),
       link: "/clientes/crear",
     },
   ];
@@ -21,7 +24,11 @@ export default function CreateContact() {
     <>
       <div className="col-span-12 flex w-full justify-between items-center pr-8">
         <div>
-          <PageHeader header="Crear cliente" locationRoutes={locationRoutes} />
+          <PageHeader
+            header={t("createClient")}
+            locationRoutes={locationRoutes}
+            Icon={<ContactPageOutlined />}
+          />
         </div>
       </div>
       <ContactForm />

@@ -10,8 +10,8 @@ import {
   OutlinedInput,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { useRouter } from "next/router.js";
 import { debounce } from "../../utils/methods.js";
+import { useTranslation } from "react-i18next";
 
 export default function SuppliersList({
   pageState,
@@ -20,7 +20,7 @@ export default function SuppliersList({
   setItemToDelete,
   setConfirmOpen,
 }) {
-  const router = useRouter();
+  const { t } = useTranslation();
 
   const columns = [
     {
@@ -31,7 +31,7 @@ export default function SuppliersList({
     {
       field: "name",
       width: "300",
-      headerName: "Contacto",
+      headerName: t("contact"),
       renderCell: (cells) => {
         return (
           <div className="flex space-x-4 items-center">
@@ -53,22 +53,22 @@ export default function SuppliersList({
     {
       field: "email",
       width: 190,
-      headerName: "Correo electronico",
+      headerName: t("login.email"),
     },
     {
       field: "contacts[0].number",
       width: 190,
-      headerName: "Telefono",
+      headerName: t("phone"),
     },
 
     {
       field: "adresses[0].address",
       width: 190,
-      headerName: "Direccion",
+      headerName: t("address"),
     },
 
     {
-      field: "Acciones",
+      field: t("actions"),
       sortable: false,
       width: 200,
       renderCell: (cells) => {
@@ -130,7 +130,7 @@ export default function SuppliersList({
             id="input-with-icon-adornment"
             className="input-rounded rounded-xl"
             onChange={onInputFilterChange}
-            placeholder="Buscar proveedores..."
+            placeholder={t("searchProviders")}
             fullWidth
             startAdornment={
               <InputAdornment position="start">
@@ -158,7 +158,7 @@ export default function SuppliersList({
           paginationMode="server"
           className="p-2"
           localeText={{
-            noRowsLabel: "No hay datos",
+            noRowsLabel: t("ndata"),
           }}
           autoHeight
           pagination

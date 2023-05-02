@@ -5,6 +5,8 @@ import { AccountCircle, Receipt } from "@mui/icons-material";
 import axios from "axios";
 import SuplierForm from "../../components/suppliers/suppliersForm";
 import PageHeader from "../../components/globals/pageHeader";
+import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -32,19 +34,23 @@ function a11yProps(index) {
   };
 }
 
-export default function UpsertSuplier({ id }) {
+export default function UpsertSuplier() {
   const [value, setValue] = useState(0);
   const [supplier, setSupplier] = useState();
   const { axiosInstance } = useAxios();
+  const { t } = useTranslation();
 
-  // const getSupplierAsync = async () => {
-  //   const { data } = await axiosInstance.get(`/supplier/${id}`);
-  //   setSupplier(data);
-  // };
+  const router = useRouter();
+  const { id } = router.query;
 
-  // useEffect(() => {
-  //   getSupplierAsync();
-  // }, []);
+  const getSupplierAsync = async () => {
+    const { data } = await axiosInstance.get(`/supplier/${id}`);
+    setSupplier(data);
+  };
+
+  useEffect(() => {
+    getSupplierAsync();
+  }, []);
 
   const handleChange = (e, newValue) => {
     setValue(newValue);
@@ -52,15 +58,15 @@ export default function UpsertSuplier({ id }) {
 
   const locationRoutes = [
     {
-      text: "home",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Proveedores",
+      text: t("nav.providers"),
       link: "/proveedores",
     },
     {
-      text: "crear",
+      text: t("create"),
       link: "/proveedores/crear",
     },
   ];
@@ -69,8 +75,9 @@ export default function UpsertSuplier({ id }) {
     <div className="-full md:px-0 px-4 md:pr-8 flex flex-col pb-5">
       <div className="flex w-full justify-between items-center pr-8 ">
         <PageHeader
-          header="Modificar Contactos"
+          header={t("modifyContact")}
           locationRoutes={locationRoutes}
+          Icon={<AccountCircle />}
         />
       </div>
       <SuplierForm supplier={supplier} />
@@ -113,15 +120,15 @@ export default function UpsertSuplier({ id }) {
   );
 }
 
-export async function getServerSideProps({ params }) {
-  try {
-    const response = await axios.get(
-      `https://fastbilling.azurewebsites.net/api/supplier/${params.id}`
-    );
-    const data = response.data;
-    return { props: { data } };
-  } catch (error) {
-    console.error(error);
-    return { props: {} };
-  }
-}
+// export async function getServerSideProps({ params }) {
+//   try {
+//     const response = await axios.get(
+//       `https://fastbilling.azurewebsites.net/api/supplier/${params.id}`
+//     );
+//     const data = response.data;
+//     return { props: { data } };
+//   } catch (error) {
+//     console.error(error);
+//     return { props: {} };
+//   }
+// }

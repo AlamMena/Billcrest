@@ -14,7 +14,7 @@ export default function ConfirmationForm({
   setOpen,
   message,
 }) {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   return (
     <Dialog
       open={open}
@@ -24,7 +24,7 @@ export default function ConfirmationForm({
       onClose={() => setOpen(false)}
     >
       <DialogTitle>
-        <Typography variant="h5">{t('delete')}</Typography>
+        <Typography variant="h5">{t("delete")}</Typography>
       </DialogTitle>
       <DialogContent>
         <Typography>{t("delete?")}</Typography>

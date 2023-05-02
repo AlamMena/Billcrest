@@ -1,15 +1,17 @@
 import { AccountTreeOutlined } from "@mui/icons-material";
 import React from "react";
 import CrudPage from "../../components/crud/crudPage";
+import { useTranslation } from "react-i18next";
 
 export default function Branch() {
+  const { t } = useTranslation();
   const locationRoutes = [
     {
-      text: "Inicio",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Subcategorias",
+      text: t("nav.subcategories"),
       link: "/subcategorias",
     },
   ];
@@ -22,7 +24,7 @@ export default function Branch() {
     },
     {
       field: "description",
-      headerName: "Descripcion",
+      headerName: t("description"),
       minWidth: 270,
       flex: 1,
     },
@@ -31,29 +33,29 @@ export default function Branch() {
   const fields = [
     {
       name: "name",
-      placeholder: "Subcategoria - 001",
-      label: "Nombre",
+      placeholder: t("subCategoryNamePlaceh"),
+      label: t("name"),
       validation: {
         required: true,
       },
       fullWidth: false,
     },
-    {
-      name: "category",
-      placeholder: "categoria - 001",
-      label: "Cateogria",
-      validation: {
-        required: true,
-      },
-      fullWidth: true,
-      type: "autocomplete",
-      catalogName: "categories",
-    },
+    // {
+    //   name: "category",
+    //   placeholder: "categoria - 001",
+    //   label: "Cateogria",
+    //   validation: {
+    //     required: true,
+    //   },
+    //   fullWidth: true,
+    //   type: "autocomplete",
+    //   catalogName: "categories",
+    // },
 
     {
       name: "description",
-      placeholder: "Subcategorias para productos x ...",
-      label: "Descripcion",
+      placeholder: t("subCategoryDescPlaceh"),
+      label: t("description"),
       multiline: true,
       fullWidth: false,
     },
@@ -81,14 +83,15 @@ export default function Branch() {
       deleteUrl={"subcategory"}
       formatAutoComplete={formatAutoComplete}
       formatApiResult={formatApiResult}
-      createButtonMessage={"Nueva subcategoria"}
+      createButtonMessage={t("newSubCategory")}
       deleteConfirmMessage="¿Estas seguro que deseas eliminar esta subcategoria?"
       headerMessage="Cada vez que un negocio se expande trae mayores desafíos para todos los niveles de operación. Maneja tus subcategorias y cada uno de sus niveles operativos."
-      succesUpsertMessage={"Subcategoria guardada exitosamente!"}
-      successDeleteMessage={"Subcategoria eliminada exitosamente!"}
-      headerText={"Subcategorias"}
+      succesUpsertMessage={t("subCategorySaved")}
+      successDeleteMessage={t("subCategoryDeleted")}
+      headerText={t("nav.subcategories")}
       icon={<AccountTreeOutlined className="text-green-400" />}
       locationRoutes={locationRoutes}
+      search={t("searchSubCategory")}
     />
   );
 }

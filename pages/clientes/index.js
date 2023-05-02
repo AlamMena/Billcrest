@@ -8,6 +8,7 @@ import PageHeader from "../../components/globals/pageHeader";
 import { toast } from "react-toastify";
 import ConfirmationForm from "../../components/globals/confirmationForm";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 export default function Contacts() {
   // list data
@@ -26,17 +27,19 @@ export default function Contacts() {
   const [filter, setFilter] = useState("");
   const [itemToDelete, setItemToDelete] = useState();
 
+  const { t } = useTranslation();
+
   const toastId = useRef(null);
   const { axiosInstance } = useAxios();
 
   const router = useRouter();
   const locationRoutes = [
     {
-      text: "Inicio",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Clientes",
+      text: t("nav.clients"),
       link: "/clientes",
     },
   ];
@@ -44,15 +47,16 @@ export default function Contacts() {
   const deleteAsync = async () => {
     try {
       await toast.promise(axiosInstance.delete(`client/${itemToDelete.id}`), {
-        pending: "Eliminando cliente",
-        success: "Genial!, tu cliente ha sido eliminado.",
-        error: "Oops, algo ha ocurrido",
+        pending: t("deletingClient"),
+        success: t("clientDeleted"),
+        error: t("error"),
       });
 
-      setConfirmOpen(false);
       await setDataAsync();
     } catch (error) {
-      toast.error(`Opps!, Algo ha ocurrido`);
+      toast.error(t("error"));
+    } finally {
+      setConfirmOpen(false);
     }
   };
 
@@ -73,7 +77,7 @@ export default function Contacts() {
         totalData: apiResponse.dataQuantity,
       });
     } catch (error) {
-      toast.error(`Opps!, algo ha ocurrido ${error}`);
+      toast.error(t("error"));
       setPageState({ ...pageState, isLoading: false });
     }
   };
@@ -86,7 +90,7 @@ export default function Contacts() {
       <div className="flex w-full justify-between items-center pr-8">
         <div>
           <PageHeader
-            header="Clientes"
+            header={t("nav.clients")}
             locationRoutes={locationRoutes}
             Icon={<ContactPageOutlined />}
           />
@@ -100,11 +104,8 @@ export default function Contacts() {
             }}
             startIcon={<Add className="text-white" />}
           >
-            <span
-              className="text-sm whitespace-nowrap text-neutral-50 capitalize font-bold"
-              // onClick={() => router.push("./clientes/crear")}
-            >
-              Nuevo cliente
+            <span className="text-sm whitespace-nowrap text-neutral-50 capitalize font-bold">
+              {t("newClient")}
             </span>
           </Button>
         </div>
@@ -126,7 +127,6 @@ export default function Contacts() {
         onConfirm={() => {
           deleteAsync(itemToDelete);
         }}
-        message="Estas seguro que deseas eliminar este cliente?"
       />
     </div>
   );

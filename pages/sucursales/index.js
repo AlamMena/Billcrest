@@ -1,34 +1,37 @@
 import { ApartmentOutlined } from "@mui/icons-material";
 import React from "react";
 import CrudPage from "../../components/crud/crudPage";
+import { useTranslation } from "react-i18next";
 
 export default function Branch() {
+  const { t } = useTranslation();
+
   const locationRoutes = [
     {
-      text: "Inicio",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Sucursales",
+      text: t("nav.branches"),
       link: "/sucursales",
     },
   ];
   const cols = [
     {
       field: "name",
-      headerName: "Sucursal",
+      headerName: t("branch"),
       minWidth: 270,
       flex: 1,
     },
     {
       field: "location",
-      headerName: "Ubicacion",
+      headerName: t("location"),
       minWidth: 270,
       flex: 1,
     },
     {
       field: "phoneNumber",
-      headerName: "Numero de Telefono",
+      headerName: t("phone"),
       minWidth: 270,
       flex: 1,
     },
@@ -37,8 +40,8 @@ export default function Branch() {
   const fields = [
     {
       name: "name",
-      placeholder: "sucursal - 001",
-      label: "Nombre",
+      placeholder: t("branchNamePlaceh"),
+      label: t("name"),
       validation: {
         required: true,
       },
@@ -47,7 +50,7 @@ export default function Branch() {
     {
       name: "location",
       placeholder: "Santo Domingo #0001",
-      label: "Ubicacion",
+      label: t("location"),
       validation: {
         required: true,
       },
@@ -59,13 +62,13 @@ export default function Branch() {
       validation: {
         required: true,
       },
-      label: "Telefono",
+      label: t("phone"),
       fullWidth: false,
     },
     {
       name: "description",
-      placeholder: "sucursal para manejar empleados ...",
-      label: "Descripcion",
+      placeholder: t("branchDescPlaceh"),
+      label: t("description"),
       multiline: true,
       fullWidth: false,
     },
@@ -78,14 +81,15 @@ export default function Branch() {
       updateUrl={"branch"}
       postUrl={"branch"}
       deleteUrl={"branch"}
-      createButtonMessage={"Nueva sucursal"}
+      createButtonMessage={t("newBranch")}
       deleteConfirmMessage="¿Estas seguro que deseas eliminar esta sucursal?"
       headerMessage="Cada vez que un negocio se expande trae mayores desafíos para todos los niveles de operación. Maneja tus sucursales y cada uno de sus niveles operativos."
-      succesUpsertMessage={"Sucursal guardada exitosamente!"}
-      successDeleteMessage={"Sucursal eliminada exitosamente!"}
-      headerText={"Sucursales"}
+      succesUpsertMessage={t("branchSaved")}
+      successDeleteMessage={t("branchDeleted")}
+      headerText={t("nav.branches")}
       icon={<ApartmentOutlined className="text-green-400" />}
       locationRoutes={locationRoutes}
+      search={t("searchBranches")}
     />
   );
 }

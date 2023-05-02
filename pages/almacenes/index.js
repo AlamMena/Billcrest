@@ -1,28 +1,30 @@
 import { WarehouseOutlined } from "@mui/icons-material";
 import React from "react";
 import CrudPage from "../../components/crud/crudPage";
+import { useTranslation } from "react-i18next";
 
 export default function Branch() {
+  const { t } = useTranslation();
   const locationRoutes = [
     {
-      text: "Inicio",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Almacenes",
+      text: t("nav.warehouses"),
       link: "/alamcenes",
     },
   ];
   const cols = [
     {
       field: "name",
-      headerName: "Almacen",
+      headerName: t("warehouse"),
       minWidth: 270,
       flex: 1,
     },
     {
       field: "description",
-      headerName: "Descripcion",
+      headerName: t("description"),
       minWidth: 270,
       flex: 1,
     },
@@ -31,8 +33,8 @@ export default function Branch() {
   const fields = [
     {
       name: "name",
-      placeholder: "Almacen - 001",
-      label: "Nombre",
+      placeholder: t("wareNamePlaceh"),
+      label: t("name"),
       validation: {
         required: true,
       },
@@ -40,8 +42,8 @@ export default function Branch() {
     },
     {
       name: "description",
-      placeholder: "Almacen para productos de tipo - x ...",
-      label: "Descripcion",
+      placeholder: t("wareDescPlaceh"),
+      label: t("description"),
       multiline: true,
       fullWidth: false,
     },
@@ -54,14 +56,15 @@ export default function Branch() {
       updateUrl={"warehouse"}
       postUrl={"warehouse"}
       deleteUrl={"warehouse"}
-      createButtonMessage={"Nuevo almacen"}
+      createButtonMessage={t("newWarehouse")}
       deleteConfirmMessage="¿Estas seguro que deseas eliminar este almacen?"
       headerMessage="Cada vez que un negocio se expande trae mayores desafíos para todos los niveles de operación. Maneja tus almacenes y cada uno de sus niveles operativos."
-      succesUpsertMessage={"Almacen guardado exitosamente!"}
-      successDeleteMessage={"Almacen eliminado exitosamente!"}
-      headerText={"Almacenes"}
+      succesUpsertMessage={t("warehouseSaved")}
+      successDeleteMessage={t("warehouseDeleted")}
+      headerText={t("nav.warehouses")}
       icon={<WarehouseOutlined className="text-green-400" />}
       locationRoutes={locationRoutes}
+      search={t("searchWarehouse")}
     />
   );
 }

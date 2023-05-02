@@ -5,6 +5,7 @@ import PageHeader from "../../components/globals/pageHeader";
 import { Box } from "@mui/material";
 import { SettingsOutlined } from "@mui/icons-material";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -32,6 +33,7 @@ export default function UpsertContact() {
   const [value, setValue] = useState(0);
   const [client, setClient] = useState();
   const { axiosInstance } = useAxios();
+  const { t } = useTranslation();
 
   const router = useRouter();
   const { id } = router.query;
@@ -51,15 +53,15 @@ export default function UpsertContact() {
 
   const locationRoutes = [
     {
-      text: "Inicio",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Clientes",
+      text: t("nav.clients"),
       link: "/clientes",
     },
     {
-      text: "Crear",
+      text: t("create"),
       link: "/clientes/crear",
     },
   ];
@@ -68,7 +70,7 @@ export default function UpsertContact() {
     <div className="w-full md:px-0 md:pr-8 flex flex-col pb-5">
       <div className="flex w-full justify-between items-center pr-8 ">
         <PageHeader
-          header="Modificar Cliente"
+          header={t("modifyClient")}
           locationRoutes={locationRoutes}
           Icon={<SettingsOutlined />}
         />

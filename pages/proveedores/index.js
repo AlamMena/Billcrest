@@ -8,8 +8,10 @@ import ConfirmationForm from "../../components/globals/confirmationForm";
 import { useRouter } from "next/router";
 import SuppliersList from "../../components/suppliers/suppliersList";
 import { ContactPageOutlined } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 export default function Contacts() {
+  const { t } = useTranslation();
   // list data
   const [pageState, setPageState] = useState({
     isLoading: true,
@@ -31,11 +33,11 @@ export default function Contacts() {
   const router = useRouter();
   const locationRoutes = [
     {
-      text: "Inicio",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Proveedores",
+      text: t("nav.providers"),
       link: "/proveedores",
     },
   ];
@@ -56,7 +58,7 @@ export default function Contacts() {
         totalData: apiResponse.dataQuantity,
       });
     } catch (error) {
-      toast.error(`Opps!, algo ha ocurrido ${error}`);
+      toast.error(t("error"));
       setPageState({ ...pageState, isLoading: false });
     }
   };
@@ -66,16 +68,16 @@ export default function Contacts() {
       await toast.promise(
         axiosInstance.delete(`/supplier/${itemToDelete.id}`),
         {
-          pending: "Eliminando proveedor",
-          success: "Genial!, tu proveedor ha sido eliminado.",
-          error: "Oops, algo ha ocurrido",
+          pending: t("deletingProvider"),
+          success: t("providerDeleted"),
+          error: t("error"),
         }
       );
 
       setConfirmOpen(false);
       await setDataAsync();
     } catch (error) {
-      toast.error(`Opps!, Algo ha ocurrido`);
+      toast.error(t("error"));
     }
   };
 
@@ -88,7 +90,7 @@ export default function Contacts() {
       <div className="flex w-full justify-between items-center pr-8">
         <div>
           <PageHeader
-            header="Proveedores"
+            header={t("nav.providers")}
             locationRoutes={locationRoutes}
             Icon={<ContactPageOutlined />}
           />
@@ -104,7 +106,7 @@ export default function Contacts() {
             startIcon={<Add className="text-white" />}
           >
             <span className="text-sm whitespace-nowrap text-neutral-50 capitalize font-bold">
-              Nuevo Proveedor
+              {t("newProvider")}
             </span>
           </Button>
         </div>
@@ -122,7 +124,6 @@ export default function Contacts() {
         onConfirm={() => {
           deleteAsync(itemToDelete);
         }}
-        message="Estas seguro que deseas eliminar este proveedor?"
       />
     </div>
   );

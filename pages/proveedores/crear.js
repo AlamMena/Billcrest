@@ -4,19 +4,21 @@ import ContactForm from "../../components/contacts/contactForm";
 import PageHeader from "../../components/globals/pageHeader";
 import SuppliersForm from "../../components/suppliers/suppliersForm";
 import { ContactPageOutlined } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 export default function CreateSuplier() {
+  const { t } = useTranslation();
   const locationRoutes = [
     {
-      text: "Inicio",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Proveedores",
+      text: t("nav.providers"),
       link: "/proveedores",
     },
     {
-      text: "Crear",
+      text: t("create"),
       link: "/proveedores/crear",
     },
   ];
@@ -26,7 +28,7 @@ export default function CreateSuplier() {
       <div className="col-span-12 flex w-full justify-between items-center pr-8">
         <div>
           <PageHeader
-            header="Crear Proveedor"
+            header={t("createProvider")}
             locationRoutes={locationRoutes}
             Icon={<ContactPageOutlined />}
           />

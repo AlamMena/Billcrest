@@ -51,7 +51,7 @@ export default function Invoices() {
         <div className="flex w-full justify-between items-center">
           <div>
             <PageHeader
-              header="Recepcion de Mercancias"
+              header={t("invoiceRecep")}
               locationRoutes={locationRoutes}
               Icon={<SellOutlined />}
             />

@@ -7,6 +7,7 @@ import { Button } from "@mui/material";
 import ConfirmationForm from "../globals/confirmationForm.js";
 import Form from "./form.js";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 export default function CPage({
   getUrl,
   postUrl,
@@ -24,6 +25,7 @@ export default function CPage({
   formatApiResult,
   cols,
   icon,
+  search,
 }) {
   const [pageState, setPageState] = useState({
     isLoading: true,
@@ -33,6 +35,7 @@ export default function CPage({
     totalData: 0,
   });
   const [filter, setFilter] = useState("");
+  const { t } = useTranslation();
 
   // upsert states
   const [formOpen, setFormOpen] = useState(false);
@@ -63,14 +66,14 @@ export default function CPage({
         totalData: apiResponse.dataQuantity,
       });
     } catch (error) {
-      toast.error(`Opps!, algo ha ocurrido ${error}`);
+      toast.error(t("error"));
       setPageState({ ...pageState, isLoading: false });
     }
   };
 
   const upsertAsync = async (data) => {
     try {
-      toastId.current = toast("Cargando ...", {
+      toastId.current = toast(t("loading"), {
         type: toast.TYPE.LOADING,
       });
 
@@ -95,14 +98,14 @@ export default function CPage({
         render:
           error.response.data.status === 400
             ? error.response.data.message
-            : "Opps, Ha ocurrido un error!",
+            : t("error"),
       });
     }
   };
 
   const deleteAsync = async () => {
     try {
-      toastId.current = toast("Cargando ...", {
+      toastId.current = toast(t("loading"), {
         type: toast.TYPE.LOADING,
       });
       await axiosInstance.delete(`${deleteUrl}/${itemToDelete.id}`);
@@ -122,7 +125,7 @@ export default function CPage({
         render:
           error.response.data.status === 400
             ? error.response.data.message
-            : "Opps, Ha ocurrido un error!",
+            : t("error"),
       });
     }
   };
@@ -168,6 +171,7 @@ export default function CPage({
           setFormData={setFormData}
           setItemToDelete={setItemToDelete}
           setConfirmOpen={setConfirmOpen}
+          searchText={search}
         />
 
         <ConfirmationForm
