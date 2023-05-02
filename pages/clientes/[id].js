@@ -113,8 +113,8 @@ export default function UpsertContact() {
   );
 }
 
-export async function getServerSideProps({ params }) {
-  return {
-    // props: { id: params.id },
-  };
-}
+// export async function getServerSideProps({ params }) {
+//   return {
+//     props: { id: params.id },
+//   };
+// }
