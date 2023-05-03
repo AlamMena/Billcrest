@@ -12,6 +12,7 @@ import {
 import { DataGrid } from "@mui/x-data-grid";
 import { useRouter } from "next/router.js";
 import { debounce } from "../../utils/methods.js";
+import { useTranslation } from "react-i18next";
 
 export default function ContactList({
   pageState,
@@ -21,6 +22,7 @@ export default function ContactList({
   setConfirmOpen,
 }) {
   const router = useRouter();
+  const { t } = useTranslation();
 
   const columns = [
     {
@@ -31,7 +33,7 @@ export default function ContactList({
     {
       field: "name",
       width: "300",
-      headerName: "Contacto",
+      headerName: t("contact"),
       renderCell: (cells) => {
         return (
           <div className="flex space-x-4 items-center">
@@ -53,12 +55,12 @@ export default function ContactList({
     {
       field: "email",
       width: 190,
-      headerName: "Correo electronico",
+      headerName: t("login.email"),
     },
     {
       field: "addresses[0]",
       width: 190,
-      headerName: "Direccion",
+      headerName: t("address"),
       renderCell: (cells) => {
         return cells.row.addresses[0] && cells.row.addresses[0].address1;
       },
@@ -67,14 +69,14 @@ export default function ContactList({
     {
       field: "contacts[0]",
       width: 150,
-      headerName: "Telefono",
+      headerName: t("phone"),
       renderCell: (cells) => {
         return cells.row.contacts[0] && cells.row.contacts[0].number;
       },
     },
 
     {
-      field: "Acciones",
+      field: t("actions"),
       sortable: false,
       width: 150,
       renderCell: (cells) => {
@@ -127,16 +129,6 @@ export default function ContactList({
 
   return (
     <Card className="flex flex-col h-full w-full ">
-      {/* ------------------   Tab Status -------------------- */}
-      {/* <div className=" bg-slate-200 rounded-t-lg">
-        <Tabs className="text-neutral-500">
-          tab options
-          <Tab className="capitalize" value="all" label="Tabla de clientes" />
-          <Tab className="capitalize" value={"false"} label="Activos" />
-          <Tab className="capitalize" value={"true"} label="Inactivos" />
-        </Tabs>
-      </div> */}
-
       {/* ----------------------- Grid header ----------------- */}
       <div className="flex items-center space-x-4 px-4 mt-4">
         {/* search input */}
@@ -145,7 +137,7 @@ export default function ContactList({
             id="input-with-icon-adornment"
             className="input-rounded rounded-xl"
             onChange={onInputFilterChange}
-            placeholder="Buscar clientes..."
+            placeholder={t("searchClient")}
             fullWidth
             startAdornment={
               <InputAdornment position="start">
@@ -173,7 +165,7 @@ export default function ContactList({
           paginationMode="server"
           className="p-2"
           localeText={{
-            noRowsLabel: "No hay datos",
+            noRowsLabel: t("ndata"),
           }}
           autoHeight
           pagination

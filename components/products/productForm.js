@@ -20,6 +20,7 @@ import useAxios from "../../axios/index";
 import { useRouter } from "next/router";
 import { debounce } from "../../utils/methods";
 import PageHeader from "../globals/pageHeader";
+import { useTranslation } from "react-i18next";
 export default function ProductsForm({ product }) {
   const {
     handleSubmit,
@@ -45,6 +46,7 @@ export default function ProductsForm({ product }) {
   const [warehouses, setWarehouses] = useState([]);
   const [brands, setBrands] = useState([]);
   const [images, setImages] = useState([]);
+  const { t } = useTranslation();
 
   // selected categories
 
@@ -184,11 +186,11 @@ export default function ProductsForm({ product }) {
   );
   const locationRoutes = [
     {
-      text: "Inicio",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Productos",
+      text: t("nav.products"),
       link: "/productos",
     },
   ];
@@ -204,7 +206,7 @@ export default function ProductsForm({ product }) {
       <div className="flex flex-col">
         <div>
           <PageHeader
-            header="Productos"
+            header={t("nav.products")}
             locationRoutes={locationRoutes}
             Icon={<Inventory2Rounded className="text-green-400" />}
           />
@@ -213,47 +215,44 @@ export default function ProductsForm({ product }) {
           <Card className="col-span-12 lg:col-span-8 p-8 space-y-6  h-min">
             <div className="flex flex-col mx-2 space-y-1">
               <span className="font-bold tracking-wider">
-                Informacion general
+                {t("generalInfo")}
               </span>
-              <span className="text-sm text-neutral-500">
-                Ingresa los datos basicos de tu producto.
-              </span>
+              <span className="text-sm text-neutral-500">{t("enterInfo")}</span>
             </div>
             <TextField
               {...register("name", { required: true })}
               className="input-rounded"
-              label="Nombre*"
-              placeholder="Producto - 001"
+              label={t("name")}
+              placeholder={t("productNamePlaceh")}
               fullWidth
               error={errors.name}
               InputLabelProps={{
                 shrink: true,
               }}
-              helperText={errors.name && "El nombre es requerido"}
+              helperText={errors.name && t("inputValid")}
             />
             <TextField
               {...register("description")}
               className="input-rounded w-full outline-2 outline-slate-500"
               minRows={4}
-              placeholder="Descripcion producto 001"
+              placeholder={t("productDes")}
               multiline
-              label="Descripcion"
+              label={t("description")}
               InputLabelProps={{
                 shrink: true,
               }}
               error={errors.description}
-              helperText={errors.description && "La descripcion es requerida"}
+              helperText={errors.description && t("inputValid")}
               fullWidth
             />
             {/* image list */}
             <div className="space-y-6 rounded-xl h-min">
               <div className="flex flex-col mx-2 space-y-1">
                 <span className="font-bold tracking-wider">
-                  Informacion monetaria
+                  {t("monetaryInfo")}
                 </span>
                 <span className="text-sm text-neutral-500">
-                  Ingresa los datos monetarios y los beneficios que desea para
-                  su producto.
+                  {t("enterMonetaryInfo")}
                 </span>
               </div>
 
@@ -262,14 +261,14 @@ export default function ProductsForm({ product }) {
                 className="input-rounded"
                 type="number"
                 id="input-cost"
-                disabled={product && true}
+                disabled={product && false}
                 error={errors.cost}
-                helperText={errors.cost && "El costo no es valido"}
+                helperText={errors.cost && t("inputValid")}
                 onChange={handlePriceChange}
                 InputLabelProps={{
                   shrink: true,
                 }}
-                label="Costo *"
+                label={t("cost")}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -287,10 +286,10 @@ export default function ProductsForm({ product }) {
                 className="input-rounded"
                 type="number"
                 id="input-price"
-                disabled={product && true}
-                label="Precio *"
+                disabled={product && false}
+                label={t("price")}
                 error={errors.price}
-                helperText={errors.price && "El precio no es valido"}
+                helperText={errors.price && t("inputValid")}
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -311,7 +310,7 @@ export default function ProductsForm({ product }) {
                 {...register("marginBenefit")}
                 className="input-rounded"
                 disabled
-                label="Margen de beneficio"
+                label={t("profitMargin")}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -329,21 +328,23 @@ export default function ProductsForm({ product }) {
             <Card className=" p-8 space-y-6  h-min">
               <div className="flex flex-col mx-2 space-y-1">
                 <span className="font-bold tracking-wider">
-                  Informacion detallada
+                  {t("detailedInfo")}
                 </span>
                 <span className="text-sm text-neutral-500">
-                  Ingresa datos especificos de almacen.
+                  {t("enterDetailed")}
                 </span>
               </div>
               <FormControlLabel
                 className="text-xs"
                 control={<Switch defaultChecked />}
-                label="disponible"
+                label={t("available")}
               />
               <TextField
-                {...register("barCode")}
+                {...register("barCode", { required: true })}
                 className="input-rounded"
-                label="Codigo"
+                label={t("code")}
+                error={errors.barCode}
+                helperText={errors.barCode && t("inputValid")}
                 InputLabelProps={{ shrink: true }}
                 placeholder="P001-C001"
                 fullWidth
@@ -370,8 +371,8 @@ export default function ProductsForm({ product }) {
                           error={error != undefined}
                           onChange={handleSearchCategories}
                           inputRef={ref}
-                          helperText={error && "Campo requerido"}
-                          label="Categoria"
+                          helperText={error && t("inputValid")}
+                          label={t("category")}
                           variant="outlined"
                         />
                       )}
@@ -403,8 +404,8 @@ export default function ProductsForm({ product }) {
                           error={error != undefined}
                           onChange={handleSearchSubcategories}
                           inputRef={ref}
-                          helperText={error && "campo requerido"}
-                          label="Subcategoria"
+                          helperText={error && t("inputValid")}
+                          label={t("subCategory")}
                           variant="outlined"
                         />
                       )}
@@ -436,8 +437,8 @@ export default function ProductsForm({ product }) {
                           error={error != undefined}
                           onChange={handleSearchBrands}
                           inputRef={ref}
-                          helperText={error && "Campo requerido"}
-                          label="Marcas"
+                          helperText={error && t("inputValid")}
+                          label={t("nav.brands")}
                           variant="outlined"
                         />
                       )}
@@ -451,10 +452,10 @@ export default function ProductsForm({ product }) {
             <Card className=" p-8 space-y-6  h-min">
               <div className="flex flex-col mx-2 space-y-1">
                 <span className="font-bold tracking-wider">
-                  Informacion detallada
+                  {t("detailedInfo")}
                 </span>
                 <span className="text-sm text-neutral-500">
-                  Ingresa datos especificos de tus productos.
+                  {t("enterDetailed")}
                 </span>
               </div>
               {!product && (
@@ -480,8 +481,8 @@ export default function ProductsForm({ product }) {
                             error={error != undefined}
                             onChange={handleSearchWarehouses}
                             inputRef={ref}
-                            helperText={error && "Campo requerido"}
-                            label="Almacen"
+                            helperText={error && t("inputValid")}
+                            label={t("warehouse")}
                             variant="outlined"
                           />
                         )}
@@ -494,10 +495,12 @@ export default function ProductsForm({ product }) {
               )}
 
               <TextField
-                {...register("stock")}
+                {...register("stock", { required: true })}
                 disabled={product && true}
                 className="input-rounded"
-                label="Cantidad de productos"
+                error={errors.stock}
+                helperText={errors.stock && t("inputValid")}
+                label={t("quantityProduct")}
                 placeholder="120"
                 InputLabelProps={{
                   shrink: true,
@@ -514,7 +517,7 @@ export default function ProductsForm({ product }) {
                 disabled={isLoading}
                 variant="contained"
               >
-                Guardar
+                {t("save")}
               </Button>
             </div>
           </div>

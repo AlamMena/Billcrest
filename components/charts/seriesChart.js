@@ -15,7 +15,7 @@ export default function SeriesChart() {
       height: 350,
       type: "radialBar",
     },
-    labels: ["Hombre", "Mujer"],
+    labels: [t("charts.men"), t("charts.women")],
     dataLabels: {
       show: true,
       name: {

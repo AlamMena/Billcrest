@@ -50,21 +50,30 @@ export default function SuppliersList({
       },
     },
 
-    {
-      field: "email",
-      width: 190,
-      headerName: t("login.email"),
-    },
+    // {
+    //   field: "email",
+    //   width: 190,
+    //   headerName: t("address"),
+    //   renderCell: (cells) => {
+    //     return cells.row.addresses[0] && cells.row.addresses[0].address1;
+    //   },
+    // },
     {
       field: "contacts[0].number",
       width: 190,
       headerName: t("phone"),
+      renderCell: (cells) => {
+        return cells.row.contacts[0] && cells.row.contacts[0].number;
+      },
     },
 
     {
       field: "adresses[0].address",
       width: 190,
       headerName: t("address"),
+      renderCell: (cells) => {
+        return cells.row.addresses[0] && cells.row.addresses[0].address1;
+      },
     },
 
     {

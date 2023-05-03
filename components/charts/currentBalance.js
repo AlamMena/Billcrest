@@ -11,23 +11,25 @@ export default function CurrentBalance() {
         <span className=" text-2xl font-bold">$216,500</span>
       </div>
       <div className="flex text-sm  text-neutral-600 justify-between">
-        <span>Your Current Balance</span>
+        <span>{t("charts.currentBalance")}</span>
         <span>$1,500</span>
       </div>
       <div className="flex text-sm text-neutral-600  justify-between">
-        <span>Your Current Balance</span>
+        <span>{t("charts.currentBalance")}</span>
         <span>$1,500</span>
       </div>
       <div className="flex text-sm  justify-between">
-        <span className="text-neutral-700 font-bold">Total Amount </span>
+        <span className="text-neutral-700 font-bold">
+          {t("charts.totalAmount")}{" "}
+        </span>
         <span className="font-bold text-lg">$3,000</span>
       </div>
       <div className="flex justify-center space-x-2">
         <Button variant="contained" className="w-full" color="secondary">
-          Transfer
+          {t("charts.transfer")}
         </Button>
         <Button variant="contained" className="w-full" color="primary">
-          Receive
+          {t("charts.receive")}
         </Button>
       </div>
     </Card>

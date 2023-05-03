@@ -77,11 +77,15 @@ export default function LineChart() {
       <div className="flex justify-between items-center">
         <div className="flex flex-col text-left p-5">
           <Typography variant="h6">{t("home.annual")}</Typography>
-          <span className="text-xs text-neutral-500">(+45 el ano pasado)</span>
+          <span className="text-xs text-neutral-500">
+            (+45 {t("charts.lastYear")})
+          </span>
         </div>
         <div>
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Year</InputLabel>
+            <InputLabel id="demo-simple-select-label">
+              {t("charts.year")}
+            </InputLabel>
             <Select
               id="year"
               value={year}

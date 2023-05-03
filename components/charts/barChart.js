@@ -4,8 +4,10 @@ import ApexCharts from "./apexCharts";
 import { useTheme } from "@emotion/react";
 import { Card, Typography } from "@mui/material";
 import { formatCurrency } from "../../utils/methods";
+import { useTranslation } from "react-i18next";
 
 export default function BarChart({ data }) {
+  const { t } = useTranslation();
   const theme = useTheme();
 
   const valueValidation = (value) => {};
@@ -75,7 +77,8 @@ export default function BarChart({ data }) {
               <span>{formatCurrency(data.increasePercentage)}</span>
             )}
           </p>
-          <p>la semana pasada</p>
+
+          <p>{t("charts.lastWeek")}</p>
         </div>
       </div>
       <div className=" max-w-xs flex-auto p-3">

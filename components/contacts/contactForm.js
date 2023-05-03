@@ -63,6 +63,7 @@ export default function ContactForm({ contact, invoices }) {
           creditdays: 0,
           allowDiscount: false,
           discount: 0,
+          typeId: 1,
         },
   });
   const { t } = useTranslation();
@@ -122,17 +123,17 @@ export default function ContactForm({ contact, invoices }) {
       if (requestData.id !== undefined) {
         // if the item exists
         await toast.promise(axiosInstance.put("client", parsedData), {
-          pending: "guardando cliente",
-          success: "Genial!, tu cliente ha sido actualizado.",
-          error: "Oops, algo ha ocurrido put",
+          pending: t("creatingClient"),
+          success: t("clientUpdated"),
+          error: t("error"),
         });
         console.log(parsedData);
       } else {
         // if the item doesnt exists
         await toast.promise(axiosInstance.post("client", parsedData), {
-          pending: "guardando cliente",
-          success: "Genial!, tu cliente ha sido creado.",
-          error: "Oops, algo ha ocurrido post",
+          pending: t("creatingClient"),
+          success: t("clientCreated"),
+          error: t("error"),
         });
       }
 
@@ -140,7 +141,7 @@ export default function ContactForm({ contact, invoices }) {
       await router.push("/clientes");
     } catch (error) {
       // error toast
-      toast.error(`Opps!, something went wrong${error}`);
+      toast.error(t("error"));
     }
   };
 
@@ -298,7 +299,7 @@ export default function ContactForm({ contact, invoices }) {
               {t("clientType")}
             </InputLabel>
             <Select
-              {...register("clientType")}
+              {...register("typeId")}
               labelId="select-type-identification"
               id="select-type-identificationr"
               value={clientType}

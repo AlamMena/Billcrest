@@ -18,6 +18,7 @@ import currency from "currency.js";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import useAxios from "../../axios/index";
+import { useTranslation } from "react-i18next";
 
 export default function ProductList({
   statusFilter,
@@ -26,6 +27,7 @@ export default function ProductList({
   actions,
   onRowClick,
 }) {
+  const { t } = useTranslation();
   const [pageState, setPageState] = useState({
     isLoading: true,
     data: [],
@@ -62,7 +64,7 @@ export default function ProductList({
     {
       field: "name",
       width: "250",
-      headerName: "Producto",
+      headerName: t("nav.products"),
       renderCell: (cells) => {
         return (
           <div className="flex space-x-4 items-center ">
@@ -83,7 +85,7 @@ export default function ProductList({
     {
       field: "cost",
       width: 120,
-      headerName: "Costo",
+      headerName: t("cost"),
       renderCell: (cells) => {
         return <span>{currency(cells.row.cost).format()}</span>;
       },
@@ -91,7 +93,7 @@ export default function ProductList({
     {
       field: "price",
       width: 120,
-      headerName: "Precio",
+      headerName: t("price"),
       renderCell: (cells) => {
         return <span>{currency(cells.row.price).format()}</span>;
       },
@@ -99,7 +101,7 @@ export default function ProductList({
     {
       field: "marginBenefit",
       width: 120,
-      headerName: "Beneficio",
+      headerName: t("benefit"),
       renderCell: (cells) => {
         return <span>{currency(cells.row.marginBenefit).format()}</span>;
       },
@@ -108,7 +110,7 @@ export default function ProductList({
     {
       field: "Cantidad",
       width: 90,
-      headerName: "Cantidad",
+      headerName: t("quantity"),
       renderCell: (cells) => {
         return <span>{cells.row.stock}</span>;
       },
@@ -116,17 +118,17 @@ export default function ProductList({
     {
       field: "stock",
       width: 150,
-      headerName: "Inventario",
+      headerName: t("inventory"),
       renderCell: (cells) => {
         return cells.row.stock < 1 ? (
           <span className="bg-red-200 rounded-2xl px-2 py-1 flex items-center">
             <span className="w-2 h-2 rounded-full mx-2 bg-red-700 animate-pulse  "></span>
-            Agotados
+            {t("soldout")}
           </span>
         ) : (
           <span className="bg-green-200 rounded-2xl px-2 py-1 flex items-center">
             <span className="w-2 h-2 rounded-full mx-2 bg-green-700 animate-pulse  "></span>
-            Disponible
+            {t("available")}
           </span>
         );
       },
@@ -134,7 +136,7 @@ export default function ProductList({
     {
       field: "supliers",
       width: 150,
-      headerName: "Proveedores",
+      headerName: t("nav.providers"),
       renderCell: (cell) => {
         return (
           <AvatarGroup max={4}>
@@ -153,7 +155,7 @@ export default function ProductList({
       },
     },
     {
-      field: "Acciones",
+      field: t("actions"),
       sortable: false,
       hide: !actions,
       width: 250,
@@ -201,7 +203,7 @@ export default function ProductList({
         isLoading: false,
       });
     } catch (error) {
-      toast.error(`Opps!, algo salio mal ${error}`);
+      toast.error(t("error"));
     }
   };
   const onInputFilterChange = debounce((e) =>
@@ -239,7 +241,7 @@ export default function ProductList({
             id="input-with-icon-adornment"
             className="input-rounded rounded-xl"
             onChange={onInputFilterChange}
-            placeholder="Buscar productos..."
+            placeholder={t("searchProducts")}
             fullWidth
             startAdornment={
               <InputAdornment position="start">
@@ -272,7 +274,7 @@ export default function ProductList({
           disableColumnFilter
           disableColumnSelector
           localeText={{
-            noRowsLabel: "No hay datos",
+            noRowsLabel: t("ndata"),
           }}
         />
       </div>

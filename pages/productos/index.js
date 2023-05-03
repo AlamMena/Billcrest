@@ -7,24 +7,25 @@ import { toast } from "react-toastify";
 import ConfirmationForm from "../../components/globals/confirmationForm";
 import { useRouter } from "next/router";
 import ProductList from "../../components/products/productsList";
+import { useTranslation } from "react-i18next";
 
 export default function Products() {
   // confirmation form states
   const [confirmOpen, setConfirmOpen] = useState(false);
+  const { t } = useTranslation();
 
   const [itemToDelete, setItemToDelete] = useState();
 
-  const toastId = useRef(null);
   const { axiosInstance } = useAxios();
 
   const router = useRouter();
   const locationRoutes = [
     {
-      text: "Inicio",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Productos",
+      text: t("nav.products"),
       link: "/productos",
     },
   ];
@@ -32,21 +33,16 @@ export default function Products() {
   const deleteAsync = async () => {
     try {
       await toast.promise(axiosInstance.delete(`product/${itemToDelete}`), {
-        pending: "Eliminando producto...",
-        success: "Genial!, tu producto ha sido eliminado.",
-        error: "Oops, algo ha ocurrido",
+        pending: t("deletingProduct"),
+        success: t("productDeleted"),
+        error: t("error"),
       });
 
       setConfirmOpen(false);
       await setDataAsync();
     } catch (error) {
-      toast.error(`Opps!, Algo ha ocurrido`);
+      toast.error(t("error"));
     }
-  };
-
-  // status tab object style
-  const tabStyle = {
-    style: { backgroundColor: "rgb(22 163 74 / var(--tw-text-opacity))" },
   };
 
   return (
@@ -54,7 +50,7 @@ export default function Products() {
       <div className="flex w-full justify-between items-center pr-0 md:pr-8">
         <div>
           <PageHeader
-            header="Productos"
+            header={t("nav.products")}
             locationRoutes={locationRoutes}
             Icon={<Inventory2Rounded />}
           />
@@ -69,7 +65,7 @@ export default function Products() {
           startIcon={<Add className="text-white ml-2 xs:ml-0" />}
         >
           <span className="text-sm hidden xs:flex whitespace-nowrap text-neutral-50 capitalize font-bold">
-            Nuevo producto
+            {t("newProduct")}
           </span>
         </Button>
       </div>
@@ -84,7 +80,6 @@ export default function Products() {
         onConfirm={() => {
           deleteAsync(itemToDelete);
         }}
-        message={"eliminar el producto"}
       />
     </div>
   );

@@ -28,7 +28,7 @@ export default function Home() {
 
   const dataCharts = [
     {
-      label: "Products Sold",
+      label: t("charts.productsSold"),
       data: [
         { date: "0001-01-01T00:00:00", value: 25 },
         { date: "2023-02-19T17:09:45", value: 10 },
@@ -40,7 +40,7 @@ export default function Home() {
       increasePercentage: 28,
     },
     {
-      label: "Earnings this month",
+      label: t("charts.earningsMonth"),
       data: [
         { date: "0001-01-01T00:00:00", value: 10 },
         { date: "2023-02-19T17:09:45", value: 34 },
@@ -52,7 +52,7 @@ export default function Home() {
       increasePercentage: 14,
     },
     {
-      label: "Total Balance",
+      label: t("charts.totalBalance"),
       data: [
         { date: "0001-01-01T00:00:00", value: 40 },
         { date: "2023-02-19T17:09:45", value: 20 },
