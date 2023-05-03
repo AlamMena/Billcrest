@@ -2,10 +2,12 @@ import { Card, TextField, Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { CameraAltRounded, FormGroup } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 export default function CompanySettings() {
   const [fileContainer, setFileContainer] = useState();
   const [currentImage, setCurrentImage] = useState();
+  const { t } = useTranslation();
 
   const handleImageInput = (e) => {
     setCurrentImage(URL.createObjectURL(e.target.files[0]));
@@ -34,7 +36,7 @@ export default function CompanySettings() {
             >
               <div className="w-full flex flex-col justify-center space-y-2 items-center">
                 <CameraAltRounded />
-                <span className="text-xs capitalize">Actualizar imagen</span>
+                <span className="text-xs capitalize">{t("updateImg")}</span>
               </div>
 
               <input
@@ -69,11 +71,11 @@ export default function CompanySettings() {
               required: true,
             })}
             id="outlined-adornment-name"
-            label="Nombre de la Empresa"
+            label={t("companyName")}
             size="medium"
             error={errors.name && "value"}
             className="input-rounded"
-            helperText={errors.name && `El campo no es valido`}
+            helperText={errors.name && t("inputValid")}
             variant="outlined"
             fullWidth
           />
@@ -82,21 +84,12 @@ export default function CompanySettings() {
               required: true,
             })}
             id="outlined-adornment-name"
-            label="Correo"
+            label={t("login.email")}
             size="medium"
             error={errors.email && "value"}
             className="input-rounded"
-            helperText={errors.email && `El campo no es valido`}
+            helperText={errors.email && t("inputValid")}
             variant="outlined"
-            // InputProps={{
-            //   startAdornment: (
-            //     <InputAdornment position="start">
-            //       <EmailOutlined
-            //         className={`${errors.email && "text-red-500"} `}
-            //       />
-            //     </InputAdornment>
-            //   ),
-            // }}
             fullWidth
           />
         </div>
@@ -104,23 +97,23 @@ export default function CompanySettings() {
           <TextField
             {...register("phone", { required: true })}
             id="outlined-adornment-phone"
-            label="Numero de telefono"
+            label={t("phone")}
             size="medium"
             className="input-rounded text-md"
             variant="outlined"
             error={errors.phone}
-            helperText={errors.phone && `El campo no es valido`}
+            helperText={errors.phone && t("inputValid")}
             fullWidth
           />
           <TextField
             {...register("address", { required: true })}
             id="outlined-adornment-phone"
-            label="Direccion"
+            label={t("address")}
             size="medium"
             className="input-rounded text-md"
             variant="outlined"
             error={errors.address}
-            helperText={errors.address && `El campo no es valido`}
+            helperText={errors.address && t("inputValid")}
             fullWidth
           />
         </div>
@@ -128,7 +121,7 @@ export default function CompanySettings() {
           <TextField
             {...register("website")}
             id="outlined-adornment-phone"
-            label="Sitio electronico"
+            label={t("website")}
             size="medium"
             className="input-rounded text-md"
             variant="outlined"
@@ -137,12 +130,12 @@ export default function CompanySettings() {
           <TextField
             {...register("noIdentification", { required: true })}
             id="outlined-adornment-phone"
-            label="Numero de identificacion"
+            label={t("noIdentification")}
             size="medium"
             className="input-rounded text-md"
             variant="outlined"
             error={errors.noIdentification}
-            helperText={errors.noIdentification && `El campo no es valido`}
+            helperText={errors.noIdentification && t("inputValid")}
             fullWidth
           />
         </div>
@@ -150,23 +143,23 @@ export default function CompanySettings() {
           <TextField
             {...register("ncf", { required: true })}
             id="outlined-adornment-phone"
-            label="Numero de comprobante fiscal"
+            label={t("fiscalNumber")}
             size="medium"
             className="input-rounded text-md"
             variant="outlined"
             error={errors.ncf}
-            helperText={errors.ncf && `El campo no es valido`}
+            helperText={errors.ncf && t("inputValid")}
             fullWidth
           />
           <TextField
             {...register("currencyId")}
             id="outlined-adornment-phone"
-            label="Moneda"
+            label={t("currency")}
             size="medium"
             className="input-rounded text-md"
             variant="outlined"
             error={errors.currencyId}
-            helperText={errors.currencyId && `El campo no es valido`}
+            helperText={errors.currencyId && t("inputValid")}
             fullWidth
           />
         </div>
@@ -179,7 +172,7 @@ export default function CompanySettings() {
             size="medium"
             className=" w-28 "
           >
-            Guardar
+            {t("save")}
           </Button>
         </div>
       </Card>

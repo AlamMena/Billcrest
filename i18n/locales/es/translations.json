@@ -37,7 +37,8 @@
     "invoices": "Facturas",
     "receptions": "Recepciones",
     "earnings": "Ganancias",
-    "losses": "Pérdidas"
+    "losses": "Pérdidas",
+    "settings": "Ajustes"
   },
   "new": "Nuevo",
   "list": "Lista",
@@ -213,5 +214,10 @@
     "totalProfit": "Ganancia Total",
     "totalIncome": "Ingreso Total",
     "totalExpenses": "Gastos Totales"
-  }
+  },
+  "companyName": "Nombre de la compañía",
+  "fiscalNumber": "Número de comprobante fiscal",
+  "currency": "Moneda",
+  "website": "Página Web",
+  "profileSettings": "Ajustes de Perfil"
 }

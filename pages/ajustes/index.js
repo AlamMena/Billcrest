@@ -4,8 +4,9 @@ import PageHeader from "../../components/globals/pageHeader";
 import { useState } from "react";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ProfileSettings from "./perfil";
-import { SettingsOutlined } from "@mui/icons-material";
+import { SettingsOutlined, BusinessOutlined } from "@mui/icons-material";
 import CompanySettings from "./company";
+import { useTranslation } from "react-i18next";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -31,6 +32,7 @@ function a11yProps(index) {
 
 export default function Settings() {
   const [value, setValue] = useState(0);
+  const { t } = useTranslation();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -38,11 +40,11 @@ export default function Settings() {
 
   const locationRoutes = [
     {
-      text: "Inicio",
+      text: t("nav.home"),
       link: "/",
     },
     {
-      text: "Ajustes",
+      text: t("nav.settings"),
       link: "/ajustes",
     },
   ];
@@ -51,7 +53,7 @@ export default function Settings() {
     <div className="w-full flex flex-col pb-5">
       <div className="flex w-full justify-between items-center pr-8">
         <PageHeader
-          header="Ajustes de Perfil"
+          header={t("profileSettings")}
           locationRoutes={locationRoutes}
           Icon={<SettingsOutlined />}
         />
@@ -65,16 +67,16 @@ export default function Settings() {
           <Tab
             icon={<SettingsIcon />}
             iconPosition="start"
-            label="Ajustes"
+            label={t("nav.settings")}
             {...a11yProps(0)}
           />
           <Tab
-            icon={<SettingsIcon />}
+            icon={<BusinessOutlined />}
             iconPosition="start"
-            label="Empresa"
+            label={t("company")}
             {...a11yProps(0)}
           />
-          <Tab
+          {/* <Tab
             icon={<SettingsIcon />}
             iconPosition="start"
             label="NCF"
@@ -85,7 +87,7 @@ export default function Settings() {
             iconPosition="start"
             label="Moneda"
             {...a11yProps(3)}
-          />
+          /> */}
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>

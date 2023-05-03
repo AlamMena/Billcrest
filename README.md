@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Overview
 
-## Getting Started
+Billcrest is a responsive web application that provides clients with a user-friendly interface for browsing products, adding items to their invoice, and completing purchases seamlessly. The product pages provides detailed information on each item. The process of creating invoices is fast and easy, allowing clients to enter their product list and payment information in just a few simple steps. Additionally, businesses can use the webpage's dashboard to manage their inventory, view sales reports, and access customer data in real-time. Overall, the point of sale webpage offers a streamlined checkout experience for clients and powerful tools for businesses to manage their operations and grow their sales.
 
-First, run the development server:
+Check the live app on [billcrest.com](https://www.billcrest.com).
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## What can you do in this app?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Process sales transactions: You can use the app to process sales transactions, including accepting payment by credit card, debit card, or cash. The app can also calculate the total cost of the purchase, including taxes and any discounts.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- Provide a visual representation of data that is easy to understand and interpret using charts. This can help users to quickly identify trends and patterns, and make informed decisions based on the data.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- CRUD: You can use the app to create, read, update and delete new records in the database.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Track inventory levels in real-time and update inventory counts.
 
-## Learn More
+- Modify user personal information, such as name, email address, and phone number allowing users to manage their account settings.
 
-To learn more about Next.js, take a look at the following resources:
+## Technologies used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- React.js
+- Tailwind.css
+- Redux
+- Material UI
+- React hook form
+- Chart.js
+- Firebase
+- React toastify
+- day.js
+- Axios
+- i18next

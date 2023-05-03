@@ -18,7 +18,7 @@
     "claim": "Claim your prize",
     "sales": "Sales and purchases",
     "annual": "Annual Sales",
-    "summary": "Sales Sumary",
+    "summary": "Sales Summary",
     "currentB": "Current Balance"
   },
   "nav": {
@@ -37,7 +37,8 @@
     "invoices": "Invoices",
     "receptions": "Receptions",
     "earnings": "Earnings",
-    "losses": "Losses"
+    "losses": "Losses",
+    "settings": "Settings"
   },
   "new": "New",
   "list": "List",
@@ -213,5 +214,10 @@
     "totalProfit": "Total Profit",
     "totalIncome": "Total Income",
     "totalExpenses": "Total Expenses"
-  }
+  },
+  "companyName": "Company Name",
+  "fiscalNumber": "Fiscal voucher number",
+  "currency": "Currency",
+  "website": "Website",
+  "profileSettings": "Profile Settings"
 }

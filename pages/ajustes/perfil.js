@@ -3,6 +3,7 @@ import { Button, TextField, Card } from "@mui/material";
 import { CameraAltRounded, PhoneOutlined } from "@mui/icons-material";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 export default function ProfileSettings() {
   const {
@@ -12,6 +13,8 @@ export default function ProfileSettings() {
     setValue,
     formState: { errors },
   } = useForm();
+
+  const { t } = useTranslation();
 
   const onSubmit = async (data) => {
     // const dataParsed = {
@@ -35,7 +38,7 @@ export default function ProfileSettings() {
             >
               <div className="w-full flex flex-col justify-center space-y-2 items-center">
                 <CameraAltRounded />
-                <span className="text-xs capitalize">Actualizar imagen</span>
+                <span className="text-xs capitalize">{t("updateImg")}</span>
               </div>
 
               <input
@@ -59,7 +62,7 @@ export default function ProfileSettings() {
             />
           </figure>
           <span className="text-xs px-8 m-4 text-center max-w-sm  text-neutral-500">
-            Permitidos *.jpeg, *.jpg, *.png, *.gif max size of 3.1 MB
+            Allowed *.jpeg, *.jpg, *.png, *.gif max size of 3.1 MB
           </span>
         </Card>
       </div>
@@ -75,10 +78,10 @@ export default function ProfileSettings() {
                 required: true,
               })}
               id="outlined-adornment-name"
-              label="Nombre"
+              label={t("name")}
               error={errors.name && "value"}
               className="input-rounded"
-              helperText={errors.name && `El campo no es valido`}
+              helperText={errors.name && t("inputValid")}
               variant="outlined"
               // InputProps={{
               //   startAdornment: (
@@ -96,11 +99,11 @@ export default function ProfileSettings() {
                 required: true,
               })}
               id="outlined-adornment-name"
-              label="Correo"
+              label={t("login.email")}
               size="medium"
               error={errors.email && "value"}
               className="input-rounded"
-              helperText={errors.email && `El campo no es valido`}
+              helperText={errors.email && t("inputValid")}
               variant="outlined"
               // InputProps={{
               //   startAdornment: (
@@ -118,12 +121,12 @@ export default function ProfileSettings() {
             <TextField
               {...register("phone", { required: true })}
               id="outlined-adornment-phone"
-              label="Numero de telefono"
+              label={t("phone")}
               size="medium"
               className="input-rounded text-md"
               variant="outlined"
               error={errors.phone}
-              helperText={errors.phone && `El campo no es valido`}
+              helperText={errors.phone && t("inputValid")}
               fullWidth
               // InputProps={{
               //   startAdornment: (
@@ -138,12 +141,12 @@ export default function ProfileSettings() {
             <TextField
               {...register("address", { required: true })}
               id="outlined-adornment-phone"
-              label="Direccion"
+              label={t("address")}
               size="medium"
               className="input-rounded text-md"
               variant="outlined"
               error={errors.phone}
-              helperText={errors.phone && `El campo no es valido`}
+              helperText={errors.phone && t("inputValid")}
               fullWidth
             />
           </div>
@@ -156,7 +159,7 @@ export default function ProfileSettings() {
               size="medium"
               className=" w-28 "
             >
-              Guardar
+              {t("save")}
             </Button>
           </div>
         </form>
