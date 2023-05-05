@@ -121,13 +121,12 @@ export default function CreateInvoice() {
     console.log(error);
     if (
       error.response.data.status === 400 &&
-      error.response.data.message ===
-        "The client does not have permission to this type of invoice"
+      error.response.data.message === t("clientPermission")
     ) {
       setConfirmOpen(false);
-      return "Este cliente no tiene permiso a este tipo de factura";
+      return t("clientPermission");
     }
-    return "Oops, algo ha ocurrido";
+    return t("error");
   };
 
   // Location Routes
@@ -174,7 +173,7 @@ export default function CreateInvoice() {
         if (invoice.id !== undefined) {
           // if the item exists
           await toast.promise(axiosInstance.put("/invoice", invoice), {
-            pending: t("creatingInvoice"),
+            pending: t("updatingInvoice"),
             success: t("invoiceCreated"),
             error: {
               render({ data }) {
@@ -185,7 +184,7 @@ export default function CreateInvoice() {
         } else {
           // if the item doesnt exists
           await toast.promise(axiosInstance.post("/invoice", invoice), {
-            pending: t("updatingInvoice"),
+            pending: t("creatingInvoice"),
             success: t("invoiceCreated"),
             error: {
               render({ data }) {
@@ -495,7 +494,7 @@ export default function CreateInvoice() {
           variant="contained"
           sx={{ textTransform: "none" }}
           color="grey"
-          onClick={() => setConfirmDraftOpen(true)}
+          // onClick={() => setConfirmDraftOpen(true)}
         >
           {t("draft")}
         </Button>

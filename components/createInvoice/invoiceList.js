@@ -144,6 +144,7 @@ export default function InvoiceList({ data }) {
             rowsPerPageOptions={[5]}
             disableSelectionOnClick
             experimentalFeatures={{ newEditingApi: true }}
+            hideFooterSelectedRowCount
           />
         </div>
       </Card>

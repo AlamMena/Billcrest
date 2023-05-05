@@ -11,6 +11,7 @@ import {
 import { Controller, useForm } from "react-hook-form";
 import useAxios from "../../axios/index";
 import { useTranslation } from "react-i18next";
+import { debounce } from "../../utils/methods";
 
 export default function Form({
   onSave,
@@ -45,6 +46,7 @@ export default function Form({
   };
 
   const { axiosInstance } = useAxios();
+
   const getCatalogAsync = async (catalogName, filter) => {
     const queryFilters = `page=${1}&limit=${100}&value=${filter}`;
     const { data: apiResponse } = await axiosInstance.get(
@@ -57,6 +59,9 @@ export default function Form({
       })
     );
   };
+  const onInputCatalogFilterChange = debounce((catalogName, filter) =>
+    getCatalogAsync(catalogName, filter)
+  );
 
   useEffect(() => {
     let parsedData = data;
@@ -117,12 +122,14 @@ export default function Form({
                               className="input-rounded"
                               error={error != undefined}
                               onChange={(e) =>
-                                getCatalogAsync(item.name, e.target.value)
+                                onInputCatalogFilterChange(
+                                  item.catalogName,
+                                  e.target.value
+                                )
                               }
                               inputRef={ref}
                               helperText={error && t("inputRequired")}
                               label={item.label}
-                              inputProps={{ maxLength: 50 }}
                               variant="outlined"
                             />
                           )}

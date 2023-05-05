@@ -2,6 +2,7 @@ import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import app from "../../auth/fireBaseAppConfig";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import styles from "../globals/imageHandlerStyles.module.css";
+import { useTranslation } from "react-i18next";
 
 export default function ImagePoster({
   images,
@@ -14,6 +15,7 @@ export default function ImagePoster({
     setFile(e.target.files[0]);
     setImages([url]);
   };
+  const { t } = useTranslation();
 
   return (
     <div className={styles.container}>
@@ -23,10 +25,10 @@ export default function ImagePoster({
           onChange={handleImageInput}
           className={styles.image_input}
         ></input>
-        <span className={styles.title}>Selecciona una imagen</span>
+        <span className={styles.title}>{t("selectImg")}</span>
       </div>
       <div className={styles.list_container}>
-        <span className={styles.list_title}>Listado de imagenes</span>
+        <span className={styles.list_title}>{t("imgList")}</span>
         {images[0] !== undefined &&
           images[0] != "" &&
           images.map((url, index) => {

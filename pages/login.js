@@ -156,10 +156,10 @@ export default function Login() {
           </div>
         </div>
         {/*-------------------------------- Login background -------------------------------- */}
-        <div className=" hidden lg:flex lg:col-span-7 bg-[url('https://cdn.dribbble.com/users/373274/screenshots/10805897/media/6e234812bc4204db2848082933592e54.png')] lg:items-center">
+        <div className=" hidden lg:flex lg:col-span-7 bg-[url('https://cdn.dribbble.com/users/373274/screenshots/10805897/media/6e234812bc4204db2848082933592e54.png')] bg-cover lg:items-center">
           <div className=" px-20">
             {/* Title and subtitle */}
-            <div className=" text-white text-5xl p-3 font-bold">
+            <div className=" text-white text-5xl p-3 rounded-md bg-green-400/70">
               {t("login.welcome")}
             </div>
             <div className=" text-white p-3">

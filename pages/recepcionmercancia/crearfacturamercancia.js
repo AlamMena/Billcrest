@@ -177,7 +177,7 @@ export default function CreateInvoiceProduct() {
           // logic
           // if the item exists
           await toast.promise(axiosInstance.put("/goodreceipt", invoice), {
-            pending: t("creatingInvoice"),
+            pending: t("updatingInvoice"),
             success: t("invoiceCreated"),
             error: {
               render({ data }) {
@@ -190,7 +190,7 @@ export default function CreateInvoiceProduct() {
         } else {
           // if the item doesnt exists
           await toast.promise(axiosInstance.post("/goodreceipt", invoice), {
-            pending: t("updatingInvoice"),
+            pending: t("creatingInvoice"),
             success: t("invoiceCreated"),
             error: {
               render({ data }) {
@@ -300,7 +300,6 @@ export default function CreateInvoiceProduct() {
                 </InputLabel>
                 <OutlinedInput
                   defaultValue={invoiceNumber}
-                  disabled
                   id="outlined-adornment-name"
                   label={t("invoiceN")}
                   size="large"

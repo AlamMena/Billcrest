@@ -41,7 +41,7 @@ export default function GList({
       width: 220,
       renderCell: (cells) => {
         return (
-          <div className="flex">
+          <div className="flex space-x-4 ">
             <a
               onClick={() => {
                 setFormData(cells.row);
@@ -49,7 +49,7 @@ export default function GList({
               }}
               className="text-green-400 cursor-pointer"
             >
-              <EditOutlined className="text-green-400 mx-1" />
+              <EditOutlined className="text-green-400" />
             </a>
             <a
               onClick={() => {

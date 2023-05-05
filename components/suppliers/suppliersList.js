@@ -90,7 +90,7 @@ export default function SuppliersList({
               // }}
               className="text-green-400 cursor-pointer"
             >
-              <EditOutlined className="text-green-400 mx-2" />
+              <EditOutlined className="text-green-400" />
             </a>
             <a
               onClick={() => {
@@ -99,7 +99,7 @@ export default function SuppliersList({
               }}
               className="text-red-500 cursor-pointer"
             >
-              <DeleteOutline className="text-red-500 mx-2" />
+              <DeleteOutline className="text-red-500" />
             </a>
           </div>
         );
@@ -173,6 +173,7 @@ export default function SuppliersList({
           pagination
           disableColumnFilter
           disableColumnSelector
+          hideFooterSelectedRowCount
         />
       </div>
     </Card>

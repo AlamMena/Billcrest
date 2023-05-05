@@ -40,17 +40,17 @@ export default function Branch() {
       },
       fullWidth: false,
     },
-    // {
-    //   name: "category",
-    //   placeholder: "categoria - 001",
-    //   label: "Cateogria",
-    //   validation: {
-    //     required: true,
-    //   },
-    //   fullWidth: true,
-    //   type: "autocomplete",
-    //   catalogName: "categories",
-    // },
+    {
+      name: "category",
+      placeholder: t("categoryNamePlaceh"),
+      label: t("nav.categories"),
+      validation: {
+        required: true,
+      },
+      fullWidth: true,
+      type: "autocomplete",
+      catalogName: "categories",
+    },
 
     {
       name: "description",

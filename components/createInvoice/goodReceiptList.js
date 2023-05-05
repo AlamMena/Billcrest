@@ -139,6 +139,7 @@ export default function GoodReceiptList({ data }) {
             rowsPerPageOptions={[5]}
             disableSelectionOnClick
             experimentalFeatures={{ newEditingApi: true }}
+            hideFooterSelectedRowCount
           />
         </div>
       </Card>

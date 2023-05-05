@@ -6,12 +6,14 @@ import useAuth from "../../auth/useAuth";
 import { LanContext } from "../../pages/_app";
 import { useContext } from "react";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 export default function TopSection() {
   const { language, changeLanguage } = useContext(LanContext);
 
   const { LogOut } = useAuth();
   const Router = useRouter();
+  const { t } = useTranslation();
 
   const account = {
     photoURL: "https://cdn-icons-png.flaticon.com/512/2202/2202112.png",
@@ -163,10 +165,10 @@ export default function TopSection() {
                   Router.push("/"), handleClose();
                 }}
               >
-                Home
+                {t("nav.home")}
               </span>
               <span className="px-2 py-2 cursor-pointer hover:bg-slate-100 rounded-lg duration-200">
-                Profile
+                {t("profile")}
               </span>
               <span
                 className="px-2 py-2 cursor-pointer hover:bg-slate-100 rounded-lg duration-200"
@@ -174,7 +176,7 @@ export default function TopSection() {
                   Router.push("/ajustes"), handleClose();
                 }}
               >
-                Settings
+                {t("nav.settings")}
               </span>
             </div>
             <Divider className="px-0" />
@@ -183,7 +185,7 @@ export default function TopSection() {
                 className="px-2 py-2 cursor-pointer hover:bg-slate-100 rounded-lg duration-200"
                 onClick={() => LogOut()}
               >
-                Logout
+                {t("login.logout")}
               </span>
             </div>
           </div>

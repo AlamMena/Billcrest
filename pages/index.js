@@ -93,7 +93,7 @@ export default function Home() {
             <div className="flex">
               <img
                 alt="welcome image"
-                className="md:w-72 h-full w-64"
+                className="w-56 h-full "
                 src="/dashboard_welcome.png"
               />
             </div>

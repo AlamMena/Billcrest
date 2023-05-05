@@ -2,6 +2,7 @@
   "login": {
     "welcome": "Welcome to our Comunity",
     "login": "Log in",
+    "logout": "Log Out",
     "exist": "You dont have an account?",
     "create": "Create one",
     "email": "Email",
@@ -75,7 +76,7 @@
   "addItem": "Please add at least one item",
   "mountPay": "The amount to be paid must be equal to or greater than the price to be paid",
   "creatingInvoice": "Creating invoice...",
-  "invoiceCreated": "Great! Your invoice has been updated.",
+  "invoiceCreated": "Great! Your invoice has been created.",
   "updatingInvoice": "Updating Invoice...",
   "createInvoice": "Create Invoice",
   "for": "For:",
@@ -219,5 +220,20 @@
   "fiscalNumber": "Fiscal voucher number",
   "currency": "Currency",
   "website": "Website",
-  "profileSettings": "Profile Settings"
+  "profileSettings": "Profile Settings",
+  "profile": "Profile",
+  "selectImg": "Select an image",
+  "imgList": "Image list",
+  "addressNamePlaceh1": "Home 1",
+  "addressNamePlaceh2": "Office 1",
+  "addressPlaceh1": "878 Nantel street",
+  "addressPlaceh2": "435 Forgues street",
+  "countryPlaceh1": "United States",
+  "countryPlaceh2": "Canada",
+  "postalPlaceh1": "96789",
+  "postalPlaceh2": "J4Y 2Z1",
+  "phoneNamePlaceh1": "Celullar",
+  "phoneNamePlaceh2": "Home",
+  "phonePlaceh": "514-765-9128",
+  "clientPermission": "The client does not have permission to this type of invoice"
 }

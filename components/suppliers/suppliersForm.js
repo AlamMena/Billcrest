@@ -117,7 +117,7 @@ export default function SuppliersForm({ supplier }) {
         // logic
         // if the item exists
         await toast.promise(axiosInstance.put("/supplier", parsedData), {
-          pending: t("savingSupplier"),
+          pending: t("creatinggSupplier"),
           success: t("supplierUpdated"),
           error: t("error"),
         });
@@ -315,6 +315,7 @@ export default function SuppliersForm({ supplier }) {
                   helperText={errors.name && t("inputValid")}
                   variant="outlined"
                   fullWidth
+                  inputProps={{ maxLength: 50 }}
                 />
               </FormControl>
               <FormControl className="w-full">
@@ -333,15 +334,7 @@ export default function SuppliersForm({ supplier }) {
                   className="input-rounded"
                   helperText={errors.noIdentification && t("inputValid")}
                   variant="outlined"
-                  // InputProps={{
-                  //   startAdornment: (
-                  //     <InputAdornment position="start">
-                  //       <EmailOutlined
-                  //         className={`${errors.website && "text-red-500"} `}
-                  //       />
-                  //     </InputAdornment>
-                  //   ),
-                  // }}
+                  inputProps={{ maxLength: 50 }}
                   fullWidth
                 />
               </FormControl>
@@ -353,6 +346,7 @@ export default function SuppliersForm({ supplier }) {
                 <TextField
                   {...register("creditdays")}
                   id="outlined-adornment-phone"
+                  InputLabelProps={{ shrink: true }}
                   label={t("creditDays")}
                   size="medium"
                   type="number"
@@ -360,6 +354,7 @@ export default function SuppliersForm({ supplier }) {
                   variant="outlined"
                   value={credit}
                   disabled={!allowCredit}
+                  inputProps={{ maxLength: 50 }}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -373,9 +368,11 @@ export default function SuppliersForm({ supplier }) {
                 <TextField
                   {...register("discount")}
                   id="outlined-adornment-phone"
+                  InputLabelProps={{ shrink: true }}
                   label={t("discount")}
                   size="medium"
                   type="number"
+                  inputProps={{ maxLength: 50 }}
                   className="input-rounded text-md"
                   variant="outlined"
                   value={discount}
@@ -395,10 +392,9 @@ export default function SuppliersForm({ supplier }) {
                 {...register("description")}
                 label={t("description")}
                 variant="outlined"
-                InputLabelProps={{
-                  shrink: true,
-                }}
+                InputLabelProps={{ shrink: true }}
                 placeholder={t("supplierDescPlaceh")}
+                inputProps={{ maxLength: 70 }}
                 multiline
                 minRows={3}
                 size="medium"
@@ -444,7 +440,10 @@ export default function SuppliersForm({ supplier }) {
                   <TextField
                     {...register("addresses[0].name", { required: true })}
                     id="outlined-adornment-phone"
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{ maxLength: 50 }}
                     label={t("addressName")}
+                    placeholder={t("addressNamePlaceh1")}
                     size="medium"
                     className="input-rounded text-md"
                     variant="outlined"
@@ -454,7 +453,10 @@ export default function SuppliersForm({ supplier }) {
                   <TextField
                     {...register("addresses[0].address1", { required: true })}
                     id="outlined-adornment-phone"
+                    inputProps={{ maxLength: 50 }}
+                    InputLabelProps={{ shrink: true }}
                     label={t("address1")}
+                    placeholder={t("addressPlaceh1")}
                     size="medium"
                     className="input-rounded text-md"
                     variant="outlined"
@@ -464,7 +466,10 @@ export default function SuppliersForm({ supplier }) {
                   <TextField
                     {...register("addresses[0].country", { required: true })}
                     id="outlined-adornment-phone"
+                    inputProps={{ maxLength: 50 }}
+                    InputLabelProps={{ shrink: true }}
                     label={t("country")}
+                    placeholder={t("countryPlaceh1")}
                     size="medium"
                     className="input-rounded text-md"
                     variant="outlined"
@@ -474,7 +479,10 @@ export default function SuppliersForm({ supplier }) {
                   <TextField
                     {...register("addresses[0].postalCode", { required: true })}
                     id="outlined-adornment-phone"
+                    inputProps={{ maxLength: 50 }}
+                    InputLabelProps={{ shrink: true }}
                     label={t("postalCode")}
+                    placeholder={t("postalPlaceh1")}
                     size="medium"
                     className="input-rounded text-md"
                     variant="outlined"
@@ -486,7 +494,10 @@ export default function SuppliersForm({ supplier }) {
                   <TextField
                     {...register("addresses[1].name", { required: true })}
                     id="outlined-adornment-phone"
+                    inputProps={{ maxLength: 50 }}
+                    InputLabelProps={{ shrink: true }}
                     label={t("addressName")}
+                    placeholder={t("addressNamePlaceh2")}
                     size="medium"
                     className="input-rounded text-md"
                     variant="outlined"
@@ -496,8 +507,11 @@ export default function SuppliersForm({ supplier }) {
                   <TextField
                     {...register("addresses[1].address1", { required: true })}
                     id="outlined-adornment-phone"
+                    inputProps={{ maxLength: 50 }}
+                    InputLabelProps={{ shrink: true }}
                     label={t("address2")}
                     size="medium"
+                    placeholder={t("addressPlaceh2")}
                     className="input-rounded text-md"
                     variant="outlined"
                   />
@@ -506,7 +520,10 @@ export default function SuppliersForm({ supplier }) {
                   <TextField
                     {...register("addresses[1].country", { required: true })}
                     id="outlined-adornment-phone"
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{ maxLength: 50 }}
                     label={t("country")}
+                    placeholder={t("countryPlaceh2")}
                     size="medium"
                     className="input-rounded text-md"
                     variant="outlined"
@@ -516,7 +533,10 @@ export default function SuppliersForm({ supplier }) {
                   <TextField
                     {...register("addresses[1].postalCode", { required: true })}
                     id="outlined-adornment-phone"
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{ maxLength: 50 }}
                     label={t("postalCode")}
+                    placeholder={t("postalPlaceh2")}
                     size="medium"
                     className="input-rounded text-md"
                     variant="outlined"
@@ -539,7 +559,10 @@ export default function SuppliersForm({ supplier }) {
                 {...register("contacts[0].name", { required: true })}
                 id="outlined-adornment-phone"
                 label={t("phoneName")}
+                placeholder={t("phoneNamePlaceh1")}
                 size="medium"
+                inputProps={{ maxLength: 50 }}
+                InputLabelProps={{ shrink: true }}
                 className="input-rounded text-md"
                 variant="outlined"
               />
@@ -549,6 +572,9 @@ export default function SuppliersForm({ supplier }) {
                 {...register("contacts[0].number", { required: true })}
                 id="outlined-adornment-phone"
                 label={t("phone1")}
+                placeholder={t("phonePlaceh")}
+                inputProps={{ maxLength: 50 }}
+                InputLabelProps={{ shrink: true }}
                 size="medium"
                 className="input-rounded text-md"
                 variant="outlined"
@@ -558,7 +584,10 @@ export default function SuppliersForm({ supplier }) {
               <TextField
                 {...register("contacts[1].name", { required: true })}
                 id="outlined-adornment-phone"
+                inputProps={{ maxLength: 50 }}
                 label={t("phoneName")}
+                placeholder={t("phoneNamePlaceh2")}
+                InputLabelProps={{ shrink: true }}
                 size="medium"
                 className="input-rounded text-md"
                 variant="outlined"
@@ -568,7 +597,10 @@ export default function SuppliersForm({ supplier }) {
               <TextField
                 {...register("contacts[1].number", { required: true })}
                 id="outlined-adornment-phone"
+                inputProps={{ maxLength: 50 }}
+                placeholder={t("phonePlaceh")}
                 label={t("phone2")}
+                InputLabelProps={{ shrink: true }}
                 size="medium"
                 className="input-rounded text-md"
                 variant="outlined"

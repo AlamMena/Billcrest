@@ -161,14 +161,14 @@ export default function ProductList({
       width: 250,
       renderCell: (cells) => {
         return (
-          <div className="flex space-x-4 items-center">
+          <div className="flex space-x-4">
             <a
               onClick={() => {
                 router.push(`/productos/${cells.row.id}`);
               }}
               className="text-green-400 cursor-pointer"
             >
-              <EditOutlined className="text-green-400 mx-2 " />
+              <EditOutlined className="text-green-400" />
             </a>
             <a
               onClick={() => {
@@ -177,7 +177,7 @@ export default function ProductList({
               }}
               className="text-red-500 cursor-pointer"
             >
-              <DeleteOutline className="text-red-500 mx-2" />
+              <DeleteOutline className="text-red-500" />
             </a>
           </div>
         );
@@ -272,6 +272,7 @@ export default function ProductList({
           rowHeight={60}
           pagination
           disableColumnFilter
+          hideFooterSelectedRowCount
           disableColumnSelector
           localeText={{
             noRowsLabel: t("ndata"),

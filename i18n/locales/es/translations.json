@@ -2,6 +2,7 @@
   "login": {
     "welcome": "Bienvenido a nuestra Comunidad",
     "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
     "exist": "No tienes una cuenta?",
     "create": "Crea una",
     "email": "Correo electrónico",
@@ -128,7 +129,7 @@
   "warehouseSaved": "Almacén guardada exitosamente!",
   "warehouseDeleted": "Almacén eliminada exitosamente!",
   "searchWarehouse": "Buscar almacenes...",
-  "wareDescPlaceh": "Almacén para manejar empleados...",
+  "wareDescPlaceh": "Almacén para x tipo de productos...",
   "wareNamePlaceh": "Almacén - 001",
   "category": "Categoría",
   "newCategory": "Nueva Categoría",
@@ -219,5 +220,20 @@
   "fiscalNumber": "Número de comprobante fiscal",
   "currency": "Moneda",
   "website": "Página Web",
-  "profileSettings": "Ajustes de Perfil"
+  "profileSettings": "Ajustes de Perfil",
+  "profile": "Perfil",
+  "selectImg": "Selecciona una imagen",
+  "imgList": "Listado de imágenes",
+  "addressNamePlaceh1": "Casa 1",
+  "addressNamePlaceh2": "Oficina 1",
+  "addressPlaceh1": "Calle Nantel 878",
+  "addressPlaceh2": "Calle Forgues 435",
+  "countryPlaceh1": "Estados Unidos",
+  "countryPlaceh2": "Canadá",
+  "postalPlaceh1": "96789",
+  "postalPlaceh2": "J4Y 2Z1",
+  "phoneNamePlaceh1": "Celular",
+  "phoneNamePlaceh2": "Casa",
+  "phonePlaceh": "514-765-9128",
+  "clientPermission": "Este cliente no tiene permiso a este tipo de factura"
 }
