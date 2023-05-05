@@ -38,7 +38,7 @@ export default function GList({
     {
       field: t("actions"),
       sortable: false,
-      width: 220,
+      width: 120,
       renderCell: (cells) => {
         return (
           <div className="flex space-x-4 ">

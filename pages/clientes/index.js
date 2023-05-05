@@ -54,7 +54,6 @@ export default function Contacts() {
 
       await setDataAsync();
     } catch (error) {
-      toast.error(t("error"));
     } finally {
       setConfirmOpen(false);
     }

@@ -37,11 +37,10 @@ export default function Products() {
         success: t("productDeleted"),
         error: t("error"),
       });
-
-      setConfirmOpen(false);
       await setDataAsync();
     } catch (error) {
-      toast.error(t("error"));
+    } finally {
+      setConfirmOpen(false);
     }
   };
 

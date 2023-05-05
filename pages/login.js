@@ -8,6 +8,8 @@ import { useForm } from "react-hook-form";
 import useAuth from "../auth/useAuth";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Typography from "@mui/material";
+import palette from "../styles/theme/palette";
 import { useTranslation } from "react-i18next";
 
 export default function Login() {
@@ -157,14 +159,13 @@ export default function Login() {
         </div>
         {/*-------------------------------- Login background -------------------------------- */}
         <div className=" hidden lg:flex lg:col-span-7 bg-[url('https://cdn.dribbble.com/users/373274/screenshots/10805897/media/6e234812bc4204db2848082933592e54.png')] bg-cover lg:items-center">
-          <div className=" px-20">
+          <div className=" px-20 bg-[#F9FAFB]">
             {/* Title and subtitle */}
-            <div className=" text-white text-5xl p-3 rounded-md bg-green-400/70">
+            <div className=" text-green-700/60 text-5xl p-3 rounded-md">
               {t("login.welcome")}
             </div>
-            <div className=" text-white p-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe non
-              reiciendis voluptates consectetur culpa? Sequi voluptatem quidem e
+            <div className=" text-green-600/80 text-sm p-3 ">
+              {t("login.createdBy")}
             </div>
             {/* Avatars */}
             <div className="flex items-center py-4 px-3 ">
@@ -180,8 +181,8 @@ export default function Login() {
                   );
                 })}
               </AvatarGroup>
-              <div className="text-white px-4 text-xs">
-                Es tu turno de unirte a nosotros
+              <div className="text-green-600 px-4 text-xs">
+                {t("login.joinUs")}
               </div>
             </div>
           </div>

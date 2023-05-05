@@ -74,10 +74,10 @@ export default function Contacts() {
         }
       );
 
-      setConfirmOpen(false);
       await setDataAsync();
     } catch (error) {
-      toast.error(t("error"));
+    } finally {
+      setConfirmOpen(false);
     }
   };
 

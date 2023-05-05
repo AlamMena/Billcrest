@@ -9,7 +9,9 @@
     "passw": "Contraseña",
     "remember": "Recuérdame",
     "forgotP": "Olvidaste la contraseña?",
-    "found": "No se ha encontrado el usuario"
+    "found": "No se ha encontrado el usuario",
+    "createdBy": "Billcrest es un sistema de punto de venta que proporciona a los clientes una interfaz fácil de usar para navegar por los productos, agregar elementos a su factura y completar las compras sin problemas. Creado por Alam Mena y Alexander Mezquita.",
+    "joinUs": "Únete a nosotros"
   },
   "home": {
     "welcome": "Bienvenido de nuevo Test User",

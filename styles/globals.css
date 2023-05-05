@@ -19,30 +19,42 @@ a {
   box-sizing: border-box;
   font-family: "Varela Round", sans-serif !important;
 }
-/* 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-} */
 
+::-webkit-scrollbar {
+  width: 5px;
+  /* Remove scrollbar space */
+  background: white;
+  /* Optional: just make scrollbar invisible */
+}
+
+.MuiDataGrid-virtualScroller::-webkit-scrollbar {
+  height: 7px;
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+    width: 5px;
 }
 
-::-webkit-scrollbar {
-  width: 0;
-  /* Remove scrollbar space */
-  background: transparent;
-  /* Optional: just make scrollbar invisible */
+::-webkit-scrollbar-thumb {
+  background: rgb(234, 232, 232);
+  border-radius: 20px;
 }
+
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cbc9c9;
+
+}
+
+.MuiDataGrid-virtualScroller::-webkit-scrollbar{
+  width: 5px;
+}
+
+
 
 .MuiDataGrid-root,
 .MuiDataGrid-root .MuiDataGrid-columnHeader,

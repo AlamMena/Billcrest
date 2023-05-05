@@ -158,7 +158,7 @@ export default function ProductList({
       field: t("actions"),
       sortable: false,
       hide: !actions,
-      width: 250,
+      width: 100,
       renderCell: (cells) => {
         return (
           <div className="flex space-x-4">
