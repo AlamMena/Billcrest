@@ -116,7 +116,7 @@ export default function ProductsForm({ product }) {
   const onSubmit = async (data) => {
     setIsLoading(true);
     try {
-      toastId.current = toast("Cargando ...", {
+      toastId.current = toast(t("loading"), {
         type: toast.TYPE.LOADING,
       });
       const formatedData = formatData(data);
@@ -127,7 +127,7 @@ export default function ProductsForm({ product }) {
       toast.update(toastId.current, {
         type: toast.TYPE.SUCCESS,
         autoClose: 5000,
-        render: "Producto creado exitosamente!",
+        render: t("productCreated"),
       });
 
       router.push("/productos");
@@ -138,7 +138,7 @@ export default function ProductsForm({ product }) {
         render:
           error.response.data.status === 400
             ? error.response.data.message
-            : "Opps, Ha ocurrido un error!",
+            : t("error"),
       });
     }
     setIsLoading(false);

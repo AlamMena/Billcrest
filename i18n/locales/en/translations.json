@@ -237,5 +237,6 @@
   "phoneNamePlaceh1": "Celullar",
   "phoneNamePlaceh2": "Home",
   "phonePlaceh": "514-765-9128",
-  "clientPermission": "The client does not have permission to this type of invoice"
+  "clientPermission": "The client does not have permission to this type of invoice",
+  "productCreated": "Great! Your product has been created!"
 }

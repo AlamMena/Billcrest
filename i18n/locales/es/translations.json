@@ -237,5 +237,6 @@
   "phoneNamePlaceh1": "Celular",
   "phoneNamePlaceh2": "Casa",
   "phonePlaceh": "514-765-9128",
-  "clientPermission": "Este cliente no tiene permiso a este tipo de factura"
+  "clientPermission": "Este cliente no tiene permiso a este tipo de factura",
+  "productCreated": "Genial! Tu producto ha sido creado exitosamente!"
 }
