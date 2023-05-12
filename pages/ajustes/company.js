@@ -25,7 +25,7 @@ export default function CompanySettings() {
   return (
     <form
       //   onSubmit={handleSubmit(onSubmit)}
-      className="flex p-8 space-y-6 space-x-3 "
+      className="flex flex-col md:flex-row space-y-6 md:space-x-3 "
     >
       <Card className="flex w-full justify-center">
         <div className=" px-8 py-12 flex flex-col   mb-10">

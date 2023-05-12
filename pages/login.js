@@ -98,6 +98,7 @@ export default function Login() {
                   error={error}
                   fullWidth
                   autoComplete="off"
+                  inputProps={{ maxLength: 50 }}
                 />
               </div>
               <div className="py-2">
@@ -112,6 +113,7 @@ export default function Login() {
                   size="small"
                   type="password"
                   fullWidth
+                  inputProps={{ maxLength: 50 }}
                 />
               </div>
 
