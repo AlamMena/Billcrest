@@ -12,7 +12,7 @@ import ThemeProvider from "../styles/providers/themeProvider";
 import Head from "next/head";
 import { QueryClient } from "@tanstack/react-query";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Analytics } from "@vercel/analytics/react";
 
 import { useTranslation } from "react-i18next";
 
@@ -60,6 +60,7 @@ export default function MyApp({ Component, pageProps }) {
             <QueryClientProvider client={queryClient}>
               <Nav>
                 <Component {...pageProps} />
+                <Analytics />
               </Nav>
             </QueryClientProvider>
             <ToastContainer />
