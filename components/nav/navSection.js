@@ -239,9 +239,9 @@ function NavItem({ item, currentPath, redirect, onClose }) {
     <Box>
       <StyledNavItem
         //   component={RouterLink}
-        onClick={() =>
-          items ? setOpen(!open) : (redirect(path), onClose?.() ?? null)
-        }
+        onClick={() => {
+          items ? setOpen(!open) : (redirect(path), onClose?.() ?? null);
+        }}
         selected={currentPath === path}
         sx={{
           "&.active": {
@@ -272,7 +272,8 @@ function NavItem({ item, currentPath, redirect, onClose }) {
           <StyledNavItem
             key={index}
             // component={RouterLink}
-            to={child.path}
+            onClick={() => redirect(child.path)}
+            // to={child.path}
             sx={{ m: 1 }}
           >
             {" "}

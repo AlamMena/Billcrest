@@ -46,7 +46,7 @@ export default function Contacts() {
 
   const deleteAsync = async () => {
     try {
-      await toast.promise(axiosInstance.delete(`client/${itemToDelete.id}`), {
+      await toast.promise(axiosInstance.delete(`client/${itemToDelete.id}?`), {
         pending: t("deletingClient"),
         success: t("clientDeleted"),
         error: t("error"),
