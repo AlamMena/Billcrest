@@ -272,7 +272,10 @@ function NavItem({ item, currentPath, redirect, onClose }) {
           <StyledNavItem
             key={index}
             // component={RouterLink}
-            onClick={() => redirect(child.path)}
+            onClick={() => {
+              redirect(child.path);
+              onClose?.() ?? null;
+            }}
             // to={child.path}
             sx={{ m: 1 }}
           >
