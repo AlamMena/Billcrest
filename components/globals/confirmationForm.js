@@ -8,12 +8,7 @@ import {
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-export default function ConfirmationForm({
-  onConfirm,
-  open,
-  setOpen,
-  message,
-}) {
+export default function ConfirmationForm({ onConfirm, open, setOpen }) {
   const { t } = useTranslation();
   return (
     <Dialog

@@ -138,14 +138,13 @@ export default function CPage({
     <>
       <div className="w-full flex flex-col">
         <div className="flex w-full justify-between items-center">
-          <div>
-            <PageHeader
-              header={headerText}
-              locationRoutes={locationRoutes}
-              text={headerMessage}
-              Icon={icon}
-            />
-          </div>
+          <PageHeader
+            header={headerText}
+            locationRoutes={locationRoutes}
+            text={headerMessage}
+            Icon={icon}
+          />
+
           <div className="flex">
             <Button
               color="primary"

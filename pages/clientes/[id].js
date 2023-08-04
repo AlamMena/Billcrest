@@ -70,7 +70,7 @@ export default function UpsertContact() {
     <div className="w-full md:px-0 md:pr-8 flex flex-col pb-5">
       <div className="flex w-full justify-between items-center pr-8 ">
         <PageHeader
-          header={t("modifyClient")}
+          header={t("modifyContact")}
           locationRoutes={locationRoutes}
           Icon={<SettingsOutlined />}
         />
